@@ -1,0 +1,54 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  background: teal;
+}
+.outer {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  height: 300px;
+  background-color: lightgray;
+  opacity: 0.9;
+  padding-top: 20px;
+}
+input{
+  display: block;
+  margin : 0 auto;
+  height: 25px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+img{
+  height: 75px;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+.inputbtn{
+  display: inline;
+  margin-left: 6%;
+  margin-right: 5%;
+  width: 30%;
+  background-color: lightblue;
+  height: 35px;
+  width: 150px;
+}
+p{
+  color: red;
+  text-align: center;
+  padding: 20px;
+}
