@@ -4,6 +4,7 @@
 }
 body{
   background: teal;
+  background-image: url("../img/bg.png");
 }
 .outer {
   display: table;
@@ -20,35 +21,78 @@ body{
 .inner {
   margin-left: auto;
   margin-right: auto;
-  width: 400px;
-  height: 300px;
-  background-color: lightgray;
-  opacity: 0.9;
+  width: 500px;
+  height: 400px;
+  background-color: rgba(190, 190, 190, 0.8);
   padding-top: 20px;
+  -webkit-box-shadow: 0px 10px 46px 5px rgba(0,0,0,0.6);
+  -moz-box-shadow: 0px 10px 46px 5px rgba(0,0,0,0.6);
+  box-shadow: 0px 10px 46px 5px rgba(0,0,0,0.6);
 }
 input{
   display: block;
   margin : 0 auto;
-  height: 25px;
+  height: 35px;
+  width: 300px;
+  font-size: 23px;
   margin-top: 20px;
   border-radius: 5px;
+  border: none;
+  text-indent: 10px;
 }
 img{
   height: 75px;
-  margin-left: 35%;
+  margin-left: 38.5%;
   margin-right: 35%;
 }
 .inputbtn{
-  display: inline;
-  margin-left: 6%;
-  margin-right: 5%;
   width: 30%;
-  background-color: lightblue;
-  height: 35px;
-  width: 150px;
+  background-color: #024F84;
+  height: 45px;
+  width: 170px;
+  color: rgb(240, 240, 240);
+  text-indent: 0px;
 }
 p{
   color: red;
   text-align: center;
   padding: 20px;
+}
+::-webkit-input-placeholder {
+   font-style: italic;
+   text-indent: 10px;
+   /*add icons*/
+}
+:-moz-placeholder {
+   font-style: italic;
+    text-indent: 10px;
+    /*add icons*/
+}
+::-moz-placeholder {
+   font-style: italic;
+    text-indent: 10px;
+    /*add icons*/
+}
+:-ms-input-placeholder {
+   font-style: italic;
+    text-indent: 10px;
+    /*add icons*/
+}
+#errorDiv{
+  position: absolute;
+  margin-left: 7.5%;
+}
+a{
+  text-decoration: none;
+}
+.btndiv{
+  margin-top: 80px;
+  width: 250px;
+  float: left;
+}
+.regdiv{
+  margin-top: 45px;
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
 }
