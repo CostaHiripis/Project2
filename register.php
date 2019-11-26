@@ -18,28 +18,39 @@
               <div id="errorDiv">
               <?php
                 $existingUsers = file("users.csv");
-                //register button code
-                if(isset($_POST['register'])){
-                  if(!empty($_POST['email']) && !empty($_POST['pw']) && !empty($_POST['pw2'])){
-                    if($_POST['pw'] == $_POST['pw2']){
-                    foreach ($existingUsers as $email) { //checks if the user is already registered
-                      $email = explode(",",$email);
-                      if($email[0] == $_POST['email']){
-                        echo "<p>Email already registered!</p>";
-                        break;
+                  if(isset($_POST['register'])){
+                    if(!empty($_POST['email']) && !empty($_POST['pw']) && !empty($_POST['pwr'])){
+                      if($_POST['pw'] != $_POST['pwr']){
+                        echo "<p>Passwords do not match!</p>";
                       }else{
-                        $userData = fopen("users.csv","a");
-                        $temp = array($_POST['email'],$_POST['pw']);
-                        fputcsv($userData, $temp);
-                        fclose($userData);
-                        break;
+                        $inputEmail=$_POST['email'];
+                        $inputPW=password_hash($_POST['pw'], PASSWORD_DEFAULT);
+                        if(sizeof($existingUsers)>0){
+                        foreach ($existingUsers as $email) { //checks if the user is already registered
+                          $email = explode(",",$email);
+                          if($email[0] == $inputEmail){
+                            echo "<p>Email already registered!</p>";
+                            break;
+                          }else{
+                            $userData = fopen("users.csv","a");
+                            $temp = array($inputEmail,$inputPW);
+                            fputcsv($userData, $temp);
+                            fclose($userData);
+                            echo "<p class='success'>Email succesfully registered!</p>";
+                            break;
+                          }
                         }
                       }
-                    }else{
-                      echo "<p>Passwords do not match!</p>";
+                      else{
+                        $userData = fopen("users.csv","a");
+                        $temp = array($inputEmail,$inputPW);
+                        fputcsv($userData, $temp);
+                        fclose($userData);
+                        echo "<p class='success'>Email succesfully registered!</p>";
+                      }
                     }
                   }else{
-                    echo "<p>Please fill in your details!</p>";
+                  echo "<p>Please fill in your details!</p>";
                   }
                 }
                ?>
