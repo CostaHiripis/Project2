@@ -104,3 +104,6 @@ a{
   margin-left: 20px;
   position: absolute;
 }
+.success{
+  color: green;
+}
