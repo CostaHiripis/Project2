@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="CSS/loginstyle.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/loginstyle.css">
   </head>
   <body>
     <div class="outer">
       <div class="middle">
         <div class="inner">
           <form action="#" method="post">
-              <img id="loginnhl" src="img/nhl.png" alt="nhl">
+              <img id="loginnhl" src="../img/nhl.png" alt="nhl">
               <input type="email" name="email" placeholder="Email">
               <input type="password" name="pw" placeholder="Password">
               <div id="errorDiv">
@@ -36,11 +36,11 @@
                 }
               ?>
               </div>
-          <div class="btndiv">
-            <input class="inputbtn" type="submit" name="login" value="Login">
-          </div>
-          <div class="btndiv">
+            <div class="btndiv">
+              <input class="inputbtn" type="submit" name="login" value="Login">
+            </div>
           </form>
+          <div class="btndiv">
             <form action="register.php" method="post">
               <input class="inputbtn" type="submit" value="Register">
             </form>

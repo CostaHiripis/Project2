@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="CSS/loginstyle.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/loginstyle.css">
   </head>
   <body>
     <div class="outer">
       <div class="middle">
         <div class="inner">
           <form method="post">
-              <div><a href="login.php"><img id="backbtn" src="img/back.png" alt="back"></a></div>
-              <img id="logo" src="img/nhl.png" alt="nhl">
+              <div><a href="login.php"><img id="backbtn" src="../img/back.png" alt="back"></a></div>
+              <img id="logo" src="../img/nhl.png" alt="nhl">
               <input type="text" name="firstname" placeholder="First Name">
               <input type="text" name="lastname" placeholder="Last Name">
               <input class="mail" type="email" name="email" placeholder="Email">

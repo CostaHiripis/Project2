@@ -4,6 +4,7 @@ $existingUsers = file("users.csv");
       if($inputPW != $repeatPW){
         echo "<p>Passwords do not match!</p>";
       }else{
+        $userType="user";//user,mod,admin,security
         $firstName=ucfirst(strtolower($firstName));
         $lastName=ucfirst(strtolower($lastName));
         $inputPW=password_hash($_POST['pw'], PASSWORD_DEFAULT);
@@ -15,7 +16,7 @@ $existingUsers = file("users.csv");
             break;
           }else{
             $userFile = fopen("users.csv","a");
-            $userData = array($inputEmail,$inputPW,$firstName,$lastName);
+            $userData = array($inputEmail,$inputPW,$firstName,$lastName,$userType);
             fputcsv($userFile, $userData);
             fclose($userFile);
             echo "<p class='success'>Email succesfully registered!</p>";
