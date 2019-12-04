@@ -14,8 +14,8 @@
           <form method="post">
               <div><a href="login.php"><img id="backbtn" src="../img/back.png" alt="back"></a></div>
               <img id="logo" src="../img/nhl.png" alt="nhl">
-              <input type="text" name="firstname" placeholder="First Name" pattern="[a-zA-Z]*">
-              <input type="text" name="lastname" placeholder="Last Name" pattern="[a-zA-Z]*">
+              <input type="text" name="firstname" placeholder="First Name" pattern="[a-zA-Z']*">
+              <input type="text" name="lastname" placeholder="Last Name" pattern="[a-zA-Z']*">
               <input class="mail" type="email" name="email" placeholder="Email">
               <input type="password" name="pw" placeholder="Password">
               <input type="password" name="pwr" placeholder="Repeat Password">
