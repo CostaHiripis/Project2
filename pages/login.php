@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="../CSS/loginstyle.css">
   </head>
   <body>
     <div class="outer">
       <div class="middle">
-        <div class="inner">
+        <div style="height:400px" class="inner">
           <form action="#" method="post">
               <img id="loginnhl" src="../img/nhl.png" alt="nhl">
               <input type="email" name="email" placeholder="Email">
