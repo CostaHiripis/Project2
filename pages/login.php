@@ -17,20 +17,32 @@
               <input type="password" name="pw" placeholder="Password">
               <div id="errorDiv">
               <?php
-                $existingUsers = file("users.csv");
                 if(isset($_POST['login'])){
                   if(!empty($_POST['email']) && !empty($_POST['pw'])){
-                    foreach ($existingUsers as $test) {
-                      $test = explode(",",$test);
-                      if($test[0] == $_POST['email'] &&
-                      !(password_verify($_POST['pw'], $test[1]))){
-                        echo "REDIRECT TO MAIN";
-                        break;
+                    $dbName = 'HelpDesk';
+			            	$conn = mysqli_connect('127.0.0.1','root','',$dbName) OR DIE ('Error: '. mysqli_error($conn));
+                    $TableName = 'Registration';
+                    $password = $_POST['pw'];
+                    $email = $_POST['email'];
+                    $query = "SELECT UserID, FirstName, LastName, Email, Password
+                    FROM " . $TableName . " WHERE Email LIKE ?";
+                    If($stmt = mysqli_prepare($conn, $query)){
+                      mysqli_stmt_bind_param($stmt, 's', $email);
+                      if(mysqli_stmt_execute($stmt)){
+                        mysqli_stmt_bind_result($stmt, $id, $fname, $lname, $DBemail, $DBpassword);
+                        mysqli_stmt_store_result($stmt);
+                        while(mysqli_stmt_fetch($stmt)){
+                          if($DBemail == $email AND password_verify($password, $DBpassword)){
+                            echo '<p>You are logged in!</p>';
+                          } else {
+                            echo '<p>Wrong username or password!</p>';
+                          }
+                        }
+                      } else {
+                        echo 'Error!';
                       }
-                      else{
-                        echo "<p>Invalid password or email!</p>";
-                        break;
-                      }
+                    } else {
+                      echo 'Error!';
                     }
                   }else{
                     echo "<p>Please fill in your details!</p>";
