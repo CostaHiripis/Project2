@@ -21,13 +21,8 @@
               <input type="password" name="pwr" placeholder="Repeat Password">
               <div id="errorDiv">
               <?php
-                include("lib.php");
                 if(isset($_POST['register'])){
-                  if(!empty($_POST['email']) && !empty($_POST['pw']) && !empty($_POST['pwr']) && !empty($_POST['firstname']) && !empty($_POST['lastname'])){
-                  registerUser($_POST['firstname'],$_POST['lastname'],$_POST['email'],$_POST['pw'],$_POST['pwr']);
-                  }else{
-                    echo "<p>Please fill in your details!</p>";
-                  }
+                  include("lib.php");
                 }
                ?>
               </div>
