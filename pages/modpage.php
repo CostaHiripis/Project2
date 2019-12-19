@@ -16,7 +16,7 @@
       <div id="main">
         <div id="section1">
           <div class="boxNormal boxLeft">
-            <a href="#">
+            <a href="adminTickets.php">
               <div class="effect ticketBg" id="effectblue">
                 <div class="textDiv">
                   <h1 class="boxText">Tickets</h1>
