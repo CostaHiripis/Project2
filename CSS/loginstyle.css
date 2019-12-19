@@ -101,6 +101,11 @@ a{
   width: 250px;
   float: left;
 }
+.ticketbtn{
+  margin:0 auto;
+  width: 250px;
+  margin-top:40px;
+}
 .regdiv{
   margin-top: 45px;
   width: 250px;
