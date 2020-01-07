@@ -18,7 +18,7 @@ function Redirect($url, $permanent = false)
                 if(isset($_POST['login'])){
                   if(!empty($_POST['email']) && !empty($_POST['pw'])){
                     $dbName = 'HelpDesk';
-			            	$conn = mysqli_connect('127.0.0.1','root','',$dbName) OR DIE ('Error: '. mysqli_error($conn));
+			        $conn = mysqli_connect('127.0.0.1','root','',$dbName) OR DIE ('Error: '. mysqli_error($conn));
                     $TableName = 'Employee';
                     $password = $_POST['pw'];
                     $email = $_POST['email'];
@@ -31,13 +31,12 @@ function Redirect($url, $permanent = false)
                         mysqli_stmt_store_result($stmt);
                         while(mysqli_stmt_fetch($stmt)){
                           if($DBemail == $email AND password_verify($password, $DBpassword)){
-                            echo 'rr';
                             $_SESSION['loggedIn'] = true;
                             Redirect('index.php?page2=MainScreen', false);
                           } else {
-                            echo '<p>Wrong username or password!</p>';
+                            echo '<p>Wrong email or password!</p>';
                           }
-                        }
+                        } 
                       } else {
                         echo 'Error!';
                       }
