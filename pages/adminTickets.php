@@ -23,8 +23,8 @@
                         <div class="Status"></div>
                     </div>
                     <div class="TicketRight">
-                        <div class="Helper"><div>Helper Name</div>
-                            <img id="HelperPic" src="../img/Jesus.jpg" alt="userPic"><div id="effectblue" class="Drop">X</div></div>
+                        <div class="Helper"><div class="Text">Helper Name</div>
+                            <img id="HelperPic" src="../img/Jesus.jpg" alt="userPic"><div id="effectblue" class="Drop"><div class="Delete">X</div></div></div>
                         
                     </div>
                 </div>
