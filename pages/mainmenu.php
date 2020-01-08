@@ -69,10 +69,3 @@
 </body>
 
 </html>
-
-<!-- <div id="boxWide">
-                    <a href="#">
-                        <div class="effect" id="effectblue">
-
-                        </div>
-                </div> -->
