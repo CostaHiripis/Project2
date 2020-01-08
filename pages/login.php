@@ -17,8 +17,8 @@ function Redirect($url, $permanent = false)
               <?php
                 if(isset($_POST['login'])){
                   if(!empty($_POST['email']) && !empty($_POST['pw'])){
-                    $dbName = 'HelpDesk';
-			               $conn = mysqli_connect("127.0.0.1", "operationhelp","!PwO_1711",$dbName) OR DIE ('Error: '. mysqli_error($conn));
+                    $dbName = 'operationhelp';
+			        $conn = mysqli_connect("127.0.0.1", "operationhelp","!PwO_1711",$dbName) OR DIE ('Error: '. mysqli_error($conn));
                     $TableName = 'Employee';
 
                     $password = $_POST['pw'];
