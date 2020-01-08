@@ -26,27 +26,38 @@
                     <div id="top-left-complex">
                         <div id="rectangle-div">
                             <a href="#">
-                                <div class="effect" id="effectblue"></div>
+                                <div class="effect" id="effectblue">
+                                    <img class="resize-image" src="../img/ticket.png">
+                                </div>
                             </a>
                         </div>
 
                         <div id="square-div">
+
                             <a href="#">
-                                <div class="effect" id="effectlblue"></div>
+                                <div class="effect" id="effectlblue">
+                                    <img class="resize-image" src="../img/mail.png">
+                                </div>
                             </a>
                         </div>
                     </div>
 
                     <div id="bottom-left-complex">
                         <div id="square-bottom-div">
+
                             <a href="#">
-                                <div class="effect" id="effectlblue"></div>
+                                <div class="effect" id="effectlblue">
+                                    <img class="resize-image" src="../img/information.png">
+                                </div>
                             </a>
                         </div>
 
                         <div id="rectangle-bottom-div">
+                            
                             <a href="#">
-                                <div class="effect" id="effectblue"></div>
+                                <div class="effect" id="effectblue">
+                                    <img class="resize-image" src="../img/forgotpassword.png">
+                                </div>
                             </a>
                         </div>
                     </div>
@@ -54,8 +65,11 @@
 
                 <div id="right-complex">
                     <div class="bigBox">
+                        
                         <a href="#">
-                            <div class="effect" id="effectblue"></div>
+                            <div class="effect" id="effectblue">
+                                <img class="resize-image" src="../img/faq.png">
+                            </div>
                         </a>
                     </div>
 
