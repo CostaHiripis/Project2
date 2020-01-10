@@ -13,11 +13,7 @@
                 <img id="logoPic" src="../img/nhl.png" alt="nhl">
                 <img id="userPic" src="../img/Jesus.jpg" alt="userPic">
             </div>
-            <div class="BgTickets" id="effectblue">
-                <div class="TicketsHeader" id="effectteal">
-                    <h3>Open Tickets</h3>
                 </div>
-<<<<<<< HEAD
                 <div class="Ticket" id="effectlblue">
                     <div class="TicketLeft">
                         <div class="Name">Tickets&nbsp;</div>
@@ -29,8 +25,11 @@
                         
                     </div>
                 </div>
-=======
-                
+            <div class="BgTickets">
+                <div class="TicketsHeader" id="effectteal">
+                    <h3>Open Tickets</h3>
+                </div>
+
                 <?php
                 include 'connect.php';
 
@@ -42,7 +41,7 @@
                     mysqli_stmt_store_result($stmt);
 
                     if (mysqli_stmt_num_rows($stmt) == 0) {
-                        echo "<h1 style='color:red'>There are no open tickets</h1>";
+                        echo "<h1 id='noTicket'>There are no open tickets</h1>";
                     } else {
                         while (mysqli_stmt_fetch($stmt)) {
                             echo "<a href='Ticket.php?ticket=" . $TicketId . "'><div class='Ticket' id='effectlblue'>";
@@ -61,10 +60,9 @@
                                     echo "<div class='Helper'><div class='Text'>" . $AdminId . "</div>";
                                     echo "<img id='HelperPic' src='../img/Jesus.jpg'" . " alt='userPic'>"
                                             . "<form method='POST' action='?ticket=$TicketId' class='DropBtn'>"
-                                            . "<input class='DropBtn' type='Submit' name='Drop' value='X'>"
+                                            . "<input class='DropBtn Delete' type='Submit' name='Drop' value='X' id='effectblue'>"
                                             . "</form>"
                                         . "</div>";
-                                    
                                                 if(isset($_POST['Drop'])){
                                                 $SQLString2 = "DELETE FROM " . $TicketTable . " WHERE $TicketTable . TicketID = " . $_GET['ticket'];
                                                 if($stmt2 = mysqli_prepare($DBConnect, $SQLString2)){
@@ -80,7 +78,6 @@
                     }
                 }
                 ?>
->>>>>>> parent of 95e0388... Add Ticket
             </div>
         </div>
     </body>
