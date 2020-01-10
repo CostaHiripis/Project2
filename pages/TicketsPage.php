@@ -15,19 +15,13 @@
             </div>
             <div class="BgTickets" id="effectblue">
                 <div class="TicketsHeader" id="effectteal">
-                    <h3>Open Tickets</h3>
+                    <h3>Your Open Tickets</h3>
+                    <a href="AddTicket.php"><div class="CreateTicket" id="effectlblue">+ Create A New Ticket</div></a>
                 </div>
-                <div class="Ticket" id="effectlblue">
-                    <div class="TicketLeft">
-                        <div class="Name">Tickets&nbsp;</div>
-                        <div class="Status"></div>
-                    </div>
-                    <div class="TicketRight">
-                        <div class="Helper"><div>Helper Name</div>
-                            <img id="HelperPic" src="../img/Jesus.jpg" alt="userPic"><div id="effectblue" class="Drop">X</div></div>
-                        
-                    </div>
-                </div>
+
+                <?php
+                include 'connect.php';
+                ?>
             </div>
         </div>
     </body>
