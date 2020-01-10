@@ -1,21 +1,6 @@
 <?php
-	$conn = mysqli_connect("127.0.0.1", "operationhelp","!PwO_1711")
-	OR DIE("Error!");
-	$DBName = 'operationhelp';
-	if (!mysqli_select_db($conn, $DBName)) {
-	  $query = "CREATE DATABASE " . $DBName;
-	  if($stmt=mysqli_prepare($conn, $query)) {
-		if(mysqli_stmt_execute($stmt)){	
-		  echo "Database created";
-		} else {
-		  echo "Error creating database";
-		  die();
-		}
-	  }else {
-		echo "Error creating database";
-		die();
-	  }
-	} 
+	$conn = mysqli_connect("127.0.0.1", "root","")OR DIE("Error!");
+	$DBName = 'helpdesk';
 	if(mysqli_select_db($conn, $DBName)){
 	  If(isset($_POST['register'])){
 		If(empty($_POST['email']) OR empty($_POST['pw']) OR empty($_POST['pwr']) 
