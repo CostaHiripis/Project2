@@ -1,4 +1,13 @@
-
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stenden HelpDesk</title>
+    <link rel="stylesheet" href="../CSS/boxstyle.css">
+  </head>
+  <body>
     <div id="fullPage">
       <div id="header">
         <img id="logoPic" src="../img/nhl.png" alt="nhl">
@@ -7,7 +16,7 @@
       <div id="main">
         <div id="section1">
           <div class="boxNormal boxLeft">
-            <a href="index.php?page3=AdminSolveTickets.php">
+            <a href="adminTickets.php">
               <div class="effect ticketBg" id="effectblue">
                 <div class="textDiv">
                   <h1 class="boxText">Tickets</h1>
@@ -16,7 +25,7 @@
             </a>
           </div>
           <div class="boxNormal boxRight">
-            <a href="index.php?page3=AdminSummaryTickets.php">
+            <a href="#">
               <div class="effect ticketInfBg" id="effectblue">
                 <div class="textDiv">
                   <h1 class="boxText">Tickets summary</h1>
@@ -38,4 +47,5 @@
         </div>
       </div>
     </div>
-
+  </body>
+</html>
