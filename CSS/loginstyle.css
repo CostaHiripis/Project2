@@ -48,6 +48,18 @@ input{
   border: none;
   text-indent: 10px;
 }
+
+#bla{ 
+	margin: 0 auto;
+	height: 130px;
+	width: 130px;
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+
+#choose{
+	margin-bottom: 25px;
+}
 img{
   float: left;
   height: 75px;
@@ -122,3 +134,4 @@ a{
 .success{
   color: green;
 }
+

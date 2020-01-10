@@ -1,20 +1,22 @@
 <?php
 	If(isset($_POST['submit'])){
-		If(empty($_POST['content']) OR empty($_POST['title'])){
+		If(empty($_POST['content']) OR empty($_POST['title']) OR empty($_POST['type'])){
 		  echo "<p>Please fill in your details!</p>";
 		} else {
 			$TableName = 'Ticket';
 			$dbName = 'helpdesk';
 			$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 			$content = $_POST['content'];
+			$_SESSION['conn'] = 'bbfb';
 			If($content !== $_SESSION['conn']){
 				$title = $_POST['title'];
+				$type = $_POST['type'];
 				$date = date("Y-m-d");
 				$Uid = $_SESSION['id'];
 				$status = 'Sent';
-				$query = "INSERT INTO ". $TableName ." VALUES(NULL,?,?,?,NULL,?,?,NULL,NULL)";
+				$query = "INSERT INTO ". $TableName ." VALUES(NULL,?,?,?,NULL,?,?,NULL,?)";
 				If($stmt = mysqli_prepare($conn, $query)){
-				  mysqli_stmt_bind_param($stmt, 'ssssi', $title, $content, $date, $status, $Uid);
+				  mysqli_stmt_bind_param($stmt, 'ssssis', $title, $content, $date, $status, $Uid, $type);
 				  If(mysqli_stmt_execute($stmt)){
 					echo '<p>Thank you for ticket!</p>';
 					$_SESSION['conn'] = $content;
@@ -45,6 +47,11 @@
               <form action="#" method="post">
                   <h2 id="maintitle">Please fill out all the fields!</h2>
                   <input id="title" type="text" name="title" placeholder="Title">
+				  <select name='type'>
+					<option value='Hardware'>Hardware</option>
+					<option value='Software'>Software</option>
+					<option value='Wish'>Wish</option>
+				  </select>
                   <textarea name="content" placeholder="Description" rows="8" cols="50"></textarea>
                   <div id="errorDiv">
                   </div>

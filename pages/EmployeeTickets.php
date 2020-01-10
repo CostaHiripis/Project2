@@ -4,11 +4,13 @@
 <h1>My tickets</h1>
 <?php 
 	$TableName = 'Ticket';
+	$idd = $_SESSION['id'];
 	$dbName = 'helpdesk';
 	$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 	$query = "SELECT TicketID, Title, Opening_Date, Status FROM " . $TableName."
-	GROUP BY Opening_Date";
+	 WHERE UserID LIKE ?";
 	if($stmt = mysqli_prepare($conn, $query)){
+		mysqli_stmt_bind_param($stmt, 'i', $idd);
 		if(mysqli_stmt_execute($stmt)){
 			mysqli_stmt_bind_result($stmt, $id, $title, $date, $status);
 			mysqli_stmt_store_result($stmt);
@@ -17,11 +19,11 @@
 			} else {
 				echo "<table width='100%' border='1'>";
 				echo "<tr>   
-					<th>Title</th>
-					<th>Opening_Date</th>
-					<th>Status</th>
-					<th>Ticket</th>
-				</tr>";
+						<th>Title</th>
+						<th>Opening_Date</th>
+						<th>Status</th>
+						<th>Ticket</th>
+					</tr>";
 				while(mysqli_stmt_fetch($stmt)){
 					echo "<tr><td>".$title."</td>";
 					echo "<td>".$date."</td>";

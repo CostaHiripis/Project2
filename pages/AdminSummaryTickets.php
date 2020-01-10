@@ -22,7 +22,7 @@
 							$TableName = 'Ticket';
 							$dbName = 'helpdesk';
 							$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
-							$query = "SELECT COUNT(*) FROM ".$TableName." WHERE Status = 'Solved'";
+							$query = "SELECT COUNT(*) FROM ".$TableName." WHERE Status = 'Closed'";
 							if($stmt = mysqli_prepare($conn, $query)){
 								if(mysqli_stmt_execute($stmt)){
 									mysqli_stmt_bind_result($stmt, $summary);
@@ -40,11 +40,11 @@
 							} else {
 								echo 'Error5';
 							}
-							$query = "SELECT TicketID, Title, Opening_Date, Status, Admin.Admin_Name FROM " . $TableName."
-							 JOIN Admin ON Ticket.AdminID = Admin.AdminID GROUP BY Opening_Date";
+							$query = "SELECT TicketID, Title, Opening_Date, Status, Admin.Admin_Name, Admin.ImagePath FROM " . $TableName."
+							 JOIN Admin ON Ticket.AdminID = Admin.AdminID";
 							if($stmt = mysqli_prepare($conn, $query)){
 								if(mysqli_stmt_execute($stmt)){
-									mysqli_stmt_bind_result($stmt, $id, $title, $date, $status, $name);
+									mysqli_stmt_bind_result($stmt, $id, $title, $date, $status, $name, $path);
 									mysqli_stmt_store_result($stmt);
 									if(mysqli_stmt_num_rows($stmt) == 0){
 										echo '<p>There are no data!</p>';
@@ -55,12 +55,14 @@
 											<th>Opening_Date</th>
 											<th>Status</th>
 											<th>Name</th>
+											<th>Avatar</th>
 										</tr>";
 										while(mysqli_stmt_fetch($stmt)){
 											echo "<tr> <td>".$title."</td>";
 											echo "<td>".$date."</td>";
 											echo "<td>".$status."</td>";
-											echo "<td>".$name."</td></tr> ";
+											echo "<td>".$name."</td> ";
+											echo "<td><img src='".$path."' width='50px' height='50px'</td></tr> ";
 										}
 										echo '</table>';
 									}

@@ -1,4 +1,6 @@
-
+<a href='index.php?page=logout'>Log out</a>
+<a href='index.php?page3=AdminMainScreen.php'>Main Page</a>
+<a href="index.php?page3=AdminSolveTickets.php">Solve tickets</a>
     <div id="fullPage">
       <div id="header">
         <img id="logoPic" src="../img/nhl.png" alt="nhl">
