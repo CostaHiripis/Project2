@@ -13,11 +13,11 @@
                 <img id="logoPic" src="../img/nhl.png" alt="nhl">
                 <img id="userPic" src="../img/Jesus.jpg" alt="userPic">
             </div>
-            <div class="BgTickets" id="effectblue">
+            <div class="BgTickets">
                 <div class="TicketsHeader" id="effectteal">
                     <h3>Open Tickets</h3>
                 </div>
-                
+
                 <?php
                 include 'connect.php';
 
@@ -29,7 +29,7 @@
                     mysqli_stmt_store_result($stmt);
 
                     if (mysqli_stmt_num_rows($stmt) == 0) {
-                        echo "<h1 style='color:red'>There are no open tickets</h1>";
+                        echo "<h1 id='noTicket'>There are no open tickets</h1>";
                     } else {
                         while (mysqli_stmt_fetch($stmt)) {
                             echo "<a href='Ticket.php?ticket=" . $TicketId . "'><div class='Ticket' id='effectlblue'>";
@@ -51,7 +51,7 @@
                                             . "<input class='DropBtn' type='Submit' name='Drop' value='X'>"
                                             . "</form>"
                                         . "</div>";
-                                    
+
                                                 if(isset($_POST['Drop'])){
                                                 $SQLString2 = "DELETE FROM " . $TicketTable . " WHERE $TicketTable . TicketID = " . $_GET['ticket'];
                                                 if($stmt2 = mysqli_prepare($DBConnect, $SQLString2)){
