@@ -47,8 +47,8 @@
                                 echo "<div class='TicketRight'>";
                                     echo "<div class='Helper'><div class='Text'>" . $AdminId . "</div>";
                                     echo "<img id='HelperPic' src='../img/Jesus.jpg'" . " alt='userPic'>"
-                                            . "<form method='POST' action='?ticket=$TicketId' class='DropBtn' id='effectblue'>"
-                                            . "<input class='DropBtn' type='Submit' name='Drop' value='X'>"
+                                            . "<form method='POST' action='?ticket=$TicketId' class='DropBtn'>"
+                                            . "<input class='DropBtn Delete' type='Submit' name='Drop' value='X' id='effectblue'>"
                                             . "</form>"
                                         . "</div>";
 
