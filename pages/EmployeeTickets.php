@@ -1,6 +1,13 @@
-<p><a href='index.php?page=logout'>Log out</a>
+<div id="fullPage">
+      <div id="header">
+        <a href='index.php?page3=AdminMainScreen.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
+		<h1 id='white'>Operation Desk</h1>
+        <div id="user">
+			<p id='userName'><?php echo $_SESSION['name']; ?></p>
+			<p id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></p>
+		</div>
+      </div>
 <a href='index.php?page2=EmployeeCreateTicket.php'>Create new Ticket</a>
-<a href='index.php?page2=EmployeeMainPage.php'>Main Page</a></p>
 <h1>My tickets</h1>
 <?php 
 	$TableName = 'Ticket';
@@ -39,3 +46,4 @@
 		echo 'Error2';
 	}
 ?>
+</div>

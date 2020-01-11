@@ -78,7 +78,7 @@ img{
 .inputbtn:hover{
   background-color:rgb(0,50,190);
 }
-p{
+.outer p{
   color: red;
   text-align: center;
   padding: 20px;

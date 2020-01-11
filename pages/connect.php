@@ -1,6 +1,6 @@
 <?php
 
-$dbName = "operationhelp";
+$dbName = "HelpDesk";
 $TicketTable = "ticket";
 
 $DBConnect = mysqli_connect("127.0.0.1", "root", "");

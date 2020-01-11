@@ -1,31 +1,16 @@
 <div id="fullPage">
-	<div id="header">
-        <img id="logoPic" src="../img/nhl.png" alt="nhl">
-		<a href='index.php?page=logout'>Log out</a>
-		<p><?php 
-			$dbName = 'helpdesk';
-			$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
-			if($_SESSION['level']>0){
-				$query = 'SELECT Admin_Name FROM Admin WHERE AdminID LIKE ?';
-				if ($stmt = mysqli_prepare($conn, $query)) {
-					$idd = $_SESSION['id'];
-					mysqli_stmt_bind_param($stmt, 'i', $idd);
-					if(!mysqli_stmt_execute($stmt)){
-						echo 'Error100';
-					} else {
-						mysqli_stmt_bind_result($stmt, $name);
-						mysqli_stmt_store_result($stmt);
-						while(mysqli_stmt_fetch($stmt)){
-							echo '<p>'.$name.'</p>';
-						}
-					}
-				} 
-			} else {
-				$query = 'SELECT';
-			}
-		?></p>
-    </div>
+            <div id="header">
+				<a href='index.php?page5=SecurityMainPage.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
+				<h1 id='white'>Operation Desk</h1>
+				<div id="user">
+					<img id='userPic' src="<?php echo $_SESSION['path'];  ?>" alt="userPic">
+					<p id='userName'><?php echo $_SESSION['name']; ?></p>
+					<p id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></p>
+				</div>
+			</div>
 	<?php
+		$dbName = 'helpdesk';
+		$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 		if (isset($_GET['AdminID'])){
 			$idd = $_GET['AdminID'];
 			$TableName = 'Admin';
@@ -93,8 +78,6 @@
 	<p><a href='index.php?page5=SecurityRegister.php'>Create new Admin<a></p>
 	<h1>Users: </h1>
 	<?php 
-		$dbName = 'helpdesk';
-		$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 		$TableName = 'Employee';
 		$query = "SELECT UserID, Email, Employee_Name, Company_Name FROM " . $TableName;
 		if($stmt = mysqli_prepare($conn, $query)){

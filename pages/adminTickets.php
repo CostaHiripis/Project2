@@ -13,18 +13,16 @@
                 <img id="logoPic" src="../img/nhl.png" alt="nhl">
                 <img id="userPic" src="../img/Jesus.jpg" alt="userPic">
             </div>
+            <div class="Ticket" id="effectlblue">
+                <div class="TicketLeft">
+                    <div class="Name">Tickets&nbsp;</div>
+                    <div class="Status"></div>
                 </div>
-                <div class="Ticket" id="effectlblue">
-                    <div class="TicketLeft">
-                        <div class="Name">Tickets&nbsp;</div>
-                        <div class="Status"></div>
-                    </div>
-                    <div class="TicketRight">
-                        <div class="Helper"><div class="Text">Helper Name</div>
-                            <img id="HelperPic" src="../img/Jesus.jpg" alt="userPic"><div id="effectblue" class="Drop"><div class="Delete">X</div></div></div>
-                        
-                    </div>
-                </div>
+                <div class="TicketRight">
+                    <div class="Helper"><div class="Text">Helper Name</div>
+                    <img id="HelperPic" src="../img/Jesus.jpg" alt="userPic"><div id="effectblue" class="Drop"><div class="Delete">X</div></div></div>     
+				</div>
+            </div>
             <div class="BgTickets">
                 <div class="TicketsHeader" id="effectteal">
                     <h3>Open Tickets</h3>
