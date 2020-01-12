@@ -148,6 +148,7 @@ body {
 .resize-image {
     height: 280px;
     width: 280px;
+    object-fit: contain;
 }
 
 #header {
@@ -227,9 +228,11 @@ body {
     text-align: center;
     color: white;
     font-size: 1.4rem;
+
 }
 
 .textDiv {
+    height: 200px;
     margin-left: auto;
     padding-top: 250px;
     margin-right: auto;

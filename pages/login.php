@@ -13,9 +13,9 @@
 						$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error: '. mysqli_error($conn));
 						$TableName = 'admin';
 						$TableName2 = 'Employee';
-						$query2 = "SELECT UserID, Email, Password 
+						$query2 = "SELECT UserID, Email, Password
 						FROM " . $TableName2 . " WHERE Email LIKE ?";
-						$query = "SELECT AdminID, Email, Password, Permission_Level 
+						$query = "SELECT AdminID, Email, Password, Permission_Level
 						FROM " . $TableName . " WHERE Email LIKE ?";
 						$password = $_POST['pw'];
 						$email = $_POST['email'];
@@ -34,13 +34,17 @@
 										} else {
 											echo '<p>Wrong email or password!</p>';
 										}
-									} 
-									
+									}
+
 								} else {
-									echo 'Error!';
+									echo "<p>$conn</p>"
+									. "<p>Error code " . mysqli_errno($conn) . ": "
+									. mysqli_error($conn) . "</p>";
 								}
 						} else {
-							echo 'Error!';
+							echo "<p>Error!</p>"
+							. "<p>Error code " . mysqli_errno($conn) . ": "
+							. mysqli_error($conn) . "</p>";
 						}
 						if($stmt = mysqli_prepare($conn, $query2)){
 							mysqli_stmt_bind_param($stmt, 's', $email);
@@ -56,23 +60,18 @@
 									} else {
 										echo '<p>Wrong email or password!</p>';
 									}
-								} 
+								}
 							} else {
-								echo 'Error!';
+								echo "<p>Error!</p>"
+								. "<p>Error code " . mysqli_errno($conn) . ": "
+								. mysqli_error($conn) . "</p>";
 							}
-						}							
+						}
 					}
 				}
-					
-                	
-						
-						
-						
-						
-						
 						//$dbName = 'operationhelp';
 						//$conn = mysqli_connect("127.0.0.1", "operationhelp", "!PwO_1711", $dbName) OR DIE ('Error: '. mysqli_error($conn));
-						
+
               ?>
               </div>
             <div class="btndiv">

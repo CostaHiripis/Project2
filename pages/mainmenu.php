@@ -53,7 +53,7 @@
                         </div>
 
                         <div id="rectangle-bottom-div">
-                            
+
                             <a href="#">
                                 <div class="effect" id="effectblue">
                                     <img class="resize-image" src="../img/forgotpassword.png">
@@ -65,10 +65,13 @@
 
                 <div id="right-complex">
                     <div class="bigBox">
-                        
+
                         <a href="#">
                             <div class="effect" id="effectblue">
                                 <img class="resize-image" src="../img/faq.png">
+                                <div class="textDiv">
+                                  <h1 class="boxText">FAQ</h1>
+                                </div>
                             </div>
                         </a>
                     </div>
