@@ -1,5 +1,3 @@
-/*Comment to refresh page */
-
 * {
     margin: 0;
     padding: 0;
@@ -212,11 +210,12 @@ body {
     background-position: center;
 }
 
-.ticketInfBg {
-    background-image: url("../img/ticketinf.png");
+.FAQ {
+    background-image: url("../img/faq.png");
     background-repeat: no-repeat;
-    background-size: 180px 180px;
+    background-size:200px 300px;
     background-position: center;
+
 }
 
 .mailBg {
@@ -229,14 +228,14 @@ body {
 .boxText {
     text-align: center;
     color: white;
-    font-size: 1.4rem;
+    font-size: 2.4rem;
 
 }
 
 .textDiv {
-    height: 200px;
+
     margin-left: auto;
-    padding-top: 250px;
+    padding-top: 400px;
     margin-right: auto;
 }
 
