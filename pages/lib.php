@@ -1,8 +1,7 @@
 <?php
-	$conn = mysqli_connect("127.0.0.1", "root","")OR DIE("Error!");
-	$DBName = 'helpdesk';
-	if(mysqli_select_db($conn, $DBName)){
-	  If(isset($_POST['register'])){
+	$dbName = 'helpdesk';
+	$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
+	If(isset($_POST['register'])){
 		If(empty($_POST['email']) OR empty($_POST['pw']) OR empty($_POST['pwr']) 
 		OR empty($_POST['firstname']) OR empty($_POST['lastname']) OR empty($_POST['companyname'])){
 		  echo "<p>Please fill in your details!</p>";
@@ -32,9 +31,6 @@
 
 		}
 	  }
-	} else {
-	  die(mysqli_error($conn));
-	}
 	mysqli_close($conn);
 
 ?>

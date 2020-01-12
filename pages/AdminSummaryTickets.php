@@ -1,28 +1,19 @@
 
         <div id="fullPage">
             <div id="header">
-                <img id="logoPic" src="../img/nhl.png" alt="nhl">
-                <img id="userPic" src="../img/Jesus.jpg" alt="userPic">
-				<a href='index.php?page=logout'>Log out</a>
-				<a href='index.php?page3=AdminMainScreen.php'>Main Page</a>
-            </div>
-            <div class="BgTickets" id="effectblue">
-                <div class="TicketsHeader" id="effectteal">
-                    <h3>Open Tickets</h3>
-                </div>
-                <div class="Ticket" id="effectlblue">
-                    <div class="TicketLeft">
-                        <div class="Name">Tickets&nbsp;</div>
-                        <div class="Status"></div>
-                    </div>
-                    <div class="TicketRight">
-                        <div class="Helper"><div class="Text">Helper Name</div>
-                            <img id="HelperPic" src="../img/Jesus.jpg" alt="userPic"><div id="effectblue" class="Drop"><div class="Delete">X</div></div></div>
-                        <?php
-							$TableName = 'Ticket';
-							$DBName = 'helpdesk';
-							$conn = mysqli_connect("127.0.0.1", "root","",$DBName)OR DIE("Error!");
-							$query = "SELECT COUNT(*) FROM ".$TableName." WHERE Status = 'Solved'";
+				<a href='index.php?page3=AdminMainScreen.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
+				<h1 id='white'>Operation Desk</h1>
+				<div id="user">
+					<img id='userPic' src="<?php echo $_SESSION['path'];  ?>" alt="userPic">
+					<p id='userName'><?php echo $_SESSION['name']; ?></p>
+					<p id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></p>
+				</div>
+			</div>
+			<?php
+				$TableName = 'Ticket';
+							$dbName = 'helpdesk';
+							$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
+							$query = "SELECT COUNT(*) FROM ".$TableName." WHERE Status = 'Closed'";
 							if($stmt = mysqli_prepare($conn, $query)){
 								if(mysqli_stmt_execute($stmt)){
 									mysqli_stmt_bind_result($stmt, $summary);
@@ -31,7 +22,13 @@
 										echo 'Summary solved tickets: 0';
 									} else {
 										while(mysqli_stmt_fetch($stmt)){
-											echo 'Summary solved tickets: '.$summary;
+			?>
+			<div class="BgTickets" id="effectblue">
+				<div class="TicketsHeader" id="effectteal">
+					<h3 id='col1'>Open Tickets</h3>
+					<h3 id='col2'>Summary solved tickets: <?php echo $summary; ?></h3>
+				</div>
+			<?php
 										}
 									}
 								} else {
@@ -40,29 +37,44 @@
 							} else {
 								echo 'Error5';
 							}
-							$query = "SELECT TicketID, Title, Opening_Date, Status, Admin.Admin_Name FROM " . $TableName."
-							 JOIN Admin ON Ticket.AdminID = Admin.AdminID GROUP BY Opening_Date";
+							$query = "SELECT TicketID, Title, Opening_Date, Status, Admin.Admin_Name, Admin.ImagePath FROM " . $TableName."
+							 JOIN Admin ON Ticket.AdminID = Admin.AdminID";
 							if($stmt = mysqli_prepare($conn, $query)){
 								if(mysqli_stmt_execute($stmt)){
-									mysqli_stmt_bind_result($stmt, $id, $title, $date, $status, $name);
+									mysqli_stmt_bind_result($stmt, $id, $title, $date, $status, $name, $path);
 									mysqli_stmt_store_result($stmt);
 									if(mysqli_stmt_num_rows($stmt) == 0){
 										echo '<p>There are no data!</p>';
 									} else {
-										echo "<table width='100%' border='1'>";
-										echo "<tr>   
-											<th>Title</th>
-											<th>Opening_Date</th>
-											<th>Status</th>
-											<th>Name</th>
-										</tr>";
-										while(mysqli_stmt_fetch($stmt)){
-											echo "<tr> <td>".$title."</td>";
-											echo "<td>".$date."</td>";
-											echo "<td>".$status."</td>";
-											echo "<td>".$name."</td></tr> ";
+										while(mysqli_stmt_fetch($stmt)){ 
+						?>
+						<div class="Ticket" id="effectlblue">
+							<div class="TicketLeft">
+								<div class="Name"><?php echo $title; ?></div>
+								<?php If($status == 'Sent'){ ?>
+								<div class="Status1"></div>
+								<?php }elseif($status == 'In process'){?>
+								<div class="Status2"></div>
+								<?php }else{ ?>
+								<div class="Status3"></div>
+								<?php } ?>
+							</div>
+							<div class="TicketRight">
+								<div class="Helper"><div class="Text"><?php echo $name; ?></div>
+									<div class='pp'>
+										<img class="HelperPic" src="<?php If($path == NULL){
+												echo '../img/defuserpic.png';
+											} else {
+												echo $path;
+											}
+										?>" alt="userPic"><div class='pp2'></div>
+									</div>
+									<div id="effectblue" class="Drop"><div class="Delete">X</div></div>
+								</div>
+							</div>
+						</div>
+					<?php
 										}
-										echo '</table>';
 									}
 								} else {
 									echo 'Error3';
@@ -70,9 +82,7 @@
 							} else {
 								echo 'Error2';
 							}
-						?>
-                    </div>
-                </div>
+					?>
             </div>
         </div>
 

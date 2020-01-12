@@ -17,18 +17,16 @@
                 <div class="TicketsHeader" id="effectteal">
                     <h3>Create A Ticket</h3>
                 </div>
-                <div class="Form">
-                    <form method="POST" action="">
-                        <p><select class="FormSize">
-                            <option value="Defult">Type</option>
-                            <option value="Software">Software</option>
-                            <option value="Wish">Wish</option>
-                            </select></p>
-                            <p><input type="text" name="Subject" class="FormSize" id="Sub" placeholder="Subject"></p>
-                        <textarea class="Issue" name="Issue" placeholder="Issue"></textarea>
-                        <input type="Submit" name="Submit" value="SEND">
-                    </form>
-                </div>
+                <form method="POST" action="">
+                    <input type="textarea" name="Subject" placeholder="Subject">
+                    <select>
+                        <option value="Defult">Type</option>
+                        <option value="Software">Software</option>
+                        <option value="Wish">Wish</option>
+                    </select>
+                    <textarea name="Issue" placeholder="Issue">
+                    </textarea>
+                </form>
                 <?php
                 include 'connect.php';
                 ?>
