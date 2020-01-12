@@ -10,19 +10,19 @@
 				if(isset($_POST['login'])){
 					if(!empty($_POST['email']) AND !empty($_POST['pw'])){
 						$dbName = 'helpdesk';
-						$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error: '. mysqli_error($conn));
+						$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 						$TableName = 'admin';
 						$TableName2 = 'Employee';
-						$query2 = "SELECT UserID, Email, Password
+						$query2 = "SELECT UserID, Email, Password, Employee_Name
 						FROM " . $TableName2 . " WHERE Email LIKE ?";
-						$query = "SELECT AdminID, Email, Password, Permission_Level
+						$query = "SELECT AdminID, Email, Password, Permission_Level, ImagePath, Admin_Name
 						FROM " . $TableName . " WHERE Email LIKE ?";
 						$password = $_POST['pw'];
 						$email = $_POST['email'];
 						If($stmt = mysqli_prepare($conn, $query)){
 								mysqli_stmt_bind_param($stmt, 's', $email);
 								if(mysqli_stmt_execute($stmt)){
-									mysqli_stmt_bind_result($stmt, $id, $DBemail, $DBpassword, $level);
+									mysqli_stmt_bind_result($stmt, $id, $DBemail, $DBpassword, $level, $path, $name);
 									mysqli_stmt_store_result($stmt);
 									while(mysqli_stmt_fetch($stmt)){
 										if($DBemail == $email AND password_verify($password, $DBpassword)){
@@ -30,6 +30,12 @@
 											$_SESSION['level'] = $level;
 											$_SESSION['id'] = $id;
 											$_SESSION['conn'] = 'bbfb';
+											$_SESSION['name'] = $name;
+											If($path == NULL){
+												$_SESSION['path'] = '../img/defuserpic.png';
+											} else {
+												$_SESSION['path'] = $path;
+											}
 											echo '<a href="index.php">Go to main page</a>';
 										} else {
 											echo '<p>Wrong email or password!</p>';
@@ -49,13 +55,14 @@
 						if($stmt = mysqli_prepare($conn, $query2)){
 							mysqli_stmt_bind_param($stmt, 's', $email);
 							if(mysqli_stmt_execute($stmt)){
-								mysqli_stmt_bind_result($stmt, $id, $DBemail, $DBpassword);
+								mysqli_stmt_bind_result($stmt, $id, $emaill, $passwordd, $name);
 								mysqli_stmt_store_result($stmt);
 								while(mysqli_stmt_fetch($stmt)){
-									if($DBemail == $email AND password_verify($password, $DBpassword)){
+									if($emaill == $email AND password_verify($password, $passwordd)){
 										$_SESSION['loggedIn'] = true;
 										$_SESSION['level'] = 0;
 										$_SESSION['id'] = $id;
+										$_SESSION['name'] = $name;
 										echo '<a href="index.php">Go to main page</a>';
 									} else {
 										echo '<p>Wrong email or password!</p>';

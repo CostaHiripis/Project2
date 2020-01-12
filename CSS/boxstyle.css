@@ -82,27 +82,62 @@ body {
     border-bottom: 3px;
     border-style: solid;
     background-color: teal;
+	display: grid;
+	grid-template-columns: [col] 11% [col] auto [col] 28%;
 }
 
-#userPic {
-    margin-top: 7.5px;
-    margin-right: 5px;
-    height: 60px;
-    width: 60px;
-    float: right;
-    background-color: darkgray;
-    border-radius: 100%;
-    object-fit: cover;
-    border-width: 10px;
-    border-color: black;
-    padding: 0;
-}
+
 
 #logoPic {
     margin-top: 7.5px;
-    margin-left: 5px;
+    margin-left: 20px;
     height: 60px;
-    float: left;
+	grid-column: col;
+}
+
+#white{
+	height: 60px;
+	grid-column: col 2;
+	margin-top: 15px;
+	font-size: 35px;
+	margin-left: 35%;
+}
+
+#user {
+	grid-column: col 3;
+	display: grid;
+	grid-template-columns: [col] 20% [col] auto [col] 25%;
+}
+
+#userPic{
+	margin: 0;
+	grid-column: col;
+	margin-top: 15px;
+    height: 50px;
+    width: 50px;
+    background-color: darkgray;
+    border-radius: 100%;
+    border-color: black;
+    padding: 0;
+
+}
+
+#userName{
+	grid-column: col 2;
+	margin-top: 25px;
+	margin-left: 10px;
+	font-size: 23px;
+}
+
+#userNameLogOut{
+	grid-column: col 3;
+}
+
+#userNameLogOut img{
+	margin: 0;
+	width: 60px;
+	height: 60px;
+	margin-top: 7px;
 }
 
 #section1 {
@@ -133,8 +168,8 @@ body {
     background-position: center;
 }
 
-.mailBg {
-    background-image: url("../img/mail.png");
+.logout {
+    background-image: url("../img/logout.png");
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center;
@@ -213,12 +248,10 @@ textarea {
 }
 
 .BgTickets {
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: 0 auto;
+	margin-top: 20px;
     width: 90%;
-    height: 75%;
+    min-height: 330px;
     box-shadow: 5px 7px rgba(0, 0, 0, 0.2);
     overflow: auto;
     background-color: rgb(0, 50, 150);
@@ -232,23 +265,53 @@ textarea {
 .TicketsHeader {
     width: 100%;
     height: 8%;
+	margin-bottom: 20px;
+	display: grid;
+	grid-template-columns: [col] 50% [col] 50%;
 }
 
-h3 {
+#col1{
+	grid-column: col;
+}
+
+#col2{
+	grid-column: col 2;
+}
+
+.TicketsHeader h3 {
     font-size: 20px;
     color: white;
     padding: 10px;
 }
+
 .Ticket {
     border-radius: 20px;
     width: 45%;
     height: 10%;
     float: left;
-    margin-top: 20px;
+    margin-bottom: 20px;
     margin-left: 20px;
 }
 
-.Status {
+.Status1 {
+    margin-top: 7px;
+    width: 25px;
+    height: 10px;
+    background-color: green;
+    float: left;
+    border-radius: 5px;
+}
+
+.Status2 {
+    margin-top: 7px;
+    width: 25px;
+    height: 10px;
+    background-color: yellow;
+    float: left;
+    border-radius: 5px;
+}
+
+.Status3 {
     margin-top: 7px;
     width: 25px;
     height: 10px;
@@ -258,8 +321,9 @@ h3 {
 }
 
 .Name {
-    font-size: 20px;
+	font-size: 22px;
     float: left;
+	margin-right: 10px;
 }
 
 .TicketLeft {
@@ -268,45 +332,60 @@ h3 {
     width: 20%;
 }
 
-.Helper {
-    font-size: 20px;
-    float: right;
-    padding: 18px;
+.TicketRight{
+    float:right;
     width: auto;
 }
 
-#HelperPic {
-    margin-top: -13px;
-    margin-right: 5px;
-    margin-left: 5px;
-    height: 50px;
-    width: 50px;
-    float: left;
-    background-color: darkgray;
-    border-radius: 100%;
-    object-fit: cover;
-    border-width: 10px;
-    border-color: black;
-}
-
-.DropBtn{
-    float: right;
-    width: 30px;
-    height: 24px;
-    border-radius: 7px;
-    border-style: none;
+.Helper {
+	display: grid;
+	grid-template-columns: [col] 50% [col] 30% [col] 20%;
+    width: 230px;
 }
 
 .Text {
-    float: left;
+	font-size: 22px;
+	grid-column: col;
+	padding-top: 16px;
+}
+
+.HelperPic {
+    height: 50px;
+    width: 50px;
+	border-radius: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.pp{
+	margin: 5px;
+	grid-column: col 2;
+}
+
+.pp2{
+	height: 50px;
+    width: 50px;
+	background-color: darkgray;
+    border-radius: 100%;
+    border-color: black;
+}
+
+.Drop {
+	grid-column: col 3;
+	margin-top: 18px;
+	margin-right: 5px;
+    width: 30px;
+    height: 24px;
+    border-radius: 5px;
+    text-indent: 7px;
 }
 
 .Delete {
+	margin: 3px;
     color: white;
 }
 
 .Issue{
-    float:left;
     resize: none;
     width: 300px;
     height: 100px;
@@ -326,12 +405,85 @@ h3 {
 #Sub{
     width: 100px;
 }
-.TicketRight{
-    float:right;
-    width:auto;
-}
+
 
 #noTicket{
   float:left;
   color:red;
 }
+
+.SolveTickets{
+	margin: 0 auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+    width: 90%;
+    min-height: 200px;
+    box-shadow: 5px 7px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    background-color: rgb(0, 50, 150);
+}
+
+.SolveTicketsHeader{
+	width: 100%;
+    height: 90px;
+	margin-bottom: 20px;
+}
+
+.SolveTicketsHeader h2{
+	padding: 12px;
+	color: white;
+}
+
+.rSolveTicket{
+	padding: 10px;
+	text-align: center;
+	margin: 0 auto;
+    width: 90%;
+    height: 10%;
+    margin-bottom: 20px;
+    margin-left: 20px;
+	display: grid;
+	grid-template-columns: [col] 20% [col] 20% [col] 20% [col] 20% [col] 20%;
+}
+
+.SolveTicket{
+	font-size: 18px;
+	text-align: center;
+	padding: 10px;
+	border-radius: 20px;
+	margin: 0 auto;
+    width: 90%;
+    height: 10%;
+    margin-bottom: 20px;
+    margin-left: 20px;
+	display: grid;
+	grid-template-columns: [col] 20% [col] 20% [col] 20% [col] 20% [col] 20%;
+}
+
+.Solvetype{
+	grid-column: col;
+}
+
+.Solvetitle{
+	grid-column: col 2;
+}
+
+.Solvedate{
+	grid-column: col 3;
+}
+
+.Solvecompany{
+	grid-column: col 4;
+}
+
+.Solvedetails{
+	grid-column: col 5;
+}
+
+
+
+
+
+
+
+

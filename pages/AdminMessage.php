@@ -1,15 +1,25 @@
-<a href='index.php?page=logout'>Log out</a>
-<a href='index.php?page3=AdminMainScreen.php'>Main Page</a>
+<div id="fullPage">
+            <div id="header">
+				<a href='index.php?page3=AdminMainScreen.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
+				<h1 id='white'>Operation Desk</h1>
+				<div id="user">
+					<img id='userPic' src="<?php echo $_SESSION['path'];  ?>" alt="userPic">
+					<p id='userName'><?php echo $_SESSION['name']; ?></p>
+					<p id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></p>
+				</div>
+			</div>
 <a href="index.php?page3=AdminSolveTickets.php">Solve tickets</a>
 <h1>Ticket</h1>
 <?php
-	$id=$_SESSION['ticket'];
+	$id = $_SESSION['ticket'];
 	$dbName = 'helpdesk';
-	$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error1');
+	$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 	if(isset($_POST['delete'])){
+		$TableName = 'Ticket';
+		$id = $_SESSION['ticket'];
 		$query = "DELETE FROM ".$TableName." WHERE TicketID LIKE ?";
 		If($stmt = mysqli_prepare($conn, $query)){
-			mysqli_stmt_bind_param($stmt, 'si', $id);
+			mysqli_stmt_bind_param($stmt, 'i', $id);
 			If(mysqli_stmt_execute($stmt)){
 				echo 'Ticket deleted';
 				die();
@@ -18,6 +28,21 @@
 			}
 		} else {
 			echo 'error45444';
+		}
+	}
+	if(isset($_POST['choose'])){
+		$TableName = 'Ticket';
+		$query = "UPDATE ".$TableName." SET Status=?, AdminID=? WHERE TicketID=?";
+		$status = 'In process';
+		$admin = $_SESSION['id'];
+		If($stmt = mysqli_prepare($conn, $query)){
+			mysqli_stmt_bind_param($stmt, 'ssi', $status, $admin, $id);
+			If(mysqli_stmt_execute($stmt)){
+			} else {
+				echo 'Error200';
+			}
+		} else {
+			echo 'Error200';
 		}
 	}
 	If(isset($_POST['send'])){
@@ -46,18 +71,19 @@
 		}
 	}
 	$TableName = 'Ticket';
-	$query = "SELECT TicketID, Title, Content, Status, Employee.Employee_Name, Employee.Company_Name FROM " . $TableName.
+	$query = "SELECT TicketID, Title, Content, Status, Type, Employee.Employee_Name, Employee.Company_Name FROM " . $TableName.
 	 " JOIN Employee ON Ticket.UserID = Employee.UserID WHERE TicketID LIKE ?";
 	if($stmt = mysqli_prepare($conn, $query)){
 		mysqli_stmt_bind_param($stmt, 's', $id);
 		if(mysqli_stmt_execute($stmt)){
-			mysqli_stmt_bind_result($stmt, $id, $title, $content, $status, $name, $company);
+			mysqli_stmt_bind_result($stmt, $id, $title, $content, $status, $type, $name, $company);
 			mysqli_stmt_store_result($stmt);
 			if(mysqli_stmt_num_rows($stmt) == 0){
 				echo '<p>Empty!</p>';
 			} else {
 				while(mysqli_stmt_fetch($stmt)){
 					echo '<p>Title: '.$title.'</p>';
+					echo '<p>Type: '.$type.'</p>';
 					echo '<p>Name: '.$name.'</p>';
 					echo '<p>Company: '.$company.'</p>';
 					echo '<p>Content: '.$content.'</p>';
@@ -75,20 +101,6 @@
 		}
 	} else {
 		echo 'Error2';
-	}
-	if(isset($_POST['choose'])){
-		$TableName = 'Ticket';
-		$query = "UPDATE ".$TableName." SET Status=? WHERE TicketID=?";
-		$status = 'In process';
-		If($stmt = mysqli_prepare($conn, $query)){
-			mysqli_stmt_bind_param($stmt, 'si', $status, $id);
-			If(mysqli_stmt_execute($stmt)){
-			} else {
-				echo 'Error200';
-			}
-		} else {
-			echo 'Error200';
-		}
 	}
 	$TableName = 'Ticket';
 	$query = "SELECT Status FROM " . $TableName.
@@ -132,11 +144,14 @@
 	} else {
 		echo '<p>Error8!</p>';
 	}
+	echo 'FUCK';
 	if(isset($_POST['close'])){
-		$query = "UPDATE ".$TableName." SET Status=? WHERE TicketID=?";
+		$TableName = 'Ticket';
+		$query = "UPDATE ".$TableName." SET Closing_Date=?, Status=? WHERE TicketID LIKE ?";
 		$status = 'Closed';
+		$date = date("Y-m-d");
 		If($stmt = mysqli_prepare($conn, $query)){
-			mysqli_stmt_bind_param($stmt, 'si', $status, $id);
+			mysqli_stmt_bind_param($stmt, 'ssi', $date, $status, $id);
 			If(mysqli_stmt_execute($stmt)){
 				
 			} else {
@@ -189,6 +204,6 @@
 		}
 	}
 ?>
-
+</div>
 
 
