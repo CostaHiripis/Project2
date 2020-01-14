@@ -83,6 +83,10 @@
 
               ?>
               </div>
+              <div class="btndiv">
+                <input class="inputbtn" type="submit" value="Login">
+              </div>
+            </form>
             <div class="btndiv">
                 <form action="index.php?page=register" method="post">
                     <input class="inputbtn" type="submit" value="Register">
