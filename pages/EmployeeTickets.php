@@ -27,25 +27,25 @@
                 echo '<p>There are no data!</p>';
             } else {
                 echo "<table width='100%' border='1'>";
-                echo "<tr>   
+                echo "<tr>
 						<th>Title</th>
-						<th>Opening_Date</th>
+						<th>Opening Date</th>
 						<th>Status</th>
 						<th>Ticket</th>
 					</tr>";
-                while (mysqli_stmt_fetch($stmt)) {
-                    echo "<tr><td>" . $title . "</td>";
-                    echo "<td>" . $date . "</td>";
-                    echo "<td>" . $status . "</td>";
-                    echo "<td><a href='index.php?page22=EmployeeMessage.php-" . $id . "'>Ticket</a></td></tr>";
-                }
-                echo '</table>';
-            }
-        } else {
-            echo 'Error2';
-        }
-    } else {
-        echo 'Error2';
-    }
-    ?>
+				while(mysqli_stmt_fetch($stmt)){
+					echo "<tr><td>".$title."</td>";
+					echo "<td>".$date."</td>";
+					echo "<td>".$status."</td>";
+					echo "<td><a href='index.php?page22=EmployeeMessage.php-".$id."'>Ticket</a></td></tr>";
+				}
+				echo '</table>';
+			}
+		} else {
+			echo 'Error2';
+		}
+	} else {
+		echo 'Error2';
+	}
+?>
 </div>

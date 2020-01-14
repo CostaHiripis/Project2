@@ -1,4 +1,5 @@
 <div id="fullPage">
+
     <div id="header">
         <a href='index.php?page3=AdminMainScreen.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
         <h1 id='white'>Operation Desk</h1>
@@ -85,7 +86,7 @@
         If ($stmt = mysqli_prepare($conn, $query)) {
             mysqli_stmt_bind_param($stmt, 'si', $status, $id);
             If (mysqli_stmt_execute($stmt)) {
-                
+
             } else {
                 echo 'Error200';
             }
