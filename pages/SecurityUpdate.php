@@ -1,26 +1,24 @@
 <div id="fullPage">
-            <div id="header">
-				<a href='index.php?page5=SecurityMainPage.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
-				<h1 id='white'>Operation Desk</h1>
-				<div id="user">
-					<img id='userPic' src="<?php echo $_SESSION['path'];  ?>" alt="userPic">
-					<p id='userName'><?php echo $_SESSION['name']; ?></p>
-					<p id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></p>
-				</div>
-			</div>
+  <div id="header">
+    <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
+    <div id="user">
+			<div id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></div>
+	    <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
+    </div>
+  </div>
 <?php
 	$id=$_SESSION['update'];
 	$dbName = 'helpdesk';
 	$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 	$TableName = 'Admin';
 	If(isset($_POST['submit'])){
-		If(empty($_POST['name']) OR empty($_POST['email']) 
+		If(empty($_POST['name']) OR empty($_POST['email'])
 		OR empty($_POST['level'])){
 			echo "<p>You must fill all empty space!</p>";
 		} else {
 			$TableName = 'Admin';
-			$name = $_POST['name'];	
-			$email = $_POST['email'];	
+			$name = $_POST['name'];
+			$email = $_POST['email'];
 			$level = $_POST['level'];
 			$query = "UPDATE ". $TableName . " SET Admin_Name=?, Email=?,
 			 Permission_Level=? WHERE AdminID LIKE ?";
@@ -108,22 +106,22 @@
 						<p>Full name <input type="text" name="name" value="<?php echo $name; ?>"/>
 						<p>Email <input type="email" name="email" value="<?php echo $email; ?>"/></p>
 						<p>Level <input type="text" name="level" value="<?php echo $level; ?>"/></p>
-						<p><input type="submit" name='submit' value="Update" /></p> 
-					</form>	
+						<p><input type="submit" name='submit' value="Update" /></p>
+					</form>
 					<h2>Update password</h2>
 					<form method="post" action='index.php?page6=SecurityUpdate.php-<?php echo $id ?>' >
 						<input type="password" name="pw" placeholder="Password">
 						<input type="password" name="pwr" placeholder="Repeat Password">
-						<p><input type="submit" name='submitPas' value="Update" /></p> 
-					</form>	
+						<p><input type="submit" name='submitPas' value="Update" /></p>
+					</form>
 					<h2>Update photo</h2>
 					<form method="post" action='index.php?page6=SecurityUpdate.php-<?php echo $id ?>' enctype="multipart/form-data">
 						<div id='bla'>
 							<img id="blah" src="<?php echo $path; ?>"/>
 						</div>
 						<input id='choose' type='file' name="photo" onchange="readURL(this);">
-						<p><input type="submit" name='submitPhoto' value="New Photo" /></p> 
-					</form>	
+						<p><input type="submit" name='submitPhoto' value="New Photo" /></p>
+					</form>
 					<?php
 				}
 			}

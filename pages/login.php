@@ -36,7 +36,7 @@
 											} else {
 												$_SESSION['path'] = $path;
 											}
-											echo '<a href="index.php">Go to main page</a>';
+											header("Location: index.php");
 										} else {
 											echo '<p>Wrong email or password!</p>';
 										}
@@ -63,7 +63,7 @@
 										$_SESSION['level'] = 0;
 										$_SESSION['id'] = $id;
 										$_SESSION['name'] = $name;
-										echo '<a href="index.php">Go to main page</a>';
+										header("Location: index.php");
 									} else {
 										echo '<p>Wrong email or password!</p>';
 									}

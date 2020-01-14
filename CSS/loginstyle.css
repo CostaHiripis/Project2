@@ -49,7 +49,7 @@ input{
   text-indent: 10px;
 }
 
-#bla{ 
+#bla{
 	margin: 0 auto;
 	height: 130px;
 	width: 130px;
@@ -134,4 +134,3 @@ a{
 .success{
   color: green;
 }
-
