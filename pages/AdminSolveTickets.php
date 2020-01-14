@@ -19,12 +19,14 @@
 			</div>
 		</div>
 		<?php
-			$TableName = 'Ticket';
+			$TableName = 'ticket';
 			$dbName = 'helpdesk';
 			$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
-			$query = "SELECT TicketID, Title, Opening_Date, Type, Employee.Company_Name FROM " . $TableName."
-			 JOIN Employee ON Ticket.UserID = Employee.UserID  WHERE Status = 'Sent'";
+			$query = "SELECT TicketID, Title, Opening_Date, Type, employee.Company_Name FROM " . $TableName."
+			 JOIN employee ON ticket.UserID = employee.UserID  WHERE Status = ?";
 			if($stmt = mysqli_prepare($conn, $query)){
+				$status = 'Sent';
+				mysqli_stmt_bind_param($stmt, 's', $status);
 				if(mysqli_stmt_execute($stmt)){
 					mysqli_stmt_bind_result($stmt, $id, $title, $date, $type, $company);
 					mysqli_stmt_store_result($stmt);
@@ -50,7 +52,6 @@
 				echo 'Error2';
 			}
 			mysqli_stmt_close($stmt);
-			mysqli_close($conn);
 		?>
 	</div>
 	<div class="SolveTickets" id="effectblue">
@@ -65,12 +66,10 @@
 			</div>
 		</div>
 		<?php
-			$TableName = 'Ticket';
-			$dbName = 'helpdesk';
-			$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
-			$query = "SELECT TicketID, Title, Opening_Date, Type, Employee.Company_Name FROM " . $TableName."
-			 JOIN Employee ON Ticket.UserID = Employee.UserID
-			WHERE Status =?  AND AdminID =?  GROUP BY Opening_Date";
+			$TableName = 'ticket';
+			$query = "SELECT TicketID, Title, Opening_Date, Type, employee.Company_Name FROM " . $TableName."
+			 JOIN employee ON ticket.UserID = employee.UserID
+			WHERE Status =?  AND AdminID =?";
 			$sta = 'In process';
 			$id = $_SESSION['id'];
 			if($stmt = mysqli_prepare($conn, $query)){

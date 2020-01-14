@@ -7,14 +7,14 @@
 		  echo "<p>Please fill in your details!</p>";
 		} else {
 		  If($_POST['pw'] == $_POST['pwr']){
-			$TableName = "Employee";
+			$TableName = "employee";
 			$fname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
 			$lname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
 			If((!filter_var($fname, FILTER_SANITIZE_STRING) === false) OR (!filter_var($lname, FILTER_SANITIZE_STRING) === false)){
 				$name = $fname.' '.$lname;
 					$password_hash = password_hash($_POST['pw'], PASSWORD_DEFAULT);
 					$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-					$company = filter_var($_POST['company'], FILTER_SANITIZE_STRING);
+					$company = filter_var($_POST['companyname'], FILTER_SANITIZE_STRING);
 					if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
 						if(!filter_var($fname, FILTER_SANITIZE_STRING) === false){
 							$query = "INSERT INTO ". $TableName ." VALUES(NULL,?,?,?,?)";
@@ -22,7 +22,7 @@
 							  mysqli_stmt_bind_param($stmt, 'ssss', $name, $email, $company, $password_hash);
 							  If(mysqli_stmt_execute($stmt)){
 								echo '<p>Thank you for registration!</p>';
-								echo ' <script>window.location.href="login.php";</script>';
+								echo ' <script>window.location.href="index.php";</script>';
 							  } else {
 								echo "Data has not been inserted";
 								die();
@@ -44,10 +44,8 @@
 			} else {
 				echo '<p>Invalid Name!</p>';
 			}
-		  }
-
 		}
-	  }
+		}
 	mysqli_close($conn);
 
 $dbName = "HelpDesk";

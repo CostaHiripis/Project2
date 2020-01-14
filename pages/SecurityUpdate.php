@@ -22,12 +22,13 @@
 	$id=$_SESSION['update'];
 	$dbName = 'helpdesk';
 	$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
-	$TableName = 'Admin';
+	$TableName = 'admin';
 	If(isset($_POST['submit'])){
 		If(empty($_POST['name']) OR empty($_POST['email']) 
 		OR empty($_POST['level'])){
 			echo "<p>You must fill all empty space!</p>";
 		} else {
+<<<<<<< HEAD
 			$TableName = 'Admin';
 			$name = $_POST['name'];	
 			$email = $_POST['email'];	
@@ -38,6 +39,27 @@
 				mysqli_stmt_bind_param($stmt, 'sssi', $name, $email, $level, $id);
 				if(mysqli_stmt_execute($stmt)){
 					echo "Data updated successfully";
+=======
+			$TableName = 'admin';
+			$name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+			if(!filter_var($name, FILTER_SANITIZE_STRING) === false){
+				$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+				if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+					$level = $_POST['level'];
+					$query = "UPDATE ". $TableName . " SET Admin_Name=?, Email=?,
+					 Permission_Level=? WHERE AdminID = ?";
+					if ($stmt = mysqli_prepare($conn, $query)) {
+						mysqli_stmt_bind_param($stmt, 'sssi', $name, $email, $level, $id);
+						if(mysqli_stmt_execute($stmt)){
+							echo "Data updated successfully";
+						} else {
+							echo "Error8";
+						}
+					} else {
+						echo "Error6";
+					}
+					mysqli_stmt_close($stmt);
+>>>>>>> 260b578a5f39c6ed325bcb953e7027bc7cfa4ef1
 				} else {
 					echo "Error8";
 				}
@@ -52,7 +74,7 @@
 			If($_POST['pw'] == $_POST['pwr']){
 				$password_hash = password_hash($_POST['pw'], PASSWORD_DEFAULT);
 				$TableName = 'Admin';
-				$query = "UPDATE ". $TableName . " SET Password=? WHERE AdminID LIKE ?";
+				$query = "UPDATE ". $TableName . " SET Password=? WHERE AdminID = ?";
 				if ($stmt = mysqli_prepare($conn, $query)) {
 					mysqli_stmt_bind_param($stmt, 'si', $password_hash, $id);
 					if(mysqli_stmt_execute($stmt)){
@@ -88,10 +110,10 @@
 						if(mysqli_stmt_execute($stmt)){
 							echo "<p class='update'>Profile image is updated!</p>";
 						} else {
-							echo "<p class='red'>Error</p>";
+							echo "<p>Error</p>";
 						}
 					} else {
-						echo "<p class='red'>Error</p>";
+						echo "<p>Error</p>";
 					}
 				}
 			} else {
@@ -100,7 +122,7 @@
 	}
 
 	$query = "SELECT Email, Admin_Name, Permission_Level, ImagePath FROM " . $TableName.
-	 " WHERE AdminID LIKE ?";
+	 " WHERE AdminID = ?";
 	if($stmt = mysqli_prepare($conn, $query)){
 		mysqli_stmt_bind_param($stmt, 's', $id);
 		if(mysqli_stmt_execute($stmt)){

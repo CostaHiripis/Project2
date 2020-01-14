@@ -12,7 +12,7 @@
 	$dbName = 'helpdesk';
 	$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 	if(isset($_POST['delete'])){
-		$TableName = 'Ticket';
+		$TableName = 'ticket';
 		$id = $_SESSION['ticket'];
 		$query = "DELETE FROM ".$TableName." WHERE TicketID LIKE ?";
 		If($stmt = mysqli_prepare($conn, $query)){
@@ -29,7 +29,7 @@
 		mysqli_stmt_close($stmt);
 	}
 	if(isset($_POST['choose'])){
-		$TableName = 'Ticket';
+		$TableName = 'ticket';
 		$query = "UPDATE ".$TableName." SET Status=?, AdminID=? WHERE TicketID=?";
 		$status = 'In process';
 		$admin = $_SESSION['id'];
@@ -48,7 +48,7 @@
 		if(empty($_POST['message'])){
 			echo 'Message is empty!';
 		} else {
-			$TableName = 'Message';
+			$TableName = 'message';
 			$message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
 			if(!filter_var($message, FILTER_SANITIZE_STRING) === false){
 				If($message !== $_SESSION['conn']){
@@ -69,14 +69,14 @@
 					}
 					mysqli_stmt_close($stmt);
 				} else {
-					echo '<p class="red">Invalid message!</p>';
+					echo '<p>Invalid message!</p>';
 				}
 			}
 		}
 	}
 	$TableName = 'Ticket';
-	$query = "SELECT TicketID, Title, Content, Status, Type, Employee.Employee_Name, Employee.Company_Name FROM " . $TableName.
-	 " JOIN Employee ON Ticket.UserID = Employee.UserID WHERE TicketID LIKE ?";
+	$query = "SELECT TicketID, Title, Content, Status, Type, employee.Employee_Name, employee.Company_Name FROM " . $TableName.
+	 " JOIN employee ON ticket.UserID = employee.UserID WHERE TicketID = ?";
 	if($stmt = mysqli_prepare($conn, $query)){
 		mysqli_stmt_bind_param($stmt, 's', $id);
 		if(mysqli_stmt_execute($stmt)){
@@ -107,7 +107,7 @@
 		echo 'Error2';
 	}
 	mysqli_stmt_close($stmt);
-	$TableName = 'Ticket';
+	$TableName = 'ticket';
 	$query = "SELECT Status FROM " . $TableName.
 	 " WHERE TicketID LIKE ?";
 	if($stmt = mysqli_prepare($conn, $query)){
@@ -123,7 +123,7 @@
 ?>
 <h2>Messages</h2>
 <?php
-	$TableName = 'Message';
+	$TableName = 'message';
 	$query = 'SELECT Content, Date, SenderID FROM '.$TableName;
 	If($stmt = mysqli_prepare($conn, $query)){
 		If(mysqli_stmt_execute($stmt)){
@@ -151,7 +151,7 @@
 	}
 	if(isset($_POST['close'])){
 		$TableName = 'Ticket';
-		$query = "UPDATE ".$TableName." SET Closing_Date=?, Status=? WHERE TicketID LIKE ?";
+		$query = "UPDATE ".$TableName." SET Closing_Date=?, Status=? WHERE TicketID = ?";
 		$status = 'Closed';
 		$date = date("Y-m-d");
 		If($stmt = mysqli_prepare($conn, $query)){
@@ -165,9 +165,9 @@
 			echo 'error45444';
 		}
 	}
-	$TableName = 'Ticket';
+	$TableName = 'ticket';
 	$query = "SELECT Status FROM " . $TableName.
-	 " WHERE TicketID LIKE ?";
+	 " WHERE TicketID = ?";
 	if($stmt = mysqli_prepare($conn, $query)){
 		mysqli_stmt_bind_param($stmt, 's', $id);
 		if(mysqli_stmt_execute($stmt)){

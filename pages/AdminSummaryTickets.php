@@ -8,7 +8,7 @@
         </div>
       </div>
 			<?php
-				$TableName = 'Ticket';
+				$TableName = 'ticket';
 							$dbName = 'helpdesk';
 							$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 							$query = "SELECT COUNT(*) FROM ".$TableName." WHERE Status = 'Closed'";
@@ -36,8 +36,8 @@
 								echo 'Error5';
 							}
 							mysqli_stmt_close($stmt);
-							$query = "SELECT TicketID, Title, Opening_Date, Status, Admin.Admin_Name, Admin.ImagePath FROM " . $TableName."
-							 JOIN Admin ON Ticket.AdminID = Admin.AdminID";
+							$query = "SELECT TicketID, Title, Opening_Date, Status, admin.Admin_Name, admin.ImagePath FROM " . $TableName."
+							 JOIN admin ON ticket.AdminID = admin.AdminID";
 							if($stmt = mysqli_prepare($conn, $query)){
 								if(mysqli_stmt_execute($stmt)){
 									mysqli_stmt_bind_result($stmt, $id, $title, $date, $status, $name, $path);
