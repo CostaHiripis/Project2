@@ -93,28 +93,28 @@ body {
 }
 
 #user {
-  width: 400px;
-  margin-left: auto;
+    width: 400px;
+    margin-left: auto;
 }
 #admin{
-  width: 600px;
-  margin-left: auto;
+    width: 600px;
+    margin-left: auto;
 }
 #userNameLogOut{
-  padding-top: 10px;
-  float: right;
+    padding-top: 10px;
+    float: right;
 }
 #userNameLogOut img{
-  width: 50px;
-  height: 50px;
-  margin:0;
+    width: 50px;
+    height: 50px;
+    margin:0;
 }
 #userName{
-  float:right;
-  padding-top: 17px;
-  padding-right: 25px;
-  width: fit-content;
-  white-space: nowrap;
+    float:right;
+    padding-top: 17px;
+    padding-right: 25px;
+    width: fit-content;
+    white-space: nowrap;
 }
 #section1 {
     margin-top: 6%;
@@ -178,10 +178,10 @@ textarea {
     margin-top: 20px;
 }
 #category{
-  margin-top: 20px;
-  margin-left: 190px;
-  padding: 10px;
-  border-radius: 5px;
+    margin-top: 20px;
+    margin-left: 190px;
+    padding: 10px;
+    border-radius: 5px;
 }
 #maintitle {
     text-align: center;
@@ -491,4 +491,8 @@ img{
     border-radius: 23px;
     margin-top: 7px;
     width: 47px;
+    float: left;
+    height: 47px;
+    margin-left: 43%;
+    padding-bottom: 0px;
 }

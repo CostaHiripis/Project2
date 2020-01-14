@@ -36,7 +36,7 @@
 											} else {
 												$_SESSION['path'] = $path;
 											}
-											echo ' <script>window.location.href="index.php";</script>';
+											echo '<script>window.location.href="index.php";</script>';
 										} else {
 											echo '<p>Wrong email or password!</p>';
 										}
@@ -84,7 +84,7 @@
               ?>
               </div>
               <div class="btndiv">
-                <input class="inputbtn" type="submit" value="Login">
+                <input class="inputbtn" type="submit" name='login' value="Login">
               </div>
             </form>
             <div class="btndiv">
