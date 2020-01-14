@@ -61,7 +61,7 @@
 						echo "<td><a href='index.php?page6=SecurityUpdate.php-".$id."'>Update</a></td>";
 						echo "<td><a href='index.php?AdminID=".$id."'>Delete</a></td></tr>";
 					}
-				}
+				} 
 			} else {
 				echo 'Error2';
 			}
