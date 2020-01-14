@@ -1,8 +1,6 @@
 <?php
 
-$conn = mysqli_connect("127.0.0.1", "root", "")
-        OR DIE("Error!");
-$DBName = 'HelpDesk';
+include 'connect.php';
 if (!mysqli_select_db($conn, $DBName)) {
     $query = "CREATE DATABASE " . $DBName;
     if ($stmt = mysqli_prepare($conn, $query)) {

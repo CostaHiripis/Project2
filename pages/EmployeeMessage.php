@@ -11,8 +11,7 @@
     <h1>Ticket</h1>
     <?php
     $id = $_SESSION['ticket'];
-    $dbName = 'helpdesk';
-    $conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE('Error');
+    include 'connect.php';
     $TableName = 'ticket';
     if (isset($_POST['delete'])) {
         $query = "DELETE FROM " . $TableName . " WHERE TicketID LIKE ?";

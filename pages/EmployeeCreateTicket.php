@@ -30,8 +30,7 @@
                                     echo "<p>Please fill in your details!</p>";
                                 } else {
                                     $TableName = 'ticket';
-                                    $dbName = 'helpdesk';
-                                    $conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE('Error');
+                                    include 'connect.php';
                                     $content = $_POST['content'];
                                     $_SESSION['conn'] = 'bbfb';
                                     if ($content !== $_SESSION['conn']) {
@@ -44,6 +43,7 @@
                                         if ($stmt = mysqli_prepare($conn, $query)) {
                                             mysqli_stmt_bind_param($stmt, 'ssssis', $title, $content, $date, $status, $Uid, $type);
                                             if (mysqli_stmt_execute($stmt)) {
+                                                echo ' <script>window.location.href="index.php";</script>';
                                                 echo '<p>Thank you for ticket!</p>';
                                                 $_SESSION['conn'] = $content;
                                             } else {

@@ -251,7 +251,6 @@ textarea {
 .TicketsHeader {
     width: 100%;
     height: 8%;
-    margin-bottom: 20px;
     display: grid;
     grid-template-columns: [col] 20% [col] 50%;
 }
@@ -496,4 +495,12 @@ img{
     height: 47px;
     margin-left: 43%;
     padding-bottom: 0px;
+}
+.TicketsBody{
+    height: 505px;
+    overflow: auto;
+    float: left;
+}
+.over{
+    margin-top: 20px;
 }
