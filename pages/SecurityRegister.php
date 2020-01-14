@@ -27,7 +27,7 @@
 					  echo "<p>Please fill all empty space!</p>";
 					} else {
 						If($_POST['pw'] == $_POST['pwr']){
-							$TableName = "Admin";
+							$TableName = "admin";
 							$fname = $_POST['firstname'];
 							$lname = $_POST['lastname'];
 							$name = $fname.' '.$lname;

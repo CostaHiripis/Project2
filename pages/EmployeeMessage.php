@@ -13,6 +13,7 @@
 	$id=$_SESSION['ticket'];
 	$dbName = 'helpdesk';
 	$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
+	$TableName = 'ticket';
 	if(isset($_POST['delete'])){
 		$query = "DELETE FROM ".$TableName." WHERE TicketID LIKE ?";
 		If($stmt = mysqli_prepare($conn, $query)){
@@ -32,7 +33,7 @@
 		if(empty($_POST['message'])){
 			echo 'Message is empty!';
 		} else {
-			$TableName = 'Message';
+			$TableName = 'message';
 			$message = $_POST['message'];
 			If($message !== $_SESSION['conn']){
 				$ticketID = $_SESSION['ticket'];
@@ -54,9 +55,9 @@
 			}
 		}
 	}
-	$TableName = 'Ticket';
-	$query = "SELECT TicketID, Title, Content, Status, Employee.Employee_Name, Employee.Company_Name FROM " . $TableName.
-	 " JOIN Employee ON Ticket.UserID = Employee.UserID WHERE TicketID LIKE ?";
+	$TableName = 'ticket';
+	$query = "SELECT TicketID, Title, Content, Status, employee.Employee_Name, employee.Company_Name FROM " . $TableName.
+	 " JOIN employee ON Ticket.UserID = employee.UserID WHERE TicketID = ?";
 	if($stmt = mysqli_prepare($conn, $query)){
 		mysqli_stmt_bind_param($stmt, 's', $id);
 		if(mysqli_stmt_execute($stmt)){
@@ -80,7 +81,7 @@
 	}
 	mysqli_stmt_close($stmt);
 	if(isset($_POST['choose'])){
-		$TableName = 'Ticket';
+		$TableName = 'ticket';
 		$query = "UPDATE ".$TableName." SET Status=? WHERE TicketID=?";
 		$status = 'In process';
 		If($stmt = mysqli_prepare($conn, $query)){
@@ -94,9 +95,9 @@
 			echo 'Error200';
 		}
 	}
-	$TableName = 'Ticket';
+	$TableName = 'ticket';
 	$query = "SELECT Status FROM " . $TableName.
-	 " WHERE TicketID LIKE ?";
+	 " WHERE TicketID = ?";
 	if($stmt = mysqli_prepare($conn, $query)){
 		mysqli_stmt_bind_param($stmt, 's', $id);
 		if(mysqli_stmt_execute($stmt)){
@@ -110,7 +111,7 @@
 ?>
 <h2>Messages</h2>
 <?php
-	$TableName = 'Message';
+	$TableName = 'message';
 	$query = 'SELECT Content, Date, SenderID FROM '.$TableName;
 	If($stmt = mysqli_prepare($conn, $query)){
 		If(mysqli_stmt_execute($stmt)){
@@ -125,7 +126,7 @@
 						echo ' My message: ';
 						echo $content2;
 					} else {
-						echo 'Admin: ';
+						echo ' Admin: ';
 						echo $content2;
 					}
 				}
@@ -137,9 +138,9 @@
 		echo '<p>Error8!</p>';
 	}
 	mysqli_stmt_close($stmt);
-	$TableName = 'Ticket';
+	$TableName = 'ticket';
 	$query = "SELECT Status FROM " . $TableName.
-	 " WHERE TicketID LIKE ?";
+	 " WHERE TicketID = ?";
 	if($stmt = mysqli_prepare($conn, $query)){
 		mysqli_stmt_bind_param($stmt, 's', $id);
 		if(mysqli_stmt_execute($stmt)){

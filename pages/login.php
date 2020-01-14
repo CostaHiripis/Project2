@@ -12,11 +12,11 @@
 						$dbName = 'helpdesk';
 						$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 						$TableName = 'admin';
-						$TableName2 = 'Employee';
+						$TableName2 = 'employee';
 						$query2 = "SELECT UserID, Email, Password, Employee_Name
-						FROM " . $TableName2 . " WHERE Email LIKE ?";
+						FROM " . $TableName2 . " WHERE Email = ?";
 						$query = "SELECT AdminID, Email, Password, Permission_Level, ImagePath, Admin_Name
-						FROM " . $TableName . " WHERE Email LIKE ?";
+						FROM " . $TableName . " WHERE Email = ?";
 						$password = $_POST['pw'];
 						$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 						If($stmt = mysqli_prepare($conn, $query)){

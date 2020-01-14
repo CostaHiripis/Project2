@@ -3,7 +3,7 @@
 		If(empty($_POST['content']) OR empty($_POST['title']) OR empty($_POST['type'])){
 		  echo "<p>Please fill in your details!</p>";
 		} else {
-			$TableName = 'Ticket';
+			$TableName = 'ticket';
 			$dbName = 'helpdesk';
 			$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 			$content = filter_var($_POST['content'], FILTER_SANITIZE_STRING);
@@ -31,7 +31,7 @@
 					
 				}
 			} else {
-				echo '<p class="red">Invalid message!</p>';
+				echo '<p>Invalid message!</p>';
 			}
 			mysqli_close($conn);
 		}
@@ -62,7 +62,7 @@
 												if(empty($_POST['content']) OR empty($_POST['title']) OR empty($_POST['type'])){
 												  echo "<p>Please fill in your details!</p>";
 												} else {
-													$TableName = 'Ticket';
+													$TableName = 'ticket';
 													$dbName = 'helpdesk';
 													$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 													$content = $_POST['content'];

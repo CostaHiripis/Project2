@@ -12,8 +12,8 @@
 		$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 		if (isset($_GET['AdminID'])){
 			$idd = $_GET['AdminID'];
-			$TableName = 'Admin';
-			$query = "DELETE FROM ".$TableName." WHERE AdminID LIKE ?";
+			$TableName = 'admin';
+			$query = "DELETE FROM ".$TableName." WHERE AdminID = ?";
 			if ($stmt = mysqli_prepare($conn, $query)) {
 				mysqli_stmt_bind_param($stmt, 'i', $idd);
 				if(!mysqli_stmt_execute($stmt)){
@@ -25,8 +25,8 @@
 			mysqli_stmt_close($stmt);
 		} elseif(isset($_GET['UserID'])){
 			$idd = $_GET['UserID'];
-			$TableName = 'Employee';
-			$query = "DELETE FROM ".$TableName." WHERE UserID LIKE ?";
+			$TableName = 'employee';
+			$query = "DELETE FROM ".$TableName." WHERE UserID = ?";
 			if ($stmt = mysqli_prepare($conn, $query)) {
 				mysqli_stmt_bind_param($stmt, 'i', $idd);
 				if(!mysqli_stmt_execute($stmt)){
@@ -37,7 +37,7 @@
 		}
 	?>
 	<?php
-		$TableName = 'Admin';
+		$TableName = 'admin';
 		$query = "SELECT AdminID, Email, Admin_Name, Password, Permission_Level FROM " . $TableName;
 		if($stmt = mysqli_prepare($conn, $query)){
 			if(mysqli_stmt_execute($stmt)){
@@ -73,7 +73,7 @@
 	<p><a href='index.php?page5=SecurityRegister.php'>Create new Admin<a></p>
 	<h1>Users: </h1>
 	<?php
-		$TableName = 'Employee';
+		$TableName = 'employee';
 		$query = "SELECT UserID, Email, Employee_Name, Company_Name FROM " . $TableName;
 		if($stmt = mysqli_prepare($conn, $query)){
 			if(mysqli_stmt_execute($stmt)){

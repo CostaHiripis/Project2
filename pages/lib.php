@@ -7,7 +7,7 @@
 		  echo "<p>Please fill in your details!</p>";
 		} else {
 		  If($_POST['pw'] == $_POST['pwr']){
-			$TableName = "Employee";
+			$TableName = "employee";
 			$fname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
 			$lname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
 			If((!filter_var($fname, FILTER_SANITIZE_STRING) === false) OR (!filter_var($lname, FILTER_SANITIZE_STRING) === false)){

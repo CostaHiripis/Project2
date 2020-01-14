@@ -10,12 +10,12 @@
 <a href='index.php?page2=EmployeeCreateTicket.php'>Create new Ticket</a>
 <h1>My tickets</h1>
 <?php
-	$TableName = 'Ticket';
+	$TableName = 'ticket';
 	$idd = $_SESSION['id'];
 	$dbName = 'helpdesk';
 	$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 	$query = "SELECT TicketID, Title, Opening_Date, Status FROM " . $TableName."
-	 WHERE UserID LIKE ?";
+	 WHERE UserID = ?";
 	if($stmt = mysqli_prepare($conn, $query)){
 		mysqli_stmt_bind_param($stmt, 'i', $idd);
 		if(mysqli_stmt_execute($stmt)){
