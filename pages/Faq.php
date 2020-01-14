@@ -10,22 +10,6 @@
 </head>
 
 <body>
-    <script>
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
-
-        for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
-            });
-        }
-    </script>
 
     <div id="fullPage">
         <div id="header">
@@ -42,12 +26,128 @@
             </div>
 
             <div id="question-section">
-                <button class="collapsible">Open Collapsible</button>
-                <div class="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <button class="accordion">Help penis is hurt what do?</button>
+                <div class="panel">
+                    <p>Sell penis to black market and then die ok thx.</p>
                 </div>
+
+                <div class="small-spacing-faq"></div>
+
+                <button class="accordion">What is this shit?</button>
+                <div class="panel">
+                    <p>Bruh.</p>
+                </div>
+
+                <div class="small-spacing-faq"></div>
+
+                <button class="accordion">Fuck you.</button>
+                <div class="panel">
+                    <p>No ur mom.</p>
+                </div>
+
+                <div class="small-spacing-faq"></div>
+
+                <button class="accordion">Help penis is hurt what do?</button>
+                <div class="panel">
+                    <p>Sell penis to black market and then die ok thx.</p>
+                </div>
+
+                <div class="small-spacing-faq"></div>
+
+                <button class="accordion">What is this shit?</button>
+                <div class="panel">
+                    <p>Bruh.</p>
+                </div>
+
+                <div class="small-spacing-faq"></div>
+
+                <button class="accordion">Fuck you.</button>
+                <div class="panel">
+                    <p>No ur mom.</p>
+                </div>
+
+                <div class="small-spacing-faq"></div>
+
+                <button class="accordion">Help penis is hurt what do?</button>
+                <div class="panel">
+                    <p>Sell penis to black market and then die ok thx.</p>
+                </div>
+
+                <div class="small-spacing-faq"></div>
+
+                <button class="accordion">What is this shit?</button>
+                <div class="panel">
+                    <p>Bruh.</p>
+                </div>
+
+                <div class="small-spacing-faq"></div>
+
+                <button class="accordion">Fuck you.</button>
+                <div class="panel">
+                    <p>No ur mom.</p>
+                </div>
+
+                <div class="small-spacing-faq"></div>
+     
+                <button class="accordion">Help penis is hurt what do?</button>
+                <div class="panel">
+                    <p>Sell penis to black market and then die ok thx.</p>
+                </div>
+
+                <div class="small-spacing-faq"></div>
+
+                <button class="accordion">What is this shit?</button>
+                <div class="panel">
+                    <p>Bruh.</p>
+                </div>
+
+                <div class="small-spacing-faq"></div>
+
+                <button class="accordion">Fuck you.</button>
+                <div class="panel">
+                    <p>No ur mom.</p>
+                </div>
+
+                <div class="small-spacing-faq"></div>
+
+                <button class="accordion">Help penis is hurt what do?</button>
+                <div class="panel">
+                    <p>Sell penis to black market and then die ok thx.</p>
+                </div>
+
+                <div class="small-spacing-faq"></div>
+
+                <button class="accordion">What is this shit?</button>
+                <div class="panel">
+                    <p>Bruh.</p>
+                </div>
+
+                <div class="small-spacing-faq"></div>
+
+                <button class="accordion">Fuck you.</button>
+                <div class="panel">
+                    <p>No ur mom.</p>
+                </div>
+
+                <div class="small-spacing-faq"></div>
             </div>
         </div>
+        <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                });
+            }
+        </script>
 </body>
 
 </html>
