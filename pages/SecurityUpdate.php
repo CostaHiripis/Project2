@@ -4,52 +4,45 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="../CSS/boxstyle.css"
-	<title>Document</title>
+        <link rel="stylesheet" href="../CSS/boxstyle.css">
+	<title>update</title>
 </head>
 <body>
 <div id="fullPage">
-  <div id="header">
-    <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
-    <div id="user">
-			<div id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></div>
-	    <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
-    </div>
-  </div>
+            <div id="header">
+				<a href='index.php?page5=SecurityMainPage.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
+				<h1 id='white'>Operation Desk</h1>
+				<div id="user">
+					<img id='userPic' src="<?php echo $_SESSION['path'];  ?>" alt="userPic">
+					<p id='userName'><?php echo $_SESSION['name']; ?></p>
+					<p id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></p>
+				</div>
+			</div>
 <?php
-	$id= $_SESSION['update'];
+	$id=$_SESSION['update'];
 	$dbName = 'helpdesk';
 	$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 	$TableName = 'Admin';
 	If(isset($_POST['submit'])){
-		If(empty($_POST['name']) OR empty($_POST['email'])
+		If(empty($_POST['name']) OR empty($_POST['email']) 
 		OR empty($_POST['level'])){
 			echo "<p>You must fill all empty space!</p>";
 		} else {
 			$TableName = 'Admin';
-			$name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
-			if(!filter_var($name, FILTER_SANITIZE_STRING) === false){
-				$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-				if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-					$level = $_POST['level'];
-					$query = "UPDATE ". $TableName . " SET Admin_Name=?, Email=?,
-					 Permission_Level=? WHERE AdminID LIKE ?";
-					if ($stmt = mysqli_prepare($conn, $query)) {
-						mysqli_stmt_bind_param($stmt, 'sssi', $name, $email, $level, $id);
-						if(mysqli_stmt_execute($stmt)){
-							echo "Data updated successfully";
-						} else {
-							echo "Error8";
-						}
-					} else {
-						echo "Error6";
-					}
-					mysqli_stmt_close($stmt);
+			$name = $_POST['name'];	
+			$email = $_POST['email'];	
+			$level = $_POST['level'];
+			$query = "UPDATE ". $TableName . " SET Admin_Name=?, Email=?,
+			 Permission_Level=? WHERE AdminID LIKE ?";
+			if ($stmt = mysqli_prepare($conn, $query)) {
+				mysqli_stmt_bind_param($stmt, 'sssi', $name, $email, $level, $id);
+				if(mysqli_stmt_execute($stmt)){
+					echo "Data updated successfully";
 				} else {
-					echo '<p>Invalid Email!</p>';
+					echo "Error8";
 				}
 			} else {
-				echo '<p>Invalid name!</p>';
+				echo "Error6";
 			}
 		}
 	} elseif(isset($_POST['submitPas'])){
@@ -70,7 +63,6 @@
 				} else {
 					echo "Error6";
 				}
-				mysqli_stmt_close($stmt);
 			} else {
 				echo '<p>Passwords are not the same!</p>';
 			}
@@ -101,7 +93,6 @@
 					} else {
 						echo "<p class='red'>Error</p>";
 					}
-					mysqli_stmt_close($stmt);
 				}
 			} else {
 				echo 'Invalid file';
@@ -127,32 +118,32 @@
 						<p>Full name <input type="text" name="name" value="<?php echo $name; ?>"/>
 						<p>Email <input type="email" name="email" value="<?php echo $email; ?>"/></p>
 						<p>Level <input type="text" name="level" value="<?php echo $level; ?>"/></p>
-						<p><input type="submit" name='submit' value="Update" /></p>
-					</form>
+						<p><input type="submit" name='submit' value="Update" /></p> 
+					</form>	
 					<h2>Update password</h2>
 					<form method="post" action='index.php?page6=SecurityUpdate.php-<?php echo $id ?>' >
 						<input type="password" name="pw" placeholder="Password">
 						<input type="password" name="pwr" placeholder="Repeat Password">
-						<p><input type="submit" name='submitPas' value="Update" /></p>
-					</form>
+						<p><input type="submit" name='submitPas' value="Update" /></p> 
+					</form>	
 					<h2>Update photo</h2>
 					<form method="post" action='index.php?page6=SecurityUpdate.php-<?php echo $id ?>' enctype="multipart/form-data">
 						<div id='bla'>
 							<img id="blah" src="<?php echo $path; ?>"/>
 						</div>
 						<input id='choose' type='file' name="photo" onchange="readURL(this);">
-						<p><input type="submit" name='submitPhoto' value="New Photo" /></p>
-					</form>
+						<p><input type="submit" name='submitPhoto' value="New Photo" /></p> 
+					</form>	
 					<?php
 				}
 			}
+			mysqli_stmt_close($stmt);
 		} else {
 			echo 'Error3';
 		}
 	} else {
 		echo 'Error2';
 	}
-	mysqli_stmt_close($stmt);
 	mysqli_close($conn);
 ?>
 </div>
