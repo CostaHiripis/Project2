@@ -213,9 +213,8 @@ body {
 .FAQ {
     background-image: url("../img/faq.png");
     background-repeat: no-repeat;
-    background-size:200px 300px;
+    background-size: 200px 300px;
     background-position: center;
-
 }
 
 .mailBg {
@@ -229,11 +228,9 @@ body {
     text-align: center;
     color: white;
     font-size: 2.4rem;
-
 }
 
 .textDiv {
-
     margin-left: auto;
     padding-top: 400px;
     margin-right: auto;
@@ -396,4 +393,29 @@ h3 {
     margin-left: 2px;
     margin-top: 2px;
     color: white;
+}
+
+#body-space {
+    height: 846px;
+    width: 100%;
+}
+
+#faq-header {
+    height: 20%;
+    width: 50%;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+#faq-letters {
+    color: white;
+    font-size: 50pt;
+    font-family: "Arial";
+}
+
+#question-section {
+    height: 100%;
+    width: 70%;
 }
