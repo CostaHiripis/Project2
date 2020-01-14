@@ -16,7 +16,7 @@
             <div class="BgTickets" id="effectblue">
                 <div class="TicketsHeader" id="effectteal">
                     <h3>Your Open Tickets</h3>
-                    <a href="AddTicket.php"><div class="CreateTicket" id="effectlblue">+ Create A New Ticket</div></a>
+                    <a href="AddTicket.php"><div class="CreateTicket" id="effectlblue"><div class="BtnText">+ Create A New Ticket</div></div></a>
                 </div>
 
                 <?php

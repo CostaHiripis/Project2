@@ -1,5 +1,5 @@
-	<div class="outer">
-      <div class="middle">
+<div class="outer">
+    <div class="middle">
         <div style="height:400px" class="inner">
           <form action='index.php?page=login' method="post">
               <img id="loginnhl" src="../img/nhl.png" alt="nhl">
@@ -74,7 +74,7 @@
 								. mysqli_error($conn) . "</p>";
 							}
 						}
-						mysqli_stmt_close($stmt);	
+						mysqli_stmt_close($stmt);
 						mysqli_close($conn);
 					}
 				}
@@ -84,14 +84,10 @@
               ?>
               </div>
             <div class="btndiv">
-              <input class="inputbtn" type="submit" name="login" value="Login">
+                <form action="index.php?page=register" method="post">
+                    <input class="inputbtn" type="submit" value="Register">
+                </form>
             </div>
-          </form>
-          <div class="btndiv">
-            <form action="index.php?page=register" method="post">
-              <input class="inputbtn" type="submit" value="Register">
-            </form>
-          </div>
         </div>
-      </div>
     </div>
+</div>

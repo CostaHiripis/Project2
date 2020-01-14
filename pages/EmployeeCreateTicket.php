@@ -36,12 +36,18 @@
 			mysqli_close($conn);
 		}
 	}
-	
-
 ?>
 
-    <div id="fullPage">
-      <div id="main">
+<div id="fullPage">
+    <div id="header">
+        <a href='index.php?page2=EmployeeMainPage.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
+        <h1 id='white'>Operation Desk</h1>
+        <div id="user">
+            <p id='userName'><?php echo $_SESSION['name']; ?></p>
+            <p id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></p>
+        </div>
+    </div>
+    <div id="main">
         <div class="outer">
           <div class="middle">
             <div style="height:400px" class="inner">
@@ -95,9 +101,16 @@
                 <div class="ticketbtn">
                   <input class="inputbtn" type="submit" name="submit" value="Submit">
                 </div>
-              </form>
             </div>
-          </div>
         </div>
-      </div>
     </div>
+</div>
+<?php
+if (isset($_POST['submit']) && (!empty($_POST['title']) || !empty($_POST['content']))) {
+    if (isset($_POST['submit'])) {
+        header('location: index.php');
+    }
+} else if (isset($_POST['submit']) && (empty($_POST['title']) || empty($_POST['textarea']))) {
+    echo "Fill in all the fields";
+}
+?>

@@ -151,33 +151,92 @@
 			} else {
 				while(mysqli_stmt_fetch($stmt)){
 					if($status !== 'Closed'){
+            } else {
+                echo 'Error200';
+            }
+        } else {
+            echo 'Error200';
+        }
+    }
+    $TableName = 'ticket';
+    $query = "SELECT Status FROM " . $TableName .
+            " WHERE TicketID LIKE ?";
+    if ($stmt = mysqli_prepare($conn, $query)) {
+        mysqli_stmt_bind_param($stmt, 's', $id);
+        if (mysqli_stmt_execute($stmt)) {
+            mysqli_stmt_bind_result($stmt, $status);
+            mysqli_stmt_store_result($stmt);
+            if (mysqli_stmt_num_rows($stmt) == 0) {
+                echo '<p>Empty!</p>';
+            } else {
+                while (mysqli_stmt_fetch($stmt)) {
+                    if ($status !== 'Sent') {
+                        ?>
+                        <h2>Messages</h2>
+                        <?php
+                        $TableName = 'message';
+                        $query = 'SELECT Content, Date, SenderID FROM ' . $TableName;
+                        If ($stmt = mysqli_prepare($conn, $query)) {
+                            If (mysqli_stmt_execute($stmt)) {
+                                mysqli_stmt_bind_result($stmt, $content2, $date2, $sender2);
+                                mysqli_stmt_store_result($stmt);
+                                if (mysqli_stmt_num_rows($stmt) == 0) {
+                                    echo '<p>Empty!</p>';
+                                } else {
+                                    while (mysqli_stmt_fetch($stmt)) {
+                                        $sender3 = $_SESSION['id'] . 'ad';
+                                        if ($sender2 === $sender3) {
+                                            echo ' My message: ';
+                                            echo $content2;
+                                        } else {
+                                            echo 'Admin: ';
+                                            echo $content2;
+                                        }
+                                    }
+                                }
+                            } else {
+                                echo '<p>Error9!</p>';
+                            }
+                        } else {
+                            echo '<p>Error8!</p>';
+                        }
+                        $TableName = 'ticket';
+                        $query = "SELECT Status FROM " . $TableName .
+                                " WHERE TicketID LIKE ?";
+                        if ($stmt = mysqli_prepare($conn, $query)) {
+                            mysqli_stmt_bind_param($stmt, 's', $id);
+                            if (mysqli_stmt_execute($stmt)) {
+                                mysqli_stmt_bind_result($stmt, $status);
+                                mysqli_stmt_store_result($stmt);
+                                if (mysqli_stmt_num_rows($stmt) == 0) {
+                                    echo '<p>Empty!</p>';
+                                } else {
+                                    while (mysqli_stmt_fetch($stmt)) {
+                                        if ($status !== 'Closed') {
+                                            ?>
+                                            <h2>Message</h2>
+                                            <form method='post'>
+                                                <textarea name="message"></textarea>
+                                                <input type='submit' name='send' value='Send'>
+                                            </form>
+                                            <form method='post'>
+                                                <input type='submit' name='delete' value='Delete ticket'>
+                                            </form>
 
-?>
-<h2>Message</h2>
-<form method='post'>
-	<textarea name="message"></textarea>
-	<input type='submit' name='send' value='Send'>
-</form>
-<form method='post'>
-	<input type='submit' name='delete' value='Delete ticket'>
-</form>
-
-<?php
-								}
-							}
-						}
-					} else {
-						echo 'errorrrr';
-					}
-				} else {
-					echo 'error445';
-				}
-					}
-				}
-			}
-			mysqli_stmt_close($stmt);
-		}
-	}
-	mysqli_close($conn);
-?>
+                                            <?php
+                                        }
+                                    }
+                                }
+                            } else {
+                                echo 'errorrrr';
+                            }
+                        } else {
+                            echo 'error445';
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ?>
 </div>
