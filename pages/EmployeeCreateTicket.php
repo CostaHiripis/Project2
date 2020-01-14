@@ -45,6 +45,7 @@
                                             mysqli_stmt_bind_param($stmt, 'ssssis', $title, $content, $date, $status, $Uid, $type);
                                             if (mysqli_stmt_execute($stmt)) {
                                                 echo '<p>Thank you for ticket!</p>';
+                                                echo ' <script>window.location.href="index.php";</script>';
                                                 $_SESSION['conn'] = $content;
                                             } else {
                                                 echo "Data has not been inserted";
