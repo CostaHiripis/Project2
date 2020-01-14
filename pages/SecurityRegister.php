@@ -1,13 +1,12 @@
 <div id="fullPage">
-            <div id="header">
-				<a href='index.php?page5=SecurityMainPage.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
-				<h1 id='white'>Operation Desk</h1>
-				<div id="user">
-					<img id='userPic' src="<?php echo $_SESSION['path'];  ?>" alt="userPic">
-					<p id='userName'><?php echo $_SESSION['name']; ?></p>
-					<p id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></p>
-				</div>
-			</div>
+  <div id="header">
+    <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
+    <div id="admin">
+      <div id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></div>
+      <img id='userPic' src=<?php echo $_SESSION['path'];  ?> alt="userPic">
+      <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
+    </div>
+  </div>
 <form method="post" enctype="multipart/form-data">
     <input type="text" name="firstname" placeholder="First Name" pattern="[a-zA-Z']*">
     <input type="text" name="lastname" placeholder="Last Name" pattern="[a-zA-Z']*">
@@ -23,7 +22,7 @@
             if(isset($_POST['register'])){
 				$dbName = 'helpdesk';
 				$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
-					If(empty($_POST['email']) OR empty($_POST['pw']) OR empty($_POST['pwr']) 
+					If(empty($_POST['email']) OR empty($_POST['pw']) OR empty($_POST['pwr'])
 					OR empty($_POST['firstname']) OR empty($_POST['lastname']) OR empty($_POST['level'])){
 					  echo "<p>Please fill all empty space!</p>";
 					} else {
@@ -78,8 +77,8 @@
 						}
 					}
 				mysqli_close($conn);
-				} 
-			
+				}
+
         ?>
     <input class="inputbtn" type="submit" name="register" value="Register">
 </form>
