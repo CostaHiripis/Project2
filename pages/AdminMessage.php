@@ -29,6 +29,7 @@
 		} else {
 			echo 'error45444';
 		}
+		mysqli_stmt_close($stmt);
 	}
 	if(isset($_POST['choose'])){
 		$TableName = 'Ticket';
@@ -44,29 +45,35 @@
 		} else {
 			echo 'Error200';
 		}
+		mysqli_stmt_close($stmt);
 	}
 	If(isset($_POST['send'])){
 		if(empty($_POST['message'])){
 			echo 'Message is empty!';
 		} else {
 			$TableName = 'Message';
-			$message = $_POST['message'];
-			If($message !== $_SESSION['conn']){
-				$ticketID = $_SESSION['ticket'];
-				$date = date("Y-m-d");
-				$sender = $_SESSION['id'].'ad';
-				$query = "INSERT INTO ".$TableName." VALUES(NULL,?,?,?,?)";
-				If($stmt = mysqli_prepare($conn, $query)){
-					mysqli_stmt_bind_param($stmt, 'siss', $message, $ticketID, $date, $sender);
-					If(mysqli_stmt_execute($stmt)){
-						echo '<p>Message Sended</p>';
-						$_SESSION['conn'] = $message;
+			$message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
+			if(!filter_var($message, FILTER_SANITIZE_STRING) === false){
+				If($message !== $_SESSION['conn']){
+					$ticketID = $_SESSION['ticket'];
+					$date = date("Y-m-d");
+					$sender = $_SESSION['id'].'ad';
+					$query = "INSERT INTO ".$TableName." VALUES(NULL,?,?,?,?)";
+					If($stmt = mysqli_prepare($conn, $query)){
+						mysqli_stmt_bind_param($stmt, 'siss', $message, $ticketID, $date, $sender);
+						If(mysqli_stmt_execute($stmt)){
+							echo '<p>Message Sended</p>';
+							$_SESSION['conn'] = $message;
+						} else {
+							echo '<p>Error7!</p>';
+						}
 					} else {
-						echo '<p>Error7!</p>';
+						echo '<p>Error6!</p>';
 					}
-				} else {
-					echo '<p>Error6!</p>';
+					mysqli_stmt_close($stmt);
 				}
+			} else {
+				echo '<p class="red">Invalid message!</p>';
 			}
 		}
 	}
@@ -102,6 +109,7 @@
 	} else {
 		echo 'Error2';
 	}
+	mysqli_stmt_close($stmt);
 	$TableName = 'Ticket';
 	$query = "SELECT Status FROM " . $TableName.
 	 " WHERE TicketID LIKE ?";
@@ -144,7 +152,7 @@
 	} else {
 		echo '<p>Error8!</p>';
 	}
-	echo 'FUCK';
+	mysqli_stmt_close($stmt);
 	if(isset($_POST['close'])){
 		$TableName = 'Ticket';
 		$query = "UPDATE ".$TableName." SET Closing_Date=?, Status=? WHERE TicketID LIKE ?";
@@ -160,6 +168,7 @@
 		} else {
 			echo 'error45444';
 		}
+		mysqli_stmt_close($stmt);
 	}
 	$TableName = 'Ticket';
 	$query = "SELECT Status FROM " . $TableName.
@@ -201,8 +210,10 @@
 					}
 				}
 			}
+			mysqli_stmt_close($stmt);
 		}
 	}
+	mysqli_close($conn);
 ?>
 </div>
 

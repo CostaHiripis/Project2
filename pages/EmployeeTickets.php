@@ -1,6 +1,6 @@
 <div id="fullPage">
       <div id="header">
-        <a href='index.php?page3=AdminMainScreen.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
+        <a href='index.php?page2=EmployeeMainPage.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
 		<h1 id='white'>Operation Desk</h1>
         <div id="user">
 			<p id='userName'><?php echo $_SESSION['name']; ?></p>

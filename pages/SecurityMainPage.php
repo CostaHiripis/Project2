@@ -23,6 +23,7 @@
 			} else {
 				echo 'Error';
 			}
+			mysqli_stmt_close($stmt);
 			
 		} elseif(isset($_GET['UserID'])){
 			$idd = $_GET['UserID'];
@@ -36,6 +37,7 @@
 			} else {
 				echo 'Error';
 			}
+			mysqli_stmt_close($stmt);
 		}
 	?>
 	<h1>Admins: </h1>
@@ -74,6 +76,7 @@
 		} else {
 			echo 'Error2';
 		}
+		mysqli_stmt_close($stmt);
 	?>
 	<p><a href='index.php?page5=SecurityRegister.php'>Create new Admin<a></p>
 	<h1>Users: </h1>
@@ -108,5 +111,7 @@
 		} else {
 			echo 'Error2';
 		}
+		mysqli_stmt_close($stmt);
+		mysqli_close($conn);
 	?>
 </div>

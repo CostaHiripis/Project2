@@ -1,6 +1,6 @@
 <div id="fullPage">
       <div id="header">
-        <a href='index.php?page3=AdminMainScreen.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
+        <a href='index.php?page2=EmployeeMainPage.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
 		<h1 id='white'>Operation Desk</h1>
         <div id="user">
 			<p id='userName'><?php echo $_SESSION['name']; ?></p>
@@ -26,6 +26,7 @@
 		} else {
 			echo 'error45444';
 		}
+		mysqli_stmt_close($stmt);
 	}
 	If(isset($_POST['send'])){
 		if(empty($_POST['message'])){
@@ -49,6 +50,7 @@
 				} else {
 					echo '<p>Error6!</p>';
 				}
+				mysqli_stmt_close($stmt);
 			}
 		}
 	}
@@ -76,6 +78,7 @@
 	} else {
 		echo 'Error2';
 	}
+	mysqli_stmt_close($stmt);
 	if(isset($_POST['choose'])){
 		$TableName = 'Ticket';
 		$query = "UPDATE ".$TableName." SET Status=? WHERE TicketID=?";
@@ -133,6 +136,7 @@
 	} else {
 		echo '<p>Error8!</p>';
 	}
+	mysqli_stmt_close($stmt);
 	$TableName = 'Ticket';
 	$query = "SELECT Status FROM " . $TableName.
 	 " WHERE TicketID LIKE ?";
@@ -170,8 +174,10 @@
 					}
 				}
 			}
+			mysqli_stmt_close($stmt);
 		}
 	}
+	mysqli_close($conn);
 			
 ?>
 </div>

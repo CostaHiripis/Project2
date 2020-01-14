@@ -9,7 +9,7 @@
 				</div>
 			</div>
 <?php
-	$id=$_SESSION['update'];
+	$id= $_SESSION['update'];
 	$dbName = 'helpdesk';
 	$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 	$TableName = 'Admin';
@@ -19,20 +19,29 @@
 			echo "<p>You must fill all empty space!</p>";
 		} else {
 			$TableName = 'Admin';
-			$name = $_POST['name'];	
-			$email = $_POST['email'];	
-			$level = $_POST['level'];
-			$query = "UPDATE ". $TableName . " SET Admin_Name=?, Email=?,
-			 Permission_Level=? WHERE AdminID LIKE ?";
-			if ($stmt = mysqli_prepare($conn, $query)) {
-				mysqli_stmt_bind_param($stmt, 'sssi', $name, $email, $level, $id);
-				if(mysqli_stmt_execute($stmt)){
-					echo "Data updated successfully";
+			$name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+			if(!filter_var($name, FILTER_SANITIZE_STRING) === false){
+				$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+				if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+					$level = $_POST['level'];
+					$query = "UPDATE ". $TableName . " SET Admin_Name=?, Email=?,
+					 Permission_Level=? WHERE AdminID LIKE ?";
+					if ($stmt = mysqli_prepare($conn, $query)) {
+						mysqli_stmt_bind_param($stmt, 'sssi', $name, $email, $level, $id);
+						if(mysqli_stmt_execute($stmt)){
+							echo "Data updated successfully";
+						} else {
+							echo "Error8";
+						}
+					} else {
+						echo "Error6";
+					}
+					mysqli_stmt_close($stmt);
 				} else {
-					echo "Error8";
+					echo '<p>Invalid Email!</p>';
 				}
 			} else {
-				echo "Error6";
+				echo '<p>Invalid name!</p>';
 			}
 		}
 	} elseif(isset($_POST['submitPas'])){
@@ -53,6 +62,7 @@
 				} else {
 					echo "Error6";
 				}
+				mysqli_stmt_close($stmt);
 			} else {
 				echo '<p>Passwords are not the same!</p>';
 			}
@@ -83,6 +93,7 @@
 					} else {
 						echo "<p class='red'>Error</p>";
 					}
+					mysqli_stmt_close($stmt);
 				}
 			} else {
 				echo 'Invalid file';
@@ -127,13 +138,13 @@
 					<?php
 				}
 			}
-			mysqli_stmt_close($stmt);
 		} else {
 			echo 'Error3';
 		}
 	} else {
 		echo 'Error2';
 	}
+	mysqli_stmt_close($stmt);
 	mysqli_close($conn);
 ?>
 </div>

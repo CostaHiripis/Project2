@@ -37,6 +37,7 @@
 							} else {
 								echo 'Error5';
 							}
+							mysqli_stmt_close($stmt);
 							$query = "SELECT TicketID, Title, Opening_Date, Status, Admin.Admin_Name, Admin.ImagePath FROM " . $TableName."
 							 JOIN Admin ON Ticket.AdminID = Admin.AdminID";
 							if($stmt = mysqli_prepare($conn, $query)){
@@ -82,6 +83,8 @@
 							} else {
 								echo 'Error2';
 							}
+							mysqli_stmt_close($stmt);
+							mysqli_close($conn);
 					?>
             </div>
         </div>

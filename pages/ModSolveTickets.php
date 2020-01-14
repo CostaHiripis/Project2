@@ -50,6 +50,7 @@
 	} else {
 		echo 'Error2';
 	}
+	mysqli_stmt_close($stmt);
 ?>
 </div>
 	<div class="SolveTickets" id="effectblue">
@@ -65,8 +66,6 @@
 		</div>
 <?php
 	$TableName = 'Ticket';
-	$dbName = 'helpdesk';
-	$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 	$query = "SELECT TicketID, Title, Opening_Date, Type, Employee.Company_Name FROM " . $TableName."
 	JOIN Employee ON Ticket.UserID = Employee.UserID
 	WHERE Status =?  AND AdminID =?  GROUP BY Opening_Date";
@@ -98,6 +97,8 @@
 	} else {
 		echo 'Error2';
 	}
+	mysqli_stmt_close($stmt);
+	mysqli_close($conn);
 ?>
 	</div>
 </div>

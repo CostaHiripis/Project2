@@ -50,6 +50,8 @@
 			} else {
 				echo 'Error2';
 			}
+			mysqli_stmt_close($stmt);
+			mysqli_close($conn);
 		?>
 	</div>
 	<div class="SolveTickets" id="effectblue">
@@ -98,6 +100,8 @@
 			} else {
 				echo 'Error2';
 			}
+			mysqli_stmt_close($stmt);
+			mysqli_close($conn);
 		?>
 	</div>
 </div>

@@ -33,40 +33,48 @@
 							$lname = $_POST['lastname'];
 							$name = $fname.' '.$lname;
 							$password_hash = password_hash($_POST['pw'], PASSWORD_DEFAULT);
-							$email = $_POST['email'];
-							$level = $_POST['level'];
-							if (!file_exists('../avatar/'.$fname.'-'.$lname)) {
-								mkdir('../avatar/'.$fname.'-'.$lname, 0777, true);
-							}
-							if ((($_FILES["photo"]["type"] == "image/png") OR ($_FILES["photo"]["type"] == "image/jpeg") OR ($_FILES["photo"]["type"] == "image/jpg"))
-							AND ($_FILES["photo"]["size"] < 600000)){
-								if ($_FILES["photo"]["error"] > 0){
-									echo "<p class='red'>Error!</p>";
-								} else {
-									if (file_exists('../avatar/'.$fname.'-'.$lname.'/'.$_FILES["photo"]["name"])){
-										echo $_FILES["photo"]["name"] . " already exists. ";
-									} else {
-										move_uploaded_file($_FILES["photo"]["tmp_name"], '../avatar/'.$fname.'-'.$lname.'/'.$_FILES["photo"]["name"]);
-										$path = '../avatar/'.$fname.'-'.$lname.'/'.$_FILES["photo"]["name"];
-										$query = "INSERT INTO ". $TableName ." VALUES(NULL,?,?,?,?,?)";
-										If($stmt = mysqli_prepare($conn, $query)){
-											mysqli_stmt_bind_param($stmt, 'sssss', $email, $name, $password_hash, $level, $path);
-											If(mysqli_stmt_execute($stmt)){
-												echo '<p>New admin was created!</p>';
-											} else {
-												echo "Data has not been inserted";
-											}
-											mysqli_stmt_close($stmt);
-										} else {
-											echo '<p>Error!</p>';
-										}
+							$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+							if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+								if(!filter_var($name, FILTER_SANITIZE_STRING) === false){
+									$level = $_POST['level'];
+									if (!file_exists('../avatar/'.$fname.'-'.$lname)) {
+										mkdir('../avatar/'.$fname.'-'.$lname, 0777, true);
 									}
+									if ((($_FILES["photo"]["type"] == "image/png") OR ($_FILES["photo"]["type"] == "image/jpeg") OR ($_FILES["photo"]["type"] == "image/jpg"))
+									AND ($_FILES["photo"]["size"] < 600000)){
+										if ($_FILES["photo"]["error"] > 0){
+											echo "<p>Error!</p>";
+										} else {
+											if (file_exists('../avatar/'.$fname.'-'.$lname.'/'.$_FILES["photo"]["name"])){
+												echo $_FILES["photo"]["name"] . " already exists. ";
+											} else {
+												move_uploaded_file($_FILES["photo"]["tmp_name"], '../avatar/'.$fname.'-'.$lname.'/'.$_FILES["photo"]["name"]);
+												$path = '../avatar/'.$fname.'-'.$lname.'/'.$_FILES["photo"]["name"];
+												$query = "INSERT INTO ". $TableName ." VALUES(NULL,?,?,?,?,?)";
+												If($stmt = mysqli_prepare($conn, $query)){
+													mysqli_stmt_bind_param($stmt, 'sssss', $email, $name, $password_hash, $level, $path);
+													If(mysqli_stmt_execute($stmt)){
+														echo '<p>New admin was created!</p>';
+													} else {
+														echo "Data has not been inserted";
+													}
+													mysqli_stmt_close($stmt);
+												} else {
+													echo '<p>Error!</p>';
+												}
+											}
+										}
+									} else {
+										echo '<p class="red">Invalid file!</p>';
+									}
+								} else {
+									echo '<p>Passwords are not the same!</p>';
 								}
 							} else {
-								echo '<p class="red">Invalid file!</p>';
+								echo '<p>Invalid Name!</p>';
 							}
 						} else {
-							echo '<p>Passwords are not the same!</p>';
+							echo '<p>Invalid Email!</p>';
 						}
 					}
 				mysqli_close($conn);

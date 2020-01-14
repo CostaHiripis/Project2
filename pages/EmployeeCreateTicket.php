@@ -6,30 +6,35 @@
 			$TableName = 'Ticket';
 			$dbName = 'helpdesk';
 			$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
-			$content = $_POST['content'];
-			$_SESSION['conn'] = 'bbfb';
-			If($content !== $_SESSION['conn']){
-				$title = $_POST['title'];
-				$type = $_POST['type'];
-				$date = date("Y-m-d");
-				$Uid = $_SESSION['id'];
-				$status = 'Sent';
-				$query = "INSERT INTO ". $TableName ." VALUES(NULL,?,?,?,NULL,?,?,NULL,?)";
-				If($stmt = mysqli_prepare($conn, $query)){
-				  mysqli_stmt_bind_param($stmt, 'ssssis', $title, $content, $date, $status, $Uid, $type);
-				  If(mysqli_stmt_execute($stmt)){
-					echo '<p>Thank you for ticket!</p>';
-					$_SESSION['conn'] = $content;
-				  } else {
-					echo "Data has not been inserted";
-				  }
-				  mysqli_stmt_close($stmt);
-				} else {
-				  echo '<p>Error2!</p>';
+			$content = filter_var($_POST['content'], FILTER_SANITIZE_STRING);
+			if (!filter_var($content, FILTER_SANITIZE_STRING) === false) {
+				$_SESSION['conn'] = 'bbfb';
+				If($content !== $_SESSION['conn']){
+					$title = $_POST['title'];
+					$type = $_POST['type'];
+					$date = date("Y-m-d");
+					$Uid = $_SESSION['id'];
+					$status = 'Sent';
+					$query = "INSERT INTO ". $TableName ." VALUES(NULL,?,?,?,NULL,?,?,NULL,?)";
+					If($stmt = mysqli_prepare($conn, $query)){
+					  mysqli_stmt_bind_param($stmt, 'ssssis', $title, $content, $date, $status, $Uid, $type);
+					  If(mysqli_stmt_execute($stmt)){
+						echo '<p>Thank you for ticket!</p>';
+						$_SESSION['conn'] = $content;
+					  } else {
+						echo "Data has not been inserted";
+					  }
+					  mysqli_stmt_close($stmt);
+					} else {
+					  echo '<p>Error2!</p>';
+					}
+					
 				}
+			} else {
+				echo '<p class="red">Invalid message!</p>';
 			}
+			mysqli_close($conn);
 		}
-		mysqli_close($conn);
 	}
 	
 

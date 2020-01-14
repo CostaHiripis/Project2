@@ -18,7 +18,7 @@
 						$query = "SELECT AdminID, Email, Password, Permission_Level, ImagePath, Admin_Name 
 						FROM " . $TableName . " WHERE Email LIKE ?";
 						$password = $_POST['pw'];
-						$email = $_POST['email'];
+						$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 						If($stmt = mysqli_prepare($conn, $query)){
 								mysqli_stmt_bind_param($stmt, 's', $email);
 								if(mysqli_stmt_execute($stmt)){
@@ -67,7 +67,9 @@
 							} else {
 								echo 'Error!';
 							}
-						}							
+						}
+						mysqli_stmt_close($stmt);	
+						mysqli_close($conn);
 					}
 				}
 					
