@@ -15,7 +15,7 @@
     <input type="password" name="pw" placeholder="Password">
     <input type="password" name="pwr" placeholder="Repeat Password">
 	<div id='bla'>
-		<img id="blah" src="#"/>
+		<img id="fileselect" src="#"/>
 	</div>
 	<input id='choose' type='file' name="photo" onchange="readURL(this);">
         <?php

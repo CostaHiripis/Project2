@@ -22,6 +22,7 @@
 							  mysqli_stmt_bind_param($stmt, 'ssss', $name, $email, $company, $password_hash);
 							  If(mysqli_stmt_execute($stmt)){
 								echo '<p>Thank you for registration!</p>';
+								echo ' <script>window.location.href="login.php";</script>';
 							  } else {
 								echo "Data has not been inserted";
 								die();
