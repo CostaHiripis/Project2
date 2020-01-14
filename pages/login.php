@@ -84,7 +84,7 @@
               ?>
               </div>
               <div class="btndiv">
-                <input class="inputbtn" type="submit" value="Login">
+                <input class="inputbtn" type="submit" name='login' value="Login">
               </div>
             </form>
             <div class="btndiv">
