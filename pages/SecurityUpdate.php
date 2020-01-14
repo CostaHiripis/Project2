@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="../CSS/boxstyle.css"
+	<title>Document</title>
+</head>
+<body>
 <div id="fullPage">
   <div id="header">
     <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
@@ -135,3 +145,5 @@
 	mysqli_close($conn);
 ?>
 </div>
+</body>
+</html>

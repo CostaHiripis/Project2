@@ -32,8 +32,6 @@
 				if(!mysqli_stmt_execute($stmt)){
 					echo 'Error100';
 				}
-			} else {
-				echo 'Error';
 			}
 		}
 	?>
@@ -62,7 +60,8 @@
 						echo "<td><a href='index.php?page6=SecurityUpdate.php-".$id."'>Update</a></td>";
 						echo "<td><a href='index.php?AdminID=".$id."'>Delete</a></td></tr>";
 					}
-					echo '</table>';
+				} else {
+					echo 'Error2';
 				}
 			} else {
 				echo 'Error2';
@@ -106,3 +105,5 @@
 		}
 	?>
 </div>
+</body>
+</html>
