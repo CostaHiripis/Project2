@@ -1,19 +1,19 @@
-	<div class="outer">
-      <div class="middle">
+<div class="outer">
+    <div class="middle">
         <div style="height:400px" class="inner">
-          <form action='index.php?page=login' method="post">
-              <img id="loginnhl" src="../img/nhl.png" alt="nhl">
-              <input class='inp' type="email" name="email" placeholder="Email">
-              <input class='inp' type="password" name="pw" placeholder="Password">
-              <div id="errorDiv">
-              <?php
-				if(isset($_POST['login'])){
-					if(!empty($_POST['email']) AND !empty($_POST['pw'])){
-						$dbName = 'helpdesk';
-						$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
-						$TableName = 'admin';
-						$TableName2 = 'Employee';
-						$query2 = "SELECT UserID, Email, Password, Employee_Name
+            <form action='index.php?page=login' method="post">
+                <img id="loginnhl" src="../img/nhl.png" alt="nhl">
+                <input class='inp' type="email" name="email" placeholder="Email">
+                <input class='inp' type="password" name="pw" placeholder="Password">
+                <div id="errorDiv">
+                    <?php
+                    if (isset($_POST['login'])) {
+                        if (!empty($_POST['email']) AND!empty($_POST['pw'])) {
+                            $dbName = "HelpDesk";
+                            $conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE('Error: ' . mysqli_error($conn));
+                            $TableName = 'admin';
+                            $TableName2 = 'employee';
+                            $query2 = "SELECT UserID, Email, Password, Employee_Name
 						FROM " . $TableName2 . " WHERE Email LIKE ?";
 						$query = "SELECT AdminID, Email, Password, Permission_Level, ImagePath, Admin_Name
 						FROM " . $TableName . " WHERE Email LIKE ?";
@@ -84,14 +84,10 @@
               ?>
               </div>
             <div class="btndiv">
-              <input class="inputbtn" type="submit" name="login" value="Login">
+                <form action="index.php?page=register" method="post">
+                    <input class="inputbtn" type="submit" value="Register">
+                </form>
             </div>
-          </form>
-          <div class="btndiv">
-            <form action="index.php?page=register" method="post">
-              <input class="inputbtn" type="submit" value="Register">
-            </form>
-          </div>
         </div>
-      </div>
     </div>
+</div>

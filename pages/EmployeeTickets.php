@@ -1,31 +1,33 @@
 <div id="fullPage">
-      <div id="header">
-        <a href='index.php?page2=EmployeeMainPage.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
-		<h1 id='white'>Operation Desk</h1>
+    <div id="header">
+        <a href='index.php?page3=AdminMainScreen.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
+        <h1 id='white'>Operation Desk</h1>
         <div id="user">
-			<p id='userName'><?php echo $_SESSION['name']; ?></p>
-			<p id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></p>
-		</div>
-      </div>
-<a href='index.php?page2=EmployeeCreateTicket.php'>Create new Ticket</a>
-<h1>My tickets</h1>
-<?php
-	$TableName = 'Ticket';
-	$idd = $_SESSION['id'];
-	$dbName = 'helpdesk';
-	$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
-	$query = "SELECT TicketID, Title, Opening_Date, Status FROM " . $TableName."
+            <p id='userName'><?php echo $_SESSION['name']; ?></p>
+            <p id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></p>
+        </div>
+    </div>
+    <a href='index.php?page2=EmployeeCreateTicket.php'>Create new Ticket</a>
+    <h1>My tickets</h1>
+    <?php
+    $TableName = 'ticket';
+    $idd = $_SESSION['id'];
+//    $dbName = 'operationhelp';
+//    $conn = mysqli_connect("127.0.0.1", "operationhelp", "!PwO_1711", $dbName) OR DIE('Error: ' . mysqli_error($conn));
+    $dbName = "HelpDesk";
+    $conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE('Error: ' . mysqli_error($conn));
+    $query = "SELECT TicketID, Title, Opening_Date, Status FROM " . $TableName . "
 	 WHERE UserID LIKE ?";
-	if($stmt = mysqli_prepare($conn, $query)){
-		mysqli_stmt_bind_param($stmt, 'i', $idd);
-		if(mysqli_stmt_execute($stmt)){
-			mysqli_stmt_bind_result($stmt, $id, $title, $date, $status);
-			mysqli_stmt_store_result($stmt);
-			if(mysqli_stmt_num_rows($stmt) == 0){
-				echo '<p>There are no data!</p>';
-			} else {
-				echo "<table width='100%' border='1'>";
-				echo "<tr>
+    if ($stmt = mysqli_prepare($conn, $query)) {
+        mysqli_stmt_bind_param($stmt, 'i', $idd);
+        if (mysqli_stmt_execute($stmt)) {
+            mysqli_stmt_bind_result($stmt, $id, $title, $date, $status);
+            mysqli_stmt_store_result($stmt);
+            if (mysqli_stmt_num_rows($stmt) == 0) {
+                echo '<p>There are no data!</p>';
+            } else {
+                echo "<table width='100%' border='1'>";
+                echo "<tr>
 						<th>Title</th>
 						<th>Opening Date</th>
 						<th>Status</th>
