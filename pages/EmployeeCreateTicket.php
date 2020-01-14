@@ -45,6 +45,7 @@
                                             if (mysqli_stmt_execute($stmt)) {
                                                 echo ' <script>window.location.href="index.php";</script>';
                                                 echo '<p>Thank you for ticket!</p>';
+                                                echo ' <script>window.location.href="index.php";</script>';
                                                 $_SESSION['conn'] = $content;
                                             } else {
                                                 echo "Data has not been inserted";
