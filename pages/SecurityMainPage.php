@@ -67,13 +67,6 @@
 			} else {
 				echo 'Error2';
 			}
-<<<<<<< HEAD
-		?>
-		<p><a href='index.php?page5=SecurityRegister.php'>Create new Admin<a></p>
-		<h1>Users: </h1>
-		<?php 
-		$TableName = 'Employee';
-=======
 		} else {
 			echo 'Error2';
 		}
@@ -83,7 +76,6 @@
 	<h1>Users: </h1>
 	<?php
 		$TableName = 'employee';
->>>>>>> 260b578a5f39c6ed325bcb953e7027bc7cfa4ef1
 		$query = "SELECT UserID, Email, Employee_Name, Company_Name FROM " . $TableName;
 		if($stmt = mysqli_prepare($conn, $query)){
 			if(mysqli_stmt_execute($stmt)){
