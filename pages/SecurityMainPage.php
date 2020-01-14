@@ -61,7 +61,9 @@
 						echo "<td><a href='index.php?page6=SecurityUpdate.php-".$id."'>Update</a></td>";
 						echo "<td><a href='index.php?AdminID=".$id."'>Delete</a></td></tr>";
 					}
-				} 
+				} else {
+					echo 'Error2';
+				}
 			} else {
 				echo 'Error2';
 			}
@@ -83,7 +85,7 @@
 					echo '<p>There are no data!</p>';
 				} else {
 					echo "<table width='100%' border='1'>";
-					echo "<tr><th>ID</th>
+					echo "<tr><th>ID</th>    
 					<th>Email</th>
 					<th>Full Name</th>
 					<th>Company</th>
@@ -103,8 +105,6 @@
 		} else {
 			echo 'Error2';
 		}
-		mysqli_stmt_close($stmt);
-		mysqli_close($conn);
 	?>
 </div>
 </body>
