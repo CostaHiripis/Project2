@@ -74,7 +74,7 @@
             }
         }
     }
-    $TableName = 'ticket';
+    $TableName = 'Ticket';
     $query = "SELECT TicketID, Title, Content, Status, Type, employee.Employee_Name, employee.Company_Name FROM " . $TableName .
             " JOIN employee ON ticket.UserID = employee.UserID WHERE TicketID = ?";
     if ($stmt = mysqli_prepare($conn, $query)) {

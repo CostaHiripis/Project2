@@ -279,14 +279,32 @@ textarea {
     color:white;
 }
 
-.Status {
+.Status1 {
     margin-top: 7px;
     width: 25px;
     height: 10px;
+    background-color: green;
     float: left;
     border-radius: 5px;
 }
 
+.Status2 {
+    margin-top: 7px;
+    width: 25px;
+    height: 10px;
+    background-color: yellow;
+    float: left;
+    border-radius: 5px;
+}
+
+.Status3 {
+    margin-top: 7px;
+    width: 25px;
+    height: 10px;
+    background-color: red;
+    float: left;
+    border-radius: 5px;
+}
 
 .Name {
     font-size: 22px;
@@ -482,7 +500,6 @@ img{
     height: 505px;
     overflow: auto;
     float: left;
-    width: 1216px;
 }
 .over{
     margin-top: 20px;
