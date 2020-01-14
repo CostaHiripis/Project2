@@ -86,7 +86,7 @@
 		If($stmt = mysqli_prepare($conn, $query)){
 			mysqli_stmt_bind_param($stmt, 'si', $status, $id);
 			If(mysqli_stmt_execute($stmt)){
-				
+
 			} else {
 				echo 'Error200';
 			}
@@ -150,7 +150,7 @@
 			} else {
 				while(mysqli_stmt_fetch($stmt)){
 					if($status !== 'Closed'){
-	
+
 ?>
 <h2>Message</h2>
 <form method='post'>
@@ -178,6 +178,5 @@
 		}
 	}
 	mysqli_close($conn);
-			
 ?>
 </div>

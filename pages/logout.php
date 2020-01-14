@@ -1,4 +1,4 @@
 <?php
 	session_destroy();
+	header("Location:index.php");
 ?>
-<a href='index.php'>Log in</a>

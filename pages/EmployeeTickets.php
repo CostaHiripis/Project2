@@ -9,7 +9,7 @@
       </div>
 <a href='index.php?page2=EmployeeCreateTicket.php'>Create new Ticket</a>
 <h1>My tickets</h1>
-<?php 
+<?php
 	$TableName = 'Ticket';
 	$idd = $_SESSION['id'];
 	$dbName = 'helpdesk';
@@ -25,9 +25,9 @@
 				echo '<p>There are no data!</p>';
 			} else {
 				echo "<table width='100%' border='1'>";
-				echo "<tr>   
+				echo "<tr>
 						<th>Title</th>
-						<th>Opening_Date</th>
+						<th>Opening Date</th>
 						<th>Status</th>
 						<th>Ticket</th>
 					</tr>";
