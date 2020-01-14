@@ -36,7 +36,7 @@
 											} else {
 												$_SESSION['path'] = $path;
 											}
-											echo ' <script>window.location.href="index.php";</script>';
+											echo '<script>window.location.href="index.php";</script>';
 										} else {
 											echo '<p>Wrong email or password!</p>';
 										}
