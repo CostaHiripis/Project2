@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="../CSS/boxstyle.css">
-	<title>update</title>
-</head>
-<body>
+
 <div id="fullPage">
             <div id="header">
 				<a href='index.php?page5=SecurityMainPage.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
@@ -28,18 +19,6 @@
 		OR empty($_POST['level'])){
 			echo "<p>You must fill all empty space!</p>";
 		} else {
-<<<<<<< HEAD
-			$TableName = 'Admin';
-			$name = $_POST['name'];	
-			$email = $_POST['email'];	
-			$level = $_POST['level'];
-			$query = "UPDATE ". $TableName . " SET Admin_Name=?, Email=?,
-			 Permission_Level=? WHERE AdminID LIKE ?";
-			if ($stmt = mysqli_prepare($conn, $query)) {
-				mysqli_stmt_bind_param($stmt, 'sssi', $name, $email, $level, $id);
-				if(mysqli_stmt_execute($stmt)){
-					echo "Data updated successfully";
-=======
 			$TableName = 'admin';
 			$name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
 			if(!filter_var($name, FILTER_SANITIZE_STRING) === false){
@@ -59,7 +38,6 @@
 						echo "Error6";
 					}
 					mysqli_stmt_close($stmt);
->>>>>>> 260b578a5f39c6ed325bcb953e7027bc7cfa4ef1
 				} else {
 					echo "Error8";
 				}
@@ -169,5 +147,3 @@
 	mysqli_close($conn);
 ?>
 </div>
-</body>
-</html>

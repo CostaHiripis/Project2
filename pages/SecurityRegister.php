@@ -1,28 +1,3 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <link rel="stylesheet" href="../CSS/boxstyle.css">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Security Main Page</title>
-    </head>
-    <body>
-        <div id="fullPage">
-            <div id="header">
-                <a href="SecurityMainPage.php"><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
-                <img id="userPic" src="../img/Jesus.jpg" alt="userPic">
-            </div>
-            <a href='index.php?page=logout'><div  class="logout" id="toplogout"></div></a>
-            <form id="skrREG"  method="post">
-                <input  class="skrInput" type="text" name="firstname" placeholder="First Name" pattern="[a-zA-Z']*">
-                <input  class="skrInput" type="text" name="lastname" placeholder="Last Name" pattern="[a-zA-Z']*">
-                <input  class="skrInput" type="email" name="email" placeholder="Email">
-                <input  class="skrInput" type="text" name="level" placeholder="Level of Rights">
-                <input  class="skrInput" type="password" name="pw" placeholder="Password">
-                <input  class="skrInput" type="password" name="pwr" placeholder="Repeat Password">
-=======
 <div id="fullPage">
   <div id="header">
     <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
@@ -103,9 +78,6 @@
 					}
 				mysqli_close($conn);
 				}
->>>>>>> 260b578a5f39c6ed325bcb953e7027bc7cfa4ef1
-
-                <?php
                 if (isset($_POST['register'])) {
                     $dbName = 'helpdesk';
                     $conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE('Error');
@@ -148,5 +120,3 @@
                 
                 <a href='index.php?page5=SecurityMainPage.php'><div class="toplogout"></div></a>
         </div>
-    </body>
-</html>
