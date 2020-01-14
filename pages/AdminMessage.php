@@ -17,9 +17,9 @@
 		$TableName = 'Ticket';
 		$id = $_SESSION['ticket'];
 		$query = "DELETE FROM ".$TableName." WHERE TicketID LIKE ?";
-		If($stmt = mysqli_prepare($conn, $query)){
+		if($stmt = mysqli_prepare($conn, $query)){
 			mysqli_stmt_bind_param($stmt, 'i', $id);
-			If(mysqli_stmt_execute($stmt)){
+			if(mysqli_stmt_execute($stmt)){
 				echo 'Ticket deleted';
 				die();
 			} else {
@@ -35,9 +35,9 @@
 		$query = "UPDATE ".$TableName." SET Status=?, AdminID=? WHERE TicketID=?";
 		$status = 'In process';
 		$admin = $_SESSION['id'];
-		If($stmt = mysqli_prepare($conn, $query)){
+		if($stmt = mysqli_prepare($conn, $query)){
 			mysqli_stmt_bind_param($stmt, 'ssi', $status, $admin, $id);
-			If(mysqli_stmt_execute($stmt)){
+			if(mysqli_stmt_execute($stmt)){
 			} else {
 				echo 'Error200';
 			}
@@ -46,25 +46,25 @@
 		}
 		mysqli_stmt_close($stmt);
 	}
-	If(isset($_POST['send'])){
+	if(isset($_POST['send'])){
 		if(empty($_POST['message'])){
 			echo 'Message is empty!';
 		} else {
 			$TableName = 'Message';
 			$message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
 			if(!filter_var($message, FILTER_SANITIZE_STRING) === false){
-				If($message !== $_SESSION['conn']){
+				if($message !== $_SESSION['conn']){
 					$ticketID = $_SESSION['ticket'];
 					$date = date("Y-m-d");
 					$sender = $_SESSION['id'].'ad';
 					$query = "INSERT INTO ".$TableName." VALUES(NULL,?,?,?,?)";
-					If($stmt = mysqli_prepare($conn, $query)){
+					if($stmt = mysqli_prepare($conn, $query)){
 						mysqli_stmt_bind_param($stmt, 'siss', $message, $ticketID, $date, $sender);
-						If(mysqli_stmt_execute($stmt)){
+						if(mysqli_stmt_execute($stmt)){
 							echo '<p>Message Sended</p>';
 							$_SESSION['conn'] = $message;
 						} else {
-							echo '<p>Error7!</p>';
+							echo '<p>Eror7!</p>';
 						}
 					} else {
 						echo '<p>Error6!</p>';
@@ -127,8 +127,8 @@
 <?php
 	$TableName = 'Message';
 	$query = 'SELECT Content, Date, SenderID FROM '.$TableName;
-	If($stmt = mysqli_prepare($conn, $query)){
-		If(mysqli_stmt_execute($stmt)){
+	if($stmt = mysqli_prepare($conn, $query)){
+		if(mysqli_stmt_execute($stmt)){
 			mysqli_stmt_bind_result($stmt, $content2, $date2, $sender2);
 			mysqli_stmt_store_result($stmt);
 			if(mysqli_stmt_num_rows($stmt) == 0){
@@ -157,9 +157,9 @@
 		$query = "UPDATE ".$TableName." SET Closing_Date=?, Status=? WHERE TicketID LIKE ?";
 		$status = 'Closed';
 		$date = date("Y-m-d");
-		If($stmt = mysqli_prepare($conn, $query)){
+		if($stmt = mysqli_prepare($conn, $query)){
 			mysqli_stmt_bind_param($stmt, 'ssi', $date, $status, $id);
-			If(mysqli_stmt_execute($stmt)){
+			if(mysqli_stmt_execute($stmt)){
 
 			} else {
 				echo 'error454';

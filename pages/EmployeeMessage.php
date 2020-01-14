@@ -15,9 +15,9 @@
 	$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 	if(isset($_POST['delete'])){
 		$query = "DELETE FROM ".$TableName." WHERE TicketID LIKE ?";
-		If($stmt = mysqli_prepare($conn, $query)){
+		if($stmt = mysqli_prepare($conn, $query)){
 			mysqli_stmt_bind_param($stmt, 'si', $id);
-			If(mysqli_stmt_execute($stmt)){
+			if(mysqli_stmt_execute($stmt)){
 				echo 'Ticket deleted';
 				die();
 			} else {
@@ -28,20 +28,20 @@
 		}
 		mysqli_stmt_close($stmt);
 	}
-	If(isset($_POST['send'])){
+	if(isset($_POST['send'])){
 		if(empty($_POST['message'])){
 			echo 'Message is empty!';
 		} else {
 			$TableName = 'Message';
 			$message = $_POST['message'];
-			If($message !== $_SESSION['conn']){
+			if($message !== $_SESSION['conn']){
 				$ticketID = $_SESSION['ticket'];
 				$date = date("Y-m-d");
 				$sender = $_SESSION['id'].'ad';
 				$query = "INSERT INTO ".$TableName." VALUES(NULL,?,?,?,?)";
-				If($stmt = mysqli_prepare($conn, $query)){
+				if($stmt = mysqli_prepare($conn, $query)){
 					mysqli_stmt_bind_param($stmt, 'siss', $message, $ticketID, $date, $sender);
-					If(mysqli_stmt_execute($stmt)){
+					if(mysqli_stmt_execute($stmt)){
 						echo '<p>Message Sended</p>';
 						$_SESSION['conn'] = $message;
 					} else {
@@ -83,9 +83,9 @@
 		$TableName = 'Ticket';
 		$query = "UPDATE ".$TableName." SET Status=? WHERE TicketID=?";
 		$status = 'In process';
-		If($stmt = mysqli_prepare($conn, $query)){
+		if($stmt = mysqli_prepare($conn, $query)){
 			mysqli_stmt_bind_param($stmt, 'si', $status, $id);
-			If(mysqli_stmt_execute($stmt)){
+			if(mysqli_stmt_execute($stmt)){
 
 			} else {
 				echo 'Error200';
@@ -112,8 +112,8 @@
 <?php
 	$TableName = 'Message';
 	$query = 'SELECT Content, Date, SenderID FROM '.$TableName;
-	If($stmt = mysqli_prepare($conn, $query)){
-		If(mysqli_stmt_execute($stmt)){
+	if($stmt = mysqli_prepare($conn, $query)){
+		if(mysqli_stmt_execute($stmt)){
 			mysqli_stmt_bind_result($stmt, $content2, $date2, $sender2);
 			mysqli_stmt_store_result($stmt);
 			if(mysqli_stmt_num_rows($stmt) == 0){
