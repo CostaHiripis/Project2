@@ -65,7 +65,7 @@
         </div>
         <?php
         $TableName = 'ticket';
-        $query = "SELECT TicketID, Title, Opening_Date, Type, Employee.Company_Name FROM " . $TableName . "
+        $query = "SELECT TicketID, Title, Opening_Date, Type, employee.Company_Name FROM " . $TableName . "
 	JOIN employee ON ticket.UserID = employee.UserID
 	WHERE Status =?  AND AdminID =?";
         $sta = 'In process';
