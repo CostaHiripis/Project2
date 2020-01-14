@@ -1,13 +1,13 @@
 
-        <div id="fullPage">
-            <div id="header">
-              <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
-              <div id="admin">
-                <div id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></div>
-                <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
-              </div>
-            </div>
+<div id="fullPage">
+    <div id="header">
+        <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
+        <div id="admin">
+            <div id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></div>
+            <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
         </div>
+    </div>
+</div>
 <div class="BgTickets">
     <div class="TicketsHeader" id="effectteal">
         <h3>Your Open Tickets</h3>
@@ -34,50 +34,50 @@
                             echo "<a href='index.php?page22=EmployeeMessage.php-" . $id . "'><div class='Ticket' id='effectlblue'>";
                             echo "<div class='TicketLeft'>";
                             echo "<div class='Name'>" . $title . "&nbsp;</div>";
-							?>
-							<div class='Status'>
-							<?php
-								if ($status == "Sent") {
-									?>
-									<div class="Status1"></div>
-									<?php
-								} elseif ($status == "In Progress") {
-									?>
-									<div class="Status2"></div>
-									<?php
-								} else {
-									?>
-									<div class="Status3"></div>
-									<?php
-								}
-								?>
-							</div>
-							<?php
+                            ?>
+                            <div class='Status'>
+                                <?php
+                                if ($status == "Sent") {
+                                    ?>
+                                    <div class="Status1"></div>
+                                    <?php
+                                } elseif ($status == "In Progress") {
+                                    ?>
+                                    <div class="Status2"></div>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <div class="Status3"></div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <?php
                             echo "</div>";
                             echo "<div class='TicketRight'>";
-                            echo "<div class='Helper'><div class='Text'>".$name."</div>";
-							?>
-							<img id='HelperPic' class='imgRound' src='<?php 
-								If ($path == NULL) {
-                                    echo '../img/defuserpic.png';
-                                } else {
+                            echo "<div class='Helper'><div class='Text'>" . $name . "</div>";
+                            ?>
+                            <img id='HelperPic' class='imgRound' src='<?php
+                                 If ($path == NULL) {
+                                     echo '../img/defuserpic.png';
+                                 } else {
                                      echo $path;
-                                }
-							?>' alt='userPic'>
-							<?php
-                            echo "</div>";
-                            echo "</div>";
-                            echo "</div></a>";
-                        }
-                    }
-                } else {
-                    echo "<p>1</p>";
-                    echo "<p>There was an error " . mysqli_errno($conn) . " : " . mysqli_connect_error() . "</p>";
-                }
-            } else {
-                echo "<p>There was an error " . mysqli_errno($conn) . " : " . mysqli_connect_error() . "</p>";
-            }
-            ?>
+                                 }
+                                 ?>' alt='userPic'>
+                                 <?php
+                                 echo "</div>";
+                                 echo "</div>";
+                                 echo "</div></a>";
+                             }
+                         }
+                     } else {
+                         echo "<p>1</p>";
+                         echo "<p>There was an error " . mysqli_errno($conn) . " : " . mysqli_connect_error() . "</p>";
+                     }
+                 } else {
+                     echo "<p>There was an error " . mysqli_errno($conn) . " : " . mysqli_connect_error() . "</p>";
+                 }
+                 ?>
         </div>
     </div>
 </div>
