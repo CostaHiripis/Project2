@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
@@ -20,7 +21,7 @@
                 </div>
                 <div class="TicketRight">
                     <div class="Helper"><div class="Text">Helper Name</div>
-                    <img id="HelperPic" src="../img/Jesus.jpg" alt="userPic"><div id="effectblue" class="Drop"><div class="Delete">X</div></div></div>     
+                    <img id="HelperPic" src="../img/Jesus.jpg" alt="userPic"><div id="effectblue" class="Drop"><div class="Delete">X</div></div></div>
 				</div>
             </div>
             <div class="BgTickets">
@@ -65,7 +66,7 @@
                                                 $SQLString2 = "DELETE FROM " . $TicketTable . " WHERE $TicketTable . TicketID = " . $_GET['ticket'];
                                                 if($stmt2 = mysqli_prepare($DBConnect, $SQLString2)){
                                                     mysqli_stmt_execute($stmt2);
-                                                    header('location: adminTickets.php');
+                                                    echo ' <script>window.location.href="adminTickets.php";</script>';
                                                 }
                                                 mysqli_stmt_close($stmt2);
                                             }

@@ -1,5 +1,3 @@
-/*Comment to refresh page */
-
 * {
     margin: 0;
     padding: 0;
@@ -150,6 +148,7 @@ body {
 .resize-image {
     height: 280px;
     width: 280px;
+    object-fit: contain;
 }
 
 #header {
@@ -211,10 +210,10 @@ body {
     background-position: center;
 }
 
-.ticketInfBg {
-    background-image: url("../img/ticketinf.png");
+.FAQ {
+    background-image: url("../img/faq.png");
     background-repeat: no-repeat;
-    background-size: 180px 180px;
+    background-size: 200px 300px;
     background-position: center;
 }
 
@@ -228,12 +227,12 @@ body {
 .boxText {
     text-align: center;
     color: white;
-    font-size: 1.4rem;
+    font-size: 2.4rem;
 }
 
 .textDiv {
     margin-left: auto;
-    padding-top: 250px;
+    padding-top: 400px;
     margin-right: auto;
 }
 
@@ -394,4 +393,56 @@ h3 {
     margin-left: 2px;
     margin-top: 2px;
     color: white;
+}
+
+#body-space {
+    height: 846px;
+    width: 100%;
+}
+
+#faq-header {
+    height: 20%;
+    width: 50%;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+#faq-letters {
+    color: white;
+    font-size: 50pt;
+    font-family: "Arial";
+}
+
+#question-section {
+    height: 600px;
+    width: 70%;
+    margin: 0 auto;
+    background-color: cornflowerblue;
+}
+
+.collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.active,
+.collapsible:hover {
+    background-color: #555;
+}
+
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
 }

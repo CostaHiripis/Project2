@@ -1,20 +1,18 @@
 <div id="fullPage">
-            <div id="header">
-				<a href='index.php?page4=ModMainPage.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
-				<h1 id='white'>Operation Desk</h1>
-				<div id="user">
-					<img id='userPic' src="<?php echo $_SESSION['path'];  ?>" alt="userPic">
-					<p id='userName'><?php echo $_SESSION['name']; ?></p>
-					<p id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></p>
-				</div>
-			</div>
+  <div id="header">
+    <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
+    <div id="user">
+			<div id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></div>
+	    <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
+    </div>
+  </div>
 <h1>Ticket</h1>
 <?php
 	$id = $_SESSION['ticket'];
 	$dbName = 'helpdesk';
 	$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 	if(isset($_POST['delete'])){
-		$TableName = 'Ticket';
+		$TableName = 'ticket';
 		$id = $_SESSION['ticket'];
 		$query = "DELETE FROM ".$TableName." WHERE TicketID LIKE ?";
 		If($stmt = mysqli_prepare($conn, $query)){
@@ -28,9 +26,10 @@
 		} else {
 			echo 'error45444';
 		}
+		mysqli_stmt_close($stmt);
 	}
 	if(isset($_POST['choose'])){
-		$TableName = 'Ticket';
+		$TableName = 'ticket';
 		$query = "UPDATE ".$TableName." SET Status=?, AdminID=? WHERE TicketID=?";
 		$status = 'In process';
 		$admin = $_SESSION['id'];
@@ -43,35 +42,41 @@
 		} else {
 			echo 'Error200';
 		}
+		mysqli_stmt_close($stmt);
 	}
 	If(isset($_POST['send'])){
 		if(empty($_POST['message'])){
 			echo 'Message is empty!';
 		} else {
-			$TableName = 'Message';
-			$message = $_POST['message'];
-			If($message !== $_SESSION['conn']){
-				$ticketID = $_SESSION['ticket'];
-				$date = date("Y-m-d");
-				$sender = $_SESSION['id'].'ad';
-				$query = "INSERT INTO ".$TableName." VALUES(NULL,?,?,?,?)";
-				If($stmt = mysqli_prepare($conn, $query)){
-					mysqli_stmt_bind_param($stmt, 'siss', $message, $ticketID, $date, $sender);
-					If(mysqli_stmt_execute($stmt)){
-						echo '<p>Message Sended</p>';
-						$_SESSION['conn'] = $message;
+			$TableName = 'message';
+			$message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
+			if(!filter_var($message, FILTER_SANITIZE_STRING) === false){
+				If($message !== $_SESSION['conn']){
+					$ticketID = $_SESSION['ticket'];
+					$date = date("Y-m-d");
+					$sender = $_SESSION['id'].'ad';
+					$query = "INSERT INTO ".$TableName." VALUES(NULL,?,?,?,?)";
+					If($stmt = mysqli_prepare($conn, $query)){
+						mysqli_stmt_bind_param($stmt, 'siss', $message, $ticketID, $date, $sender);
+						If(mysqli_stmt_execute($stmt)){
+							echo '<p>Message Sended</p>';
+							$_SESSION['conn'] = $message;
+						} else {
+							echo '<p>Error7!</p>';
+						}
 					} else {
-						echo '<p>Error7!</p>';
+						echo '<p>Error6!</p>';
 					}
+					mysqli_stmt_close($stmt);
 				} else {
-					echo '<p>Error6!</p>';
+					echo '<p>Invalid message!</p>';
 				}
 			}
 		}
 	}
 	$TableName = 'Ticket';
-	$query = "SELECT TicketID, Title, Content, Status, Type, Employee.Employee_Name, Employee.Company_Name FROM " . $TableName.
-	 " JOIN Employee ON Ticket.UserID = Employee.UserID WHERE TicketID LIKE ?";
+	$query = "SELECT TicketID, Title, Content, Status, Type, employee.Employee_Name, employee.Company_Name FROM " . $TableName.
+	 " JOIN employee ON ticket.UserID = employee.UserID WHERE TicketID = ?";
 	if($stmt = mysqli_prepare($conn, $query)){
 		mysqli_stmt_bind_param($stmt, 's', $id);
 		if(mysqli_stmt_execute($stmt)){
@@ -101,7 +106,8 @@
 	} else {
 		echo 'Error2';
 	}
-	$TableName = 'Ticket';
+	mysqli_stmt_close($stmt);
+	$TableName = 'ticket';
 	$query = "SELECT Status FROM " . $TableName.
 	 " WHERE TicketID LIKE ?";
 	if($stmt = mysqli_prepare($conn, $query)){
@@ -117,7 +123,7 @@
 ?>
 <h2>Messages</h2>
 <?php
-	$TableName = 'Message';
+	$TableName = 'message';
 	$query = 'SELECT Content, Date, SenderID FROM '.$TableName;
 	If($stmt = mysqli_prepare($conn, $query)){
 		If(mysqli_stmt_execute($stmt)){
@@ -143,16 +149,15 @@
 	} else {
 		echo '<p>Error8!</p>';
 	}
-	echo 'FUCK';
 	if(isset($_POST['close'])){
 		$TableName = 'Ticket';
-		$query = "UPDATE ".$TableName." SET Closing_Date=?, Status=? WHERE TicketID LIKE ?";
+		$query = "UPDATE ".$TableName." SET Closing_Date=?, Status=? WHERE TicketID = ?";
 		$status = 'Closed';
 		$date = date("Y-m-d");
 		If($stmt = mysqli_prepare($conn, $query)){
 			mysqli_stmt_bind_param($stmt, 'ssi', $date, $status, $id);
 			If(mysqli_stmt_execute($stmt)){
-				
+
 			} else {
 				echo 'error454';
 			}
@@ -160,9 +165,9 @@
 			echo 'error45444';
 		}
 	}
-	$TableName = 'Ticket';
+	$TableName = 'ticket';
 	$query = "SELECT Status FROM " . $TableName.
-	 " WHERE TicketID LIKE ?";
+	 " WHERE TicketID = ?";
 	if($stmt = mysqli_prepare($conn, $query)){
 		mysqli_stmt_bind_param($stmt, 's', $id);
 		if(mysqli_stmt_execute($stmt)){
@@ -173,7 +178,7 @@
 			} else {
 				while(mysqli_stmt_fetch($stmt)){
 					if($status !== 'Closed'){
-	
+
 ?>
 <h2>Message</h2>
 <form method='post'>
@@ -200,8 +205,10 @@
 					}
 				}
 			}
+			mysqli_stmt_close($stmt);
 		}
 	}
+	mysqli_close($conn);
 ?>
 <a href='index.php?page4=ModSolveTickets.php'>Solve tickets</a>
 </div>

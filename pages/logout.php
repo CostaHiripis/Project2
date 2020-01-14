@@ -1,4 +1,4 @@
 <?php
 	session_destroy();
+	echo ' <script>window.location.href="index.php";</script>';
 ?>
-<a href='index.php'>Log in</a>

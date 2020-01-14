@@ -1,5 +1,5 @@
-	<div class="outer">
-      <div class="middle">
+<div class="outer">
+    <div class="middle">
         <div style="height:400px" class="inner">
           <form action='index.php?page=login' method="post">
               <img id="loginnhl" src="../img/nhl.png" alt="nhl">
@@ -12,13 +12,13 @@
 						$dbName = 'helpdesk';
 						$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
 						$TableName = 'admin';
-						$TableName2 = 'Employee';
+						$TableName2 = 'employee';
 						$query2 = "SELECT UserID, Email, Password, Employee_Name
-						FROM " . $TableName2 . " WHERE Email LIKE ?";
-						$query = "SELECT AdminID, Email, Password, Permission_Level, ImagePath, Admin_Name 
-						FROM " . $TableName . " WHERE Email LIKE ?";
+						FROM " . $TableName2 . " WHERE Email = ?";
+						$query = "SELECT AdminID, Email, Password, Permission_Level, ImagePath, Admin_Name
+						FROM " . $TableName . " WHERE Email = ?";
 						$password = $_POST['pw'];
-						$email = $_POST['email'];
+						$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 						If($stmt = mysqli_prepare($conn, $query)){
 								mysqli_stmt_bind_param($stmt, 's', $email);
 								if(mysqli_stmt_execute($stmt)){
@@ -36,17 +36,21 @@
 											} else {
 												$_SESSION['path'] = $path;
 											}
-											echo '<a href="index.php">Go to main page</a>';
+											echo '<script>window.location.href="index.php";</script>';
 										} else {
 											echo '<p>Wrong email or password!</p>';
 										}
-									} 
-									
+									}
+
 								} else {
-									echo 'Error!';
+									echo "<p>$conn</p>"
+									. "<p>Error code " . mysqli_errno($conn) . ": "
+									. mysqli_error($conn) . "</p>";
 								}
 						} else {
-							echo 'Error!';
+							echo "<p>Error!</p>"
+							. "<p>Error code " . mysqli_errno($conn) . ": "
+							. mysqli_error($conn) . "</p>";
 						}
 						if($stmt = mysqli_prepare($conn, $query2)){
 							mysqli_stmt_bind_param($stmt, 's', $email);
@@ -59,38 +63,35 @@
 										$_SESSION['level'] = 0;
 										$_SESSION['id'] = $id;
 										$_SESSION['name'] = $name;
-										echo '<a href="index.php">Go to main page</a>';
+										echo ' <script>window.location.href="index.php";</script>';
 									} else {
 										echo '<p>Wrong email or password!</p>';
 									}
-								} 
+								}
 							} else {
-								echo 'Error!';
+								echo "<p>Error!</p>"
+								. "<p>Error code " . mysqli_errno($conn) . ": "
+								. mysqli_error($conn) . "</p>";
 							}
-						}							
+						}
+						mysqli_stmt_close($stmt);
+						mysqli_close($conn);
 					}
 				}
-					
-                	
-						
-						
-						
-						
-						
 						//$dbName = 'operationhelp';
 						//$conn = mysqli_connect("127.0.0.1", "operationhelp", "!PwO_1711", $dbName) OR DIE ('Error: '. mysqli_error($conn));
-						
+
               ?>
               </div>
-            <div class="btndiv">
-              <input class="inputbtn" type="submit" name="login" value="Login">
-            </div>
-          </form>
-          <div class="btndiv">
-            <form action="index.php?page=register" method="post">
-              <input class="inputbtn" type="submit" value="Register">
+              <div class="btndiv">
+                <input class="inputbtn" type="submit" name='login' value="Login">
+              </div>
             </form>
-          </div>
+            <div class="btndiv">
+                <form action="index.php?page=register" method="post">
+                    <input class="inputbtn" type="submit" value="Register">
+                </form>
+            </div>
         </div>
-      </div>
     </div>
+</div>

@@ -1,13 +1,12 @@
 <div id="fullPage">
-      <div id="header">
-        <a href='index.php?page3=AdminMainScreen.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
-		<h1 id='white'>Operation Desk</h1>
-        <div id="user">
-			<img id='userPic' src="<?php echo $_SESSION['path'];  ?>" alt="userPic">
-			<p id='userName'><?php echo $_SESSION['name']; ?></p>
-			<p id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></p>
-		</div>
-      </div>
+  <div id="header">
+    <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
+    <div id="admin">
+      <div id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></div>
+      <img id='userPic' src=<?php echo $_SESSION['path'];  ?> alt="userPic">
+      <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
+    </div>
+  </div>
 	  <div class="SolveTickets" id="effectblue">
 		<div class="SolveTicketsHeader" id="effectteal">
 			<h2>Choose ticket for solving</h2>
@@ -20,12 +19,14 @@
 			</div>
 		</div>
 		<?php
-			$TableName = 'Ticket';
+			$TableName = 'ticket';
 			$dbName = 'helpdesk';
 			$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
-			$query = "SELECT TicketID, Title, Opening_Date, Type, Employee.Company_Name FROM " . $TableName."
-			 JOIN Employee ON Ticket.UserID = Employee.UserID  WHERE Status = 'Sent'";
+			$query = "SELECT TicketID, Title, Opening_Date, Type, employee.Company_Name FROM " . $TableName."
+			 JOIN employee ON ticket.UserID = employee.UserID  WHERE Status = ?";
 			if($stmt = mysqli_prepare($conn, $query)){
+				$status = 'Sent';
+				mysqli_stmt_bind_param($stmt, 's', $status);
 				if(mysqli_stmt_execute($stmt)){
 					mysqli_stmt_bind_result($stmt, $id, $title, $date, $type, $company);
 					mysqli_stmt_store_result($stmt);
@@ -50,6 +51,7 @@
 			} else {
 				echo 'Error2';
 			}
+			mysqli_stmt_close($stmt);
 		?>
 	</div>
 	<div class="SolveTickets" id="effectblue">
@@ -64,12 +66,10 @@
 			</div>
 		</div>
 		<?php
-			$TableName = 'Ticket';
-			$dbName = 'helpdesk';
-			$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
-			$query = "SELECT TicketID, Title, Opening_Date, Type, Employee.Company_Name FROM " . $TableName."
-			 JOIN Employee ON Ticket.UserID = Employee.UserID
-			WHERE Status =?  AND AdminID =?  GROUP BY Opening_Date";
+			$TableName = 'ticket';
+			$query = "SELECT TicketID, Title, Opening_Date, Type, employee.Company_Name FROM " . $TableName."
+			 JOIN employee ON ticket.UserID = employee.UserID
+			WHERE Status =?  AND AdminID =?";
 			$sta = 'In process';
 			$id = $_SESSION['id'];
 			if($stmt = mysqli_prepare($conn, $query)){
@@ -98,6 +98,8 @@
 			} else {
 				echo 'Error2';
 			}
+			mysqli_stmt_close($stmt);
+			mysqli_close($conn);
 		?>
 	</div>
 </div>
