@@ -36,6 +36,7 @@
 			}
 			mysqli_stmt_close($stmt);
 		}
+	}
 		if(isset($_POST['choose'])){
 			$TableName = 'ticket';
 			$query = "UPDATE ".$TableName." SET Status=?, AdminID=? WHERE TicketID=?";
@@ -219,5 +220,5 @@
 			}
 		}
 		mysqli_close($conn);
-	?>
+?>
 </div>
