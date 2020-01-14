@@ -1,13 +1,12 @@
 <div id="fullPage">
-            <div id="header">
-				<a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
-				<h1 id='white'>Operation Desk</h1>
-				<div id="user">
-					<img id='userPic' src="<?php echo $_SESSION['path'];  ?>" alt="userPic">
-					<p id='userName'><?php echo $_SESSION['name']; ?></p>
-					<p id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></p>
-				</div>
-			</div>
+  <div id="header">
+    <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
+    <div id="admin">
+      <div id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></div>
+      <img id='userPic' src=<?php echo $_SESSION['path'];  ?> alt="userPic">
+      <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
+    </div>
+  </div>
 <a href="index.php?page3=AdminSolveTickets.php">Solve tickets</a>
 <h1>Ticket</h1>
 <?php
