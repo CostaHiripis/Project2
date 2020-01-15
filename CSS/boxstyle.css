@@ -583,3 +583,9 @@ tr{
     background-color: lightcoral;
     color: black;
 }
+.SolveTicketsBody{
+    height: 505px;
+    overflow-y: auto;
+    float: left;
+    width: 1231.2px;
+}
