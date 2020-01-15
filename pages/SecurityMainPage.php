@@ -59,7 +59,7 @@
                     echo "<td>" . $email . "</td>";
                     echo "<td>" . $name . "</td>";
                     echo "<td>" . $level . "</td>";
-                    echo "<td class='tableUpdate'><a href='index.php?page6=SecurityUpdate.php-" . $id . "'>Update</a></td>";
+                    echo "<td class='tableUpdate'><a href='index.php?page6=SecurityUpdate.php-".$id."'>Update</a></td>";
                     echo "<td class='tableDelete'><a href='index.php?AdminID=" . $id . "'>Delete</a></td></tr>";
                 }
             }
@@ -97,7 +97,7 @@
                                 echo "<td>" . $email . "</td>";
                                 echo "<td>" . $name . "</td>";
                                 echo "<td>" . $company . "</td>";
-                                echo "<a href='index.php?UserID=" . $id . "'><td class='tableDelete'>Delete</td></a></tr>";
+                                echo "<td class='tableDelete'><a href='index.php?UserID=" . $id . "'>Delete</td></a></tr>";
                             }
                             echo '</table>';
                         }

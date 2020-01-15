@@ -522,7 +522,7 @@ td{
     height: 20px;
     font-size: 14px;
     text-align: center;
-    border-size: 20px solid white;
+    border: 2px solid white;
     border-radius: 5px;
 }
 tr{
@@ -530,20 +530,18 @@ tr{
 }
 .tableBackground{
     transition: background 0.3s;
-    background-color: rgb(100, 180, 220);
+    background-color: rgb(0, 50, 170);;
     text-align: center;
     padding-bottom: 50px;
 }
 #adminCreate{
-
-    text-align:center;
-    text-height:75px;
     height: 75px;
     width:125px;
-    border-size: solid 10px white;
     border-radius: 50px;
-    background-color: #59A8B4;
-    text-decoration: none;   
+    background-color: rgb(89, 168, 180);
+    text-decoration: none;
+    vertical-align: middle;
+    text-height:auto;   
     color:black;
 }
 #adminCreate :hover{
@@ -551,19 +549,23 @@ tr{
     text-decoration: none;
     height: 75px;
     width:125px;
-    border-size: solid 10px white;
     border-radius: 50px;
-    background-color: rgb(0, 50, 170);
+    background-color: rgb(99,177,188) ;
     transform: scale(1.01);
     -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
 }
-.tableUpdate :hover{
+.tableUpdate{
+    text-decoration: none;
     background-color: lightgreen;
     color: black;
 }
-.tableDelete :hover{
+.tableDelete{
+    text-decoration: none;
     background-color: lightcoral;
     color: black;
+}
+#skrrUpdateCenter{
+    text-align: center;
 }
