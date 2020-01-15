@@ -345,6 +345,7 @@ h3 {
     border-radius: 5px;
 }
 
+
 .Name {
     font-size: 20px;
     float: left;
@@ -419,12 +420,12 @@ h3 {
     height: 600px;
     width: 70%;
     margin: 0 auto;
-    background-color: cornflowerblue;
+    overflow-y: auto;
 }
 
-.collapsible {
-    background-color: #777;
-    color: white;
+.accordion {
+    background-color: rgb(100, 180, 220);
+    color: black;
     cursor: pointer;
     padding: 18px;
     width: 100%;
@@ -432,17 +433,23 @@ h3 {
     text-align: left;
     outline: none;
     font-size: 15px;
+    transition: 0.4s;
 }
 
 .active,
-.collapsible:hover {
-    background-color: #555;
+.accordion:hover {
+    background-color: white;
 }
 
-.content {
+.panel {
+    width: 97.3%;
     padding: 0 18px;
+    background-color: white;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-    background-color: #f1f1f1;
+}
+
+.small-spacing-faq {
+    height: 15px;
 }

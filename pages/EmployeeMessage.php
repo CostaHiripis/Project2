@@ -4,7 +4,8 @@
         <h1 id='white'>Operation Desk</h1>
         <div id="user">
             <p id='userName'><?php echo $_SESSION['name']; ?></p>
-            <p id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></p>
+            <img id='userPic' src=<?php echo $_SESSION['path']; ?> alt="userPic">
+			<p id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></p>
         </div>
     </div>
     <a href="index.php?page2=EmployeeTickets.php">My Tickets</a>
@@ -175,8 +176,9 @@
                                             <h2>Messages</h2>
                                             <?php
                                             $TableName = 'message';
-                                            $query = 'SELECT Content, Date, SenderID FROM ' . $TableName;
+                                            $query = 'SELECT Content, Date, SenderID FROM ' . $TableName. ' WHERE TicketID = ?';
                                             If ($stmt = mysqli_prepare($conn, $query)) {
+												mysqli_stmt_bind_param($stmt, 'i', $id);
                                                 If (mysqli_stmt_execute($stmt)) {
                                                     mysqli_stmt_bind_result($stmt, $content2, $date2, $sender2);
                                                     mysqli_stmt_store_result($stmt);
