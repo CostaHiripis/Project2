@@ -29,7 +29,6 @@
                     if (mysqli_stmt_num_rows($stmt) == 0) {
                         echo '<h3 id="noTicket">There is no data</h3>';
                     } else {
-
                         while (mysqli_stmt_fetch($stmt)) {
                             echo "<a href='index.php?page22=EmployeeMessage.php-" . $id . "'><div class='Ticket' id='effectlblue'>";
                             echo "<div class='TicketLeft'>";
@@ -55,8 +54,11 @@
                             <?php
                             echo "</div>";
                             echo "<div class='TicketRight'>";
-                            echo "<div class='Helper'><div class='Text'>" . $name . "</div>";
-                            ?>
+							if(($name == NULL) OR ($path == NULL)){
+								echo '<div class="Helper"><div class="Text">Did not chosen</div></div>';
+                            } else {
+								echo "<div class='Helper'><div class='Text'>" . $name . "</div>";
+								?>
                             <img id='HelperPic' class='imgRound' src='<?php
                                  If ($path == NULL) {
                                      echo '../img/defuserpic.png';
@@ -65,6 +67,7 @@
                                  }
                                  ?>' alt='userPic'>
                                  <?php
+							}
                                  echo "</div>";
                                  echo "</div>";
                                  echo "</div></a>";
