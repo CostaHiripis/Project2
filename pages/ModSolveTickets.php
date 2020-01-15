@@ -3,7 +3,8 @@
         <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
         <div id="user">
             <div id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></div>
-            <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
+            <img id='userPic' src=<?php echo $_SESSION['path']; ?> alt="userPic">
+			<h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
         </div>
     </div>
 
@@ -14,6 +15,7 @@
         <div class="SolveTicketsBody">
             <div class="over"></div>
             <?php
+			echo $_SESSION['path'];
             include 'connect.php';
             $TableName = 'ticket';
             $query = "SELECT TicketID, Title, Opening_Date, Type, employee.Company_Name FROM " . $TableName . "

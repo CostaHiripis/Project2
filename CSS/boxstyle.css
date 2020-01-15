@@ -116,6 +116,15 @@ body {
     width: fit-content;
     white-space: nowrap;
 }
+
+#userPic{
+    float:left;
+	margin: 0;
+	height: 50px;
+	margin-top: 10px;
+	margin-left: 60px;
+}
+
 #section1 {
     margin-top: 6%;
     width: 60%;
