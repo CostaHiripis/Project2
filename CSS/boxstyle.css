@@ -505,3 +505,65 @@ img{
 .over{
     margin-top: 20px;
 }
+table{
+    font-size: 12px;
+    font-family: Arial;
+    text-align:center;
+}
+th{
+    background-color: teal;
+    color: white;
+    height: 50px;
+    font-size: 25px;
+
+}
+td{
+    background-color: white;
+    height: 20px;
+    font-size: 14px;
+    text-align: center;
+    border-size: 20px solid white;
+    border-radius: 5px;
+}
+tr{
+    background-color: white;
+}
+.tableBackground{
+    transition: background 0.3s;
+    background-color: rgb(100, 180, 220);
+    text-align: center;
+    padding-bottom: 50px;
+}
+#adminCreate{
+
+    text-align:center;
+    text-height:75px;
+    height: 75px;
+    width:125px;
+    border-size: solid 10px white;
+    border-radius: 50px;
+    background-color: #59A8B4;
+    text-decoration: none;   
+    color:black;
+}
+#adminCreate :hover{
+    color: white;
+    text-decoration: none;
+    height: 75px;
+    width:125px;
+    border-size: solid 10px white;
+    border-radius: 50px;
+    background-color: rgb(0, 50, 170);
+    transform: scale(1.01);
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+}
+.tableUpdate :hover{
+    background-color: lightgreen;
+    color: black;
+}
+.tableDelete :hover{
+    background-color: lightcoral;
+    color: black;
+}
