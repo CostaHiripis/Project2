@@ -319,8 +319,9 @@ textarea {
 }
 
 .TicketRight{
-    float:right;
-    width: 220px;
+    float: right;
+    width: 40%;
+    padding: 18px;
 }
 
 .Helper {
@@ -416,8 +417,7 @@ textarea {
 
 .SolveTicketsHeader{
     width: 100%;
-    height: 90px;
-    margin-bottom: 20px;
+    height: 44px;
 }
 
 .SolveTicketsHeader h2{
@@ -433,8 +433,6 @@ textarea {
     height: 10%;
     margin-bottom: 20px;
     margin-left: 20px;
-    display: grid;
-    grid-template-columns: [col] 20% [col] 20% [col] 20% [col] 20% [col] 20%;
 }
 
 .SolveTicket{
@@ -447,28 +445,28 @@ textarea {
     height: 10%;
     margin-bottom: 20px;
     margin-left: 20px;
-    display: grid;
-    grid-template-columns: [col] 20% [col] 20% [col] 20% [col] 20% [col] 20%;
 }
 
-.Solvetype{
-    grid-column: col;
+.Solvetype, .Solvetitle{
+    float:left;
 }
-
+.Solvedate, .Solvecompany{
+    float:right;
+}
 .Solvetitle{
-    grid-column: col 2;
+
 }
 
 .Solvedate{
-    grid-column: col 3;
+
 }
 
 .Solvecompany{
-    grid-column: col 4;
+
 }
 
 .Solvedetails{
-    grid-column: col 5;
+
 }
 .CreateTicket{
     width: 200px;
@@ -504,4 +502,10 @@ img{
 }
 .over{
     margin-top: 20px;
+}
+.SolveTicketsBody{
+    height: 505px;
+    overflow-y: auto;
+    float: left;
+    width: 1231.2px;
 }

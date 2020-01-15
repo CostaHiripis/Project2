@@ -6,10 +6,9 @@
             <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
         </div>
     </div>
-
     <div class="SolveTickets" id="effectblue">
         <div class="SolveTicketsHeader" id="effectteal">
-            <h2>My tickets</h2>
+            <h2>Choose ticket for solving</h2>
         </div>
         <div class="SolveTicketsBody">
             <div class="over"></div>
@@ -17,12 +16,10 @@
             include 'connect.php';
             $TableName = 'ticket';
             $query = "SELECT TicketID, Title, Opening_Date, Type, employee.Company_Name FROM " . $TableName . "
-	JOIN employee ON ticket.UserID = employee.UserID
-	WHERE Status =?  AND AdminID =?";
-            $sta = 'In process';
-            $id = $_SESSION['id'];
+	JOIN employee ON ticket.UserID = employee.UserID  WHERE Status =?";
             if ($stmt = mysqli_prepare($conn, $query)) {
-                mysqli_stmt_bind_param($stmt, 'si', $sta, $id);
+                $status = 'Sent';
+                mysqli_stmt_bind_param($stmt, 's', $status);
                 if (mysqli_stmt_execute($stmt)) {
                     mysqli_stmt_bind_result($stmt, $id, $title, $date, $type, $company);
                     mysqli_stmt_store_result($stmt);
@@ -42,7 +39,8 @@
                                     <div class='Solvecompany'><?php echo $type ?></div>
 
                                 </div>
-                            </div><?php echo "</a>" ?>                   
+                            </div>
+                            <?php echo "</a>" ?>
                             <?php
                         }
                     }
@@ -56,4 +54,5 @@
             ?>
         </div>
     </div>
+
 </div>
