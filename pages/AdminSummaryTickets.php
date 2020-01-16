@@ -1,12 +1,12 @@
 <div id="fullPage">
-    <div id="header">
-        <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
-        <div id="user">
-            <div id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></div>
-            <img id='userPic' src=<?php echo $_SESSION['path']; ?> alt="userPic">
-			<h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
-        </div>
-    </div>
+  <div id="header">
+      <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
+      <div id="admin">
+          <div id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></div>
+          <img id='userPic' src=<?php echo $_SESSION['path']; ?> alt="userPic">
+          <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
+      </div>
+  </div>
     <?php
     $TableName = 'ticket';
     include 'connect.php';
@@ -25,7 +25,7 @@
                             <h3 id="h3summ">Open Tickets</h3>
                             <div id="solved"><h3>Summary solved tickets: <?php echo $summary; ?></h3></div>
                         </div>
-                        <div class="TicketsBody">
+                        <div class="TBody">
                         <?php
                     }
                 }

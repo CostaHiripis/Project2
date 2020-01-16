@@ -1,10 +1,10 @@
 <div id="fullPage">
     <div id="header">
         <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
-        <div id="user">
-			<div id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></div>
+        <div id="admin">
+            <div id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></div>
             <img id='userPic' src=<?php echo $_SESSION['path']; ?> alt="userPic">
-			<h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
+            <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
         </div>
     </div>
     <div class="BgTickets" id="effectblue">
@@ -59,7 +59,7 @@
     </div>
     <div class="BgTickets solvedT" id="effectblue">
         <div class="adminSummary" id="effectteal">
-            <h3 id="h3summ">Open Tickets</h3>
+            <h3 id="h3summ">Solved Tickets</h3>
         </div>
         <table>
         <tr class=tableH id="effectblue">
