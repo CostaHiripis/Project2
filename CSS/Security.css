@@ -22,6 +22,9 @@
 }
 
 #adminCreate {
+    float: left;
+    margin: 10px;
+    font-size: 12px;
     background-color: #59A8B4;
     height: 120px;
     width: 120px;
@@ -29,4 +32,17 @@
     border-radius: 100%;
     text-align: center;
     line-height: 120px;
+}
+
+#adminCreate :hover {
+    float: left;
+    height: 120px;
+    width: 120px;
+    border: 1px solid black;
+    border-radius: 100%;
+    background-color: #59A8B4;
+    transform: scale(1.01);
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
 }

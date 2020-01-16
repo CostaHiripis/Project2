@@ -7,10 +7,10 @@
             <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
         </div>
     </div>
-    <a href='index.php?page5=SecurityRegister.php'>
-        <div id="adminCreate">
+    <div id="adminCreate">
+        <a href='index.php?page5=SecurityRegister.php'>
             <p>Create new Admin</p>
-        </div>
+    </div>
     </a>
     <center>
         <?php
