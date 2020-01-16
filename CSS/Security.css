@@ -46,3 +46,34 @@
     -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
 }
+
+.SregDropdown {
+    display: block;
+    margin: 0 auto;
+    height: 35px;
+    width: 300px;
+    font-size: 23px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    text-indent: 10px;
+}
+
+
+/* welp this doesn't work yet*/
+
+.Sbuttons :hover {
+    display: block;
+    margin: 0 auto;
+    height: 35px;
+    width: 300px;
+    font-size: 23px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    text-indent: 10px;
+    transform: scale(1.1);
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+}

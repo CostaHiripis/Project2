@@ -115,24 +115,24 @@
                         <h1>Update data</h1>
                     </br>
                         <form method="post" action='index.php?page6=SecurityUpdate.php-<?php echo $id ?>' >
-                            <h2>Full name<input type="text" name="name" value="<?php echo $name; ?>"/></h2>
-                            <h2>Email<input type="email" name="email" value="<?php echo $email; ?>"/></h2>
-                            <h2>Level<input type="text" name="level" value="<?php echo $level; ?>"/></h2>
+                            <h2>Full name</h2><input type="text" name="name" value="<?php echo $name; ?>"/>
+                            <h2>Email</h2><input type="email" name="email" value="<?php echo $email; ?>"/>
+                            <h2>Level</h2><input type="text" name="level" value="<?php echo $level; ?>"/>
                             <p><input type="submit" name='submit' value="Update" /></p> 
                         </form>	
-                        <h2>Update password</h2>
+                        <h1>Update password</h1>
                         <form method="post" action='index.php?page6=SecurityUpdate.php-<?php echo $id ?>' >
                             <input type="password" name="pw" placeholder="Password">
                             <input type="password" name="pwr" placeholder="Repeat Password">
-                            <p><input type="submit" name='submitPas' value="Update" /></p> 
+                            <p><input class="Sbuttons" type="submit" name='submitPas' value="Update" /></p> 
                         </form>	
-                        <h2>Update photo</h2>
+                        <h1>Update photo</h1>
                         <form method="post" action='index.php?page6=SecurityUpdate.php-<?php echo $id ?>' enctype="multipart/form-data">
                             <div id='bla'>
                                 <img id="blah" src="<?php echo $path; ?>"/>
                             </div>
                             <input id='choose' type='file' name="photo" onchange="readURL(this);">
-                            <p><input type="submit" name='submitPhoto' value="New Photo" /></p> 
+                            <p><input class="Sbuttons" type="submit" name='submitPhoto' value="New Photo" /></p> 
                         </form>	
                         <?php
                     }
