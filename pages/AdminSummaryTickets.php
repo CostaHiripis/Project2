@@ -43,7 +43,7 @@
                 mysqli_stmt_bind_result($stmt, $id, $title, $date, $status, $name, $path);
                 mysqli_stmt_store_result($stmt);
                 if (mysqli_stmt_num_rows($stmt) == 0) {
-                    echo '<p>There are no data!</p>';
+                    echo '<p>There is no data!</p>';
                 } else {
                     while (mysqli_stmt_fetch($stmt)) {
                         ?>

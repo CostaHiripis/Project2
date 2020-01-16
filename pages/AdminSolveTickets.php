@@ -59,7 +59,7 @@
     </div>
     <div class="BgTickets solvedT" id="effectblue">
         <div class="adminSummary" id="effectteal">
-            <h3 id="h3summ">Solved Tickets</h3>
+            <h3 id="h3summ">My Tickets</h3>
         </div>
         <table>
         <tr class=tableH id="effectblue">
