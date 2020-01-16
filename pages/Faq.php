@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Frequently Asked Questions</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/mainmenu.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Faq.css">
 </head>
 
 <body>
@@ -89,65 +89,6 @@
                     <p>Yes! To contact us just click on the "Contact Us" button on the main screen.</p>
                 </div>
 
-                <div class="small-spacing-faq"></div>
-
-                <button class="accordion">What is this shit?</button>
-                <div class="panel">
-                    <p>Bruh.</p>
-                </div>
-
-                <div class="small-spacing-faq"></div>
-
-                <button class="accordion">Fuck you.</button>
-                <div class="panel">
-                    <p>No ur mom.</p>
-                </div>
-
-                <div class="small-spacing-faq"></div>
-     
-                <button class="accordion">Help penis is hurt what do?</button>
-                <div class="panel">
-                    <p>Sell penis to black market and then die ok thx.</p>
-                </div>
-
-                <div class="small-spacing-faq"></div>
-
-                <button class="accordion">What is this shit?</button>
-                <div class="panel">
-                    <p>Bruh.</p>
-                </div>
-
-                <div class="small-spacing-faq"></div>
-
-                <button class="accordion">Fuck you.</button>
-                <div class="panel">
-                    <p>No ur mom.</p>
-                </div>
-
-                <div class="small-spacing-faq"></div>
-
-                <button class="accordion">Help penis is hurt what do?</button>
-                <div class="panel">
-                    <p>Sell penis to black market and then die ok thx.</p>
-                </div>
-
-                <div class="small-spacing-faq"></div>
-
-                <button class="accordion">What is this shit?</button>
-                <div class="panel">
-                    <p>Bruh.</p>
-                </div>
-
-                <div class="small-spacing-faq"></div>
-
-                <button class="accordion">Fuck you.</button>
-                <div class="panel">
-                    <p>No ur mom.</p>
-                </div>
-
-                <div class="small-spacing-faq"></div>
-            </div>
-        </div>
         <script>
             var acc = document.getElementsByClassName("accordion");
             var i;
