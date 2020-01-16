@@ -3,7 +3,8 @@
         <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
         <div id="user">
             <div id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></div>
-            <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
+            <img id='userPic' src=<?php echo $_SESSION['path']; ?> alt="userPic">
+			<h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
         </div>
     </div>
     <h1>Ticket</h1>
@@ -124,9 +125,10 @@
                         <h2>Messages</h2>
                         <?php
                         $TableName = 'message';
-                        $query = 'SELECT Content, Date, SenderID FROM ' . $TableName;
+                        $query = 'SELECT Content, Date, SenderID FROM ' . $TableName .' WHERE TicketID = ?';
                         If ($stmt = mysqli_prepare($conn, $query)) {
-                            If (mysqli_stmt_execute($stmt)) {
+							mysqli_stmt_bind_param($stmt, 'i', $id);
+                            If(mysqli_stmt_execute($stmt)) {
                                 mysqli_stmt_bind_result($stmt, $content2, $date2, $sender2);
                                 mysqli_stmt_store_result($stmt);
                                 if (mysqli_stmt_num_rows($stmt) == 0) {

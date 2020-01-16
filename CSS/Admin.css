@@ -1,0 +1,71 @@
+#solved{
+  float: right;
+  padding: 14px;
+}
+#h3summ{
+  float: left;
+  padding: 14px;
+}
+.adminSummary
+{
+  color:white;
+  height: 50px;
+}
+.Ticket{
+  margin-top: 10px;
+  width: 98%;
+  height: 70px;
+  float:left;
+}
+.Prof{
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.Status1, .Status2, .Status3{
+  margin: 10px;
+  margin-top: 30px;
+  float:left;
+}
+.TName{
+  margin-top: 25px;
+  margin-left: 10px;
+  float:left;
+}
+.HName{
+  float: right;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+.TDate{
+  margin-top: 25px;
+  margin-left: 10px;
+  float:left;
+}
+.BgTickets{
+  overflow: hidden;
+}
+.STicket
+{
+ height: 50px;
+}
+table{
+  text-align: center;
+  width: 98%;
+  margin: 0 auto;
+  border-spacing: 5px;
+}
+td{
+  border-radius: 5px;
+}
+th{
+  border-radius: 10px;
+  background-color: lightblue;
+}
+.solved{
+  height: 35px;
+}
+.solvedT{
+  min-height: 0;
+  height: 250px;
+}

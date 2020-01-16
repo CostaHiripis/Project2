@@ -11,7 +11,7 @@ html {
 
 body {
     background: teal;
-    background-image: url("../img/linebg.png");
+    background-image: url("../img/bg.png");
     background-repeat: no-repeat;
     background-size: cover;
     font-family: "Arial";
@@ -344,7 +344,6 @@ h3 {
     float: left;
     border-radius: 5px;
 }
-
 
 .Name {
     font-size: 20px;

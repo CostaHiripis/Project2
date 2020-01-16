@@ -7,22 +7,24 @@
             <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
         </div>
     </div>
-    <div class="SolveTickets" id="effectblue">
-        <div class="SolveTicketsHeader" id="effectteal">
-            <h2>Choose ticket for solving</h2>
-            <div class="rSolveTicket">
-                <div class='Solvetype'><h3>Type</h3></div>
-                <div class='Solvetitle'><h3>Title</h3></div>
-                <div class='Solvedate'><h3>Date</h3></div>
-                <div class='Solvecompany'><h3>Company</h3></div>
-                <div class='Solvedetails'><h3>Details</h3></div>
-            </div>
+    <div class="BgTickets" id="effectblue">
+        <div class="adminSummary" id="effectteal">
+            <h3 id="h3summ">Open Tickets</h3>
         </div>
+        <table>
+        <tr class=tableH id="effectblue">
+          <th><h3>Type</h3></th>
+          <th><h3>Title</h3></th>
+          <th><h3>Date</h3></th>
+          <th><h3>Company</h3></th>
+          <th><h3>Details</h3></th>
+        </tr>
+        <div class="TicketsBody">
         <?php
         $TableName = 'ticket';
         include 'connect.php';
         $query = "SELECT TicketID, Title, Opening_Date, Type, employee.Company_Name FROM " . $TableName . "
-			 JOIN employee ON ticket.UserID = employee.UserID  WHERE Status = ?";
+			   JOIN employee ON ticket.UserID = employee.UserID  WHERE Status = ?";
         if ($stmt = mysqli_prepare($conn, $query)) {
             $status = 'Sent';
             mysqli_stmt_bind_param($stmt, 's', $status);
@@ -34,13 +36,13 @@
                 } else {
                     while (mysqli_stmt_fetch($stmt)) {
                         ?>
-                        <div class="SolveTicket" id="effectlblue">
-                            <div class='Solvetype'><p><?php echo $type; ?></p></div>
-                            <div class='Solvetitle'><p><?php echo $title; ?></p></div>
-                            <div class='Solvedate'><p><?php echo $date; ?></p></div>
-                            <div class='Solvecompany'><p><?php echo $company; ?></p></div>
-                            <div class='Solvedetails'><p><?php echo "<a href='index.php?page33=AdminMessage.php-" . $id . "'>Details</a>" ?></p></div>
-                        </div>
+                          <tr class="STicket" id="effectlblue">
+                            <td><p><?php echo $type; ?></p></td>
+                            <td><p><?php echo $title; ?></p></td>
+                            <td><p><?php echo $date; ?></p></td>
+                            <td><p><?php echo $company; ?></p></td>
+                            <td><p><?php echo "<a href='index.php?page33=AdminMessage.php-" . $id . "'>Details</a>" ?></p></td>
+                          </tr>
                         <?php
                     }
                 }
@@ -52,18 +54,22 @@
         }
         mysqli_stmt_close($stmt);
         ?>
-    </div>
-    <div class="SolveTickets" id="effectblue">
-        <div class="SolveTicketsHeader" id="effectteal">
-            <h2>My tickets</h2>
-            <div class="rSolveTicket">
-                <div class='Solvetype'><h3>Type</h3></div>
-                <div class='Solvetitle'><h3>Title</h3></div>
-                <div class='Solvedate'><h3>Date</h3></div>
-                <div class='Solvecompany'><h3>Company</h3></div>
-                <div class='Solvedetails'><h3>Details</h3></div>
-            </div>
         </div>
+      </table>
+    </div>
+    <div class="BgTickets solvedT" id="effectblue">
+        <div class="adminSummary" id="effectteal">
+            <h3 id="h3summ">My Tickets</h3>
+        </div>
+        <table>
+        <tr class=tableH id="effectblue">
+          <th><h3>Type</h3></th>
+          <th><h3>Title</h3></th>
+          <th><h3>Date</h3></th>
+          <th><h3>Company</h3></th>
+          <th><h3>Details</h3></th>
+        </tr>
+        <div class="TicketsBody">
         <?php
         $TableName = 'ticket';
         $query = "SELECT TicketID, Title, Opening_Date, Type, employee.Company_Name FROM " . $TableName . "
@@ -81,13 +87,13 @@
                 } else {
                     while (mysqli_stmt_fetch($stmt)) {
                         ?>
-                        <div class="SolveTicket" id="effectlblue">
-                            <div class='Solvetype'><p><?php echo $type; ?></p></div>
-                            <div class='Solvetitle'><p><?php echo $title; ?></p></div>
-                            <div class='Solvedate'><p><?php echo $date; ?></p></div>
-                            <div class='Solvecompany'><p><?php echo $company; ?></p></div>
-                            <div class='Solvedetails'><p><?php echo "<a href='index.php?page33=AdminMessage.php-" . $id . "'>Details</a>" ?></p></div>
-                        </div>
+                        <tr class="solved" id="effectlblue">
+                          <td><p><?php echo $type; ?></p></td>
+                          <td><p><?php echo $title; ?></p></td>
+                          <td><p><?php echo $date; ?></p></td>
+                          <td><p><?php echo $company; ?></p></td>
+                          <td><p><?php echo "<a href='index.php?page33=AdminMessage.php-" . $id . "'>Details</a>" ?></p></td>
+                        </tr>
                         <?php
                     }
                 }
@@ -100,5 +106,7 @@
         mysqli_stmt_close($stmt);
         mysqli_close($conn);
         ?>
+      </div>
+      </table>
     </div>
 </div>
