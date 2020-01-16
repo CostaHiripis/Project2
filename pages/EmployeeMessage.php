@@ -6,7 +6,7 @@
           <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
       </div>
   </div>
-    <a href="index.php?page2=EmployeeTickets.php">My Tickets</a>
+    <a href="index.php"><div class="Back" id="effectblue">My Tickets</div></a>
     <h1>Ticket</h1>
     <?php
     $id = $_SESSION['ticket'];

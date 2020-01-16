@@ -69,3 +69,12 @@ th{
   min-height: 0;
   height: 250px;
 }
+.Back{
+  width: 150px;
+  height: 50px;
+  padding-top: 25px;
+  border-radius: 10px;
+  text-align: center;
+  color:white;
+  margin: 30px;
+}
