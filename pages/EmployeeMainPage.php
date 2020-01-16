@@ -49,7 +49,6 @@
                             if ($name == NULL) {
                                 echo '<div class="Helper"><div class="Text">Nobody</div></div>';
                             } else {
-                                echo "<div class='Helper'><div class='Text'>" . $name . "</div>";
                                 ?>
                                 <img id='HelperPic' class='imgRound' src='<?php
                                      If ($path == NULL) {
@@ -59,6 +58,7 @@
                                      }
                                      ?>' alt='userPic'>
                                      <?php
+                                     echo "<div class='Helper'><div class='Text'>" . $name . "</div>";
                                  }
                                  echo "</div>";
                                  echo "</div>";
