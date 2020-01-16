@@ -1,0 +1,32 @@
+.StableBackground {
+    background-color: rgb(0, 50, 170);
+    margin-bottom: 50x;
+    padding-bottom: 20px;
+}
+
+.StableUpdate {
+    background-color: lightgreen;
+}
+
+.StableDelete {
+    background-color: lightcoral;
+}
+
+.Stable {
+    border: solid 3px white;
+    background-color: white;
+}
+
+.StableHead {
+    background-color: teal;
+}
+
+#adminCreate {
+    background-color: #59A8B4;
+    height: 120px;
+    width: 120px;
+    border: 1px solid black;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 120px;
+}

@@ -8,7 +8,7 @@
 			<h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
         </div>
     </div>
-    <div id="skrrUpdateCenter">
+    <center>
         <?php
         $id = $_SESSION['update'];
         include 'connect.php';
@@ -112,7 +112,8 @@
                         $_SESSION['nameUP'] = $name;
                         $_SESSION['pathUP'] = $path;
                         ?>
-                        <h2>Update data</h2>
+                        <h1>Update data</h1>
+                    </br>
                         <form method="post" action='index.php?page6=SecurityUpdate.php-<?php echo $id ?>' >
                             <h2>Full name<input type="text" name="name" value="<?php echo $name; ?>"/></h2>
                             <h2>Email<input type="email" name="email" value="<?php echo $email; ?>"/></h2>
@@ -145,7 +146,7 @@
         }
         mysqli_close($conn);
         ?>
-    </div>
+    </center>
 </div>
 </body>
 </html>

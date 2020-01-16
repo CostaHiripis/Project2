@@ -8,6 +8,7 @@
 		<title>Stenden HelpDesk</title>
         <link rel="stylesheet" type="text/css" href="../CSS/loginstyle.css">
 		<link rel="stylesheet" type="text/css" href="../CSS/boxstyle.css">
+		<link rel="stylesheet" type="text/css" href="../CSS/Security.css">
     <link rel="stylesheet" type="text/css" href="../CSS/Admin.css">
 		<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
