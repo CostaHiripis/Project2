@@ -1,13 +1,11 @@
 <div id="fullPage">
-    <div id="header">
-        <a href='index.php?page2=EmployeeMainPage.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
-        <h1 id='white'>Operation Desk</h1>
-        <div id="user">
-            <p id='userName'><?php echo $_SESSION['name']; ?></p>
-            <img id='userPic' src=<?php echo $_SESSION['path']; ?> alt="userPic">
-			<p id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></p>
-        </div>
-    </div>
+  <div id="header">
+      <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
+      <div id="admin">
+          <div id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></div>
+          <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
+      </div>
+  </div>
     <a href="index.php?page2=EmployeeTickets.php">My Tickets</a>
     <h1>Ticket</h1>
     <?php
@@ -16,9 +14,9 @@
     $TableName = 'ticket';
     if (isset($_POST['delete'])) {
         $query = "DELETE FROM " . $TableName . " WHERE TicketID LIKE ?";
-        If ($stmt = mysqli_prepare($conn, $query)) {
+        if ($stmt = mysqli_prepare($conn, $query)) {
             mysqli_stmt_bind_param($stmt, 'si', $id);
-            If (mysqli_stmt_execute($stmt)) {
+            if (mysqli_stmt_execute($stmt)) {
                 echo 'Ticket deleted';
                 die();
             } else {
@@ -29,20 +27,20 @@
         }
         mysqli_stmt_close($stmt);
     }
-    If (isset($_POST['send'])) {
+    if (isset($_POST['send'])) {
         if (empty($_POST['message'])) {
             echo 'Message is empty!';
         } else {
             $TableName = 'message';
             $message = $_POST['message'];
-            If ($message !== $_SESSION['conn']) {
+            if ($message !== $_SESSION['conn']) {
                 $ticketID = $_SESSION['ticket'];
                 $date = date("Y-m-d");
                 $sender = $_SESSION['id'] . 'ad';
                 $query = "INSERT INTO " . $TableName . " VALUES(NULL,?,?,?,?)";
-                If ($stmt = mysqli_prepare($conn, $query)) {
+                if ($stmt = mysqli_prepare($conn, $query)) {
                     mysqli_stmt_bind_param($stmt, 'siss', $message, $ticketID, $date, $sender);
-                    If (mysqli_stmt_execute($stmt)) {
+                    if (mysqli_stmt_execute($stmt)) {
                         echo '<p>Message Sended</p>';
                         $_SESSION['conn'] = $message;
                     } else {
@@ -84,10 +82,10 @@
         $TableName = 'ticket';
         $query = "UPDATE " . $TableName . " SET Status=? WHERE TicketID=?";
         $status = 'In process';
-        If ($stmt = mysqli_prepare($conn, $query)) {
+        if ($stmt = mysqli_prepare($conn, $query)) {
             mysqli_stmt_bind_param($stmt, 'si', $status, $id);
-            If (mysqli_stmt_execute($stmt)) {
-                
+            if (mysqli_stmt_execute($stmt)) {
+
             } else {
                 echo 'Error200';
             }
@@ -195,5 +193,6 @@
             }
         }
     }
+
     ?>
 </div>
