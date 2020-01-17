@@ -169,7 +169,6 @@
                                                                 ?>
                                                                 <div class="form">
                                                                   <div class="errorDiv">
-                                                                    
                                                                   </div>
                                                                 <form method='post'>
                                                                   <textarea maxlength="120" placeholder="Send Message" name="message" rows="5" cols="40"></textarea>
