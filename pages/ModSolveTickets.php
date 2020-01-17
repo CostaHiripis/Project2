@@ -41,7 +41,7 @@
                             <td><p><?php echo $title; ?></p></td>
                             <td><p><?php echo $date; ?></p></td>
                             <td><p><?php echo $company; ?></p></td>
-                            <td><p><?php echo "<a href='index.php?page33=AdminMessage.php-" . $id . "'>Details</a>" ?></p></td>
+                            <td><p><?php echo "<a href='index.php?page44=ModMessage.php-" . $id . "'>Details</a>" ?></p></td>
                           </tr>
                         <?php
                     }
