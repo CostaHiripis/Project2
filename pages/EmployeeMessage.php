@@ -157,7 +157,6 @@
                                                                                     if ($stmt = mysqli_prepare($conn, $query)) {
                                                                                         mysqli_stmt_bind_param($stmt, 'siss', $message, $ticketID, $date, $sender);
                                                                                         if (mysqli_stmt_execute($stmt)) {
-                                                                                            echo '<p>Message Send</p>';
                                                                                             $_SESSION['conn'] = $message;
                                                                                         } else {
                                                                                             echo '<p>Error7!</p>';
