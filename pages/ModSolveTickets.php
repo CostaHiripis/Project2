@@ -62,9 +62,7 @@
             } else {
                 echo 'Error3';
             }
-        } else {
-            echo 'Error2';
-        }
+        
         mysqli_stmt_close($stmt);
         ?>
         </div>
