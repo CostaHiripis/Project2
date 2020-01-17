@@ -44,6 +44,7 @@
 }
 .BgTickets{
   overflow: hidden;
+  height:fit-content;
 }
 .STicket
 {
@@ -86,6 +87,7 @@ th{
 }
 .TicketDet{
 width: 90%;
+height: 700px;
 margin: auto;
 padding: 10px;
 background-color: rgba(190, 190, 190, 0.8);

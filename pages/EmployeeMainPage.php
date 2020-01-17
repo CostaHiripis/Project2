@@ -42,7 +42,9 @@
                           <div class='Prof'>
                             <?php if($path != NULL || $name != NULL) {?>
                               <img class="HelperPic" src=<?php echo $path;?> alt="userPic">
-                            <?php } ?>
+                            <?php } else { ?>
+								<img class="HelperPic" src='../img/defuserpic.png' alt="userPic">
+							<?php } ?>
                           </div>
                             <?php echo "<div class='HName'><h2>".$name."</h2></div>"; ?>
                         </div></a>
