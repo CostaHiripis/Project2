@@ -8,7 +8,7 @@
 			<h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
         </div>
     </div>
-    <center>
+    <div id="skrrUpdateCenter">
         <?php
         $id = $_SESSION['update'];
         include 'connect.php';
@@ -112,27 +112,26 @@
                         $_SESSION['nameUP'] = $name;
                         $_SESSION['pathUP'] = $path;
                         ?>
-                        <h1>Update data</h1>
-                    </br>
+                        <h2>Update data</h2>
                         <form method="post" action='index.php?page6=SecurityUpdate.php-<?php echo $id ?>' >
-                            <h2>Full name</h2><input type="text" name="name" value="<?php echo $name; ?>"/>
-                            <h2>Email</h2><input type="email" name="email" value="<?php echo $email; ?>"/>
-                            <h2>Level</h2><input type="text" name="level" value="<?php echo $level; ?>"/>
+                            <h2>Full name<input type="text" name="name" value="<?php echo $name; ?>"/></h2>
+                            <h2>Email<input type="email" name="email" value="<?php echo $email; ?>"/></h2>
+                            <h2>Level<input type="text" name="level" value="<?php echo $level; ?>"/></h2>
                             <p><input type="submit" name='submit' value="Update" /></p> 
                         </form>	
-                        <h1>Update password</h1>
+                        <h2>Update password</h2>
                         <form method="post" action='index.php?page6=SecurityUpdate.php-<?php echo $id ?>' >
                             <input type="password" name="pw" placeholder="Password">
                             <input type="password" name="pwr" placeholder="Repeat Password">
-                            <p><input class="Sbuttons" type="submit" name='submitPas' value="Update" /></p> 
+                            <p><input type="submit" name='submitPas' value="Update" /></p> 
                         </form>	
-                        <h1>Update photo</h1>
+                        <h2>Update photo</h2>
                         <form method="post" action='index.php?page6=SecurityUpdate.php-<?php echo $id ?>' enctype="multipart/form-data">
                             <div id='bla'>
                                 <img id="blah" src="<?php echo $path; ?>"/>
                             </div>
                             <input id='choose' type='file' name="photo" onchange="readURL(this);">
-                            <p><input class="Sbuttons" type="submit" name='submitPhoto' value="New Photo" /></p> 
+                            <p><input type="submit" name='submitPhoto' value="New Photo" /></p> 
                         </form>	
                         <?php
                     }
@@ -146,7 +145,7 @@
         }
         mysqli_close($conn);
         ?>
-    </center>
+    </div>
 </div>
 </body>
 </html>
