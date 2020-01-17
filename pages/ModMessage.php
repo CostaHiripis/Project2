@@ -152,7 +152,7 @@
                             echo '<p>Error8!</p>';
                         }
                         if (isset($_POST['close'])) {
-                            $TableName = 'Ticket';
+                            $TableName = 'ticket';
                             $query = "UPDATE " . $TableName . " SET Closing_Date=?, Status=? WHERE TicketID = ?";
                             $status = 'Closed';
                             $date = date("Y-m-d");

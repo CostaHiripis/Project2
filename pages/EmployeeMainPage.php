@@ -18,7 +18,7 @@
             $idd = $_SESSION['id'];
             include 'connect.php';
             $query = "SELECT TicketID, Title, Opening_Date, Status, admin.Admin_Name, admin.ImagePath FROM " . $TableName . "
-			 LEFT JOIN admin ON ticket.AdminID = admin.AdminID WHERE UserID = ? ";
+			 LEFT JOIN admin ON ticket.AdminID = admin.AdminID WHERE UserID = ? ORDER BY TicketID DESC ";
             if ($stmt = mysqli_prepare($conn, $query)) {
                 mysqli_stmt_bind_param($stmt, 'i', $idd);
                 if (mysqli_stmt_execute($stmt)) {
