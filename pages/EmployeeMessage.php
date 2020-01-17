@@ -154,32 +154,7 @@
                                                                 ?>
                                                                 <div class="form">
                                                                   <div class="errorDiv">
-                                                                    <?php     if (isset($_POST['send'])) {
-                                                                            if (empty($_POST['message'])) {
-                                                                                echo 'Please fill in the field!';
-                                                                            } else {
-                                                                                $TableName = 'message';
-                                                                                $message = $_POST['message'];
-                                                                                if ($message !== $_SESSION['conn']) {
-                                                                                    $ticketID = $_SESSION['ticket'];
-                                                                                    $date = date("Y-m-d");
-                                                                                    $sender = $_SESSION['id'] . 'ad';
-                                                                                    $query = "INSERT INTO " . $TableName . " VALUES(NULL,?,?,?,?)";
-                                                                                    if ($stmt = mysqli_prepare($conn, $query)) {
-                                                                                        mysqli_stmt_bind_param($stmt, 'siss', $message, $ticketID, $date, $sender);
-                                                                                        if (mysqli_stmt_execute($stmt)) {
-                                                                                            echo '<script>window.location.reload(true);</script>';
-                                                                                            $_SESSION['conn'] = $message;
-                                                                                        } else {
-                                                                                            echo '<p>Error7!</p>';
-                                                                                        }
-                                                                                    } else {
-                                                                                        echo '<p>Error6!</p>';
-                                                                                    }
-                                                                                    mysqli_stmt_close($stmt);
-                                                                                }
-                                                                            }
-                                                                        } ?>
+                                                                    
                                                                   </div>
                                                                 <form method='post'>
                                                                   <textarea maxlength="120" placeholder="Send Message" name="message" rows="5" cols="40"></textarea>
