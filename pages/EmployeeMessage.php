@@ -15,48 +15,31 @@
     <?php
     $id = $_SESSION['ticket'];
     include 'connect.php';
-																	$r = 'eee';
-																	if (isset($_POST['send'])) {
-                                                                            if (empty($_POST['message'])) {
-                                                                                echo 'Please fill in the field!';
-                                                                            } else {
-                                                                                $TableName = 'message';
-                                                                                $message = $_POST['message'];
-                                                                                if ($message !== $r) {
-                                                                                    $ticketID = $_SESSION['ticket'];
-                                                                                    $date = date("Y-m-d");
-                                                                                    $sender = $_SESSION['id'] . 'ad';
-                                                                                    $query = "INSERT INTO " . $TableName . " VALUES(NULL,?,?,?,?)";
-                                                                                    if ($stmt = mysqli_prepare($conn, $query)) {
-                                                                                        mysqli_stmt_bind_param($stmt, 'siss', $message, $ticketID, $date, $sender);
-                                                                                        if (mysqli_stmt_execute($stmt)) {
-                                                                                            echo '<p>Message Send</p>';
-                                                                                            $r = $message;
-                                                                                        } else {
-                                                                                            echo '<p>Error7!</p>';
-                                                                                        }
-                                                                                    } else {
-                                                                                        echo '<p>Error6!</p>';
-                                                                                    }
-																				}
-                                                                            }
-                                                                        }
-    $TableName = 'ticket';
-    if (isset($_POST['delete'])) {
-        $query = "DELETE FROM " . $TableName . " WHERE TicketID LIKE ?";
-        if ($stmt = mysqli_prepare($conn, $query)) {
-            mysqli_stmt_bind_param($stmt, 'si', $id);
-            if (mysqli_stmt_execute($stmt)) {
-                echo 'Ticket deleted';
-                die();
-            } else {
-                echo 'error454';
-            }
-        } else {
-            echo 'error45444';
-        }
-        mysqli_stmt_close($stmt);
-    }
+				$r = 'e';
+				if (isset($_POST['send'])) {
+          if (empty($_POST['message'])) {
+              echo 'Please fill in the field!';
+          } else {
+              $TableName = 'message';
+              $message = $_POST['message'];
+              if ($message !== $r) {
+                  $ticketID = $_SESSION['ticket'];
+                  $date = date("Y-m-d");
+                  $sender = $_SESSION['id'] . 'ad';
+                  $query = "INSERT INTO " . $TableName . " VALUES(NULL,?,?,?,?)";
+                  if ($stmt = mysqli_prepare($conn, $query)) {
+                      mysqli_stmt_bind_param($stmt, 'siss', $message, $ticketID, $date, $sender);
+                      if (mysqli_stmt_execute($stmt)) {
+                          $r = $message;
+                      } else {
+                          echo '<p>Error7!</p>';
+                      }
+                  } else {
+                      echo '<p>Error6!</p>';
+                  }
+              }
+          }
+      }
     $TableName = 'ticket';
     $query = "SELECT TicketID, Title, Content, Status, employee.Employee_Name, employee.Company_Name FROM " . $TableName .
             " JOIN employee ON Ticket.UserID = employee.UserID WHERE TicketID = ?";
@@ -98,6 +81,8 @@
         }
     }
     echo "<div class='TicketR'>";
+    ?>
+    <?php
     $TableName = 'ticket';
     $query = "SELECT Status FROM " . $TableName .
             " WHERE TicketID = ?";
@@ -173,9 +158,6 @@
                                                                 <form method='post'>
                                                                   <textarea maxlength="120" placeholder="Send Message" name="message" rows="5" cols="40"></textarea>
                                                                     <input class="inputbtn" type='submit' name='send' value='Send'>
-                                                                </form>
-                                                                <form method='post'>
-                                                                    <input class="inputbtn" type='submit' name='delete' value='Delete ticket'>
                                                                 </form>
                                                               </div>
                                                                 <?php
