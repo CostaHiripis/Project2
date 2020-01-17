@@ -6,8 +6,12 @@
           <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
       </div>
   </div>
-    <a href="index.php"><div class="Back" id="effectblue">My Tickets</div></a>
-    <h1>Ticket</h1>
+    <div class="space"></div>
+    <a class="Back" id="effectblue" href="index.php">My Tickets</a>
+    <div class="space"></div>
+    <div class="TicketDet space">
+      <div class="TicketLeft">
+      <h1>Ticket details</h1>
     <?php
     $id = $_SESSION['ticket'];
     include 'connect.php';
@@ -27,32 +31,6 @@
         }
         mysqli_stmt_close($stmt);
     }
-    if (isset($_POST['send'])) {
-        if (empty($_POST['message'])) {
-            echo 'Message is empty!';
-        } else {
-            $TableName = 'message';
-            $message = $_POST['message'];
-            if ($message !== $_SESSION['conn']) {
-                $ticketID = $_SESSION['ticket'];
-                $date = date("Y-m-d");
-                $sender = $_SESSION['id'] . 'ad';
-                $query = "INSERT INTO " . $TableName . " VALUES(NULL,?,?,?,?)";
-                if ($stmt = mysqli_prepare($conn, $query)) {
-                    mysqli_stmt_bind_param($stmt, 'siss', $message, $ticketID, $date, $sender);
-                    if (mysqli_stmt_execute($stmt)) {
-                        echo '<p>Message Sended</p>';
-                        $_SESSION['conn'] = $message;
-                    } else {
-                        echo '<p>Error7!</p>';
-                    }
-                } else {
-                    echo '<p>Error6!</p>';
-                }
-                mysqli_stmt_close($stmt);
-            }
-        }
-    }
     $TableName = 'ticket';
     $query = "SELECT TicketID, Title, Content, Status, employee.Employee_Name, employee.Company_Name FROM " . $TableName .
             " JOIN employee ON Ticket.UserID = employee.UserID WHERE TicketID = ?";
@@ -68,7 +46,7 @@
                     echo '<p>Title: ' . $title . '</p>';
                     echo '<p>Name: ' . $name . '</p>';
                     echo '<p>Company: ' . $company . '</p>';
-                    echo '<p>Content: ' . $content . '</p>';
+                    echo '<p>Content: ' . $content . '</p></div>';
                 }
             }
         } else {
@@ -93,6 +71,7 @@
             echo 'Error200';
         }
     }
+    echo "<div class='TicketR'>";
     $TableName = 'ticket';
     $query = "SELECT Status FROM " . $TableName .
             " WHERE TicketID = ?";
@@ -107,13 +86,12 @@
                 while (mysqli_stmt_fetch($stmt)) {
                     if ($status !== 'Sent') {
                         ?>
-                        <h2>Messages</h2>
                         <?php
                         $TableName = 'message';
                         $query = 'SELECT Content, Date, SenderID FROM ' . $TableName. ' WHERE TicketID = ?';
-                        If ($stmt = mysqli_prepare($conn, $query)) {
+                        if ($stmt = mysqli_prepare($conn, $query)) {
                             mysqli_stmt_bind_param($stmt, 'i', $id);
-                            If (mysqli_stmt_execute($stmt)) {
+                            if (mysqli_stmt_execute($stmt)) {
                                 mysqli_stmt_bind_result($stmt, $content2, $date2, $sender2);
                                 mysqli_stmt_store_result($stmt);
                                 if (mysqli_stmt_num_rows($stmt) == 0) {
@@ -122,11 +100,9 @@
                                     while (mysqli_stmt_fetch($stmt)) {
                                         $sender3 = $_SESSION['id'] . 'ad';
                                         if ($sender2 === $sender3) {
-                                            echo ' My message: ';
-                                            echo $content2;
+                                            ?><div class="userMsg"><h3><?php echo $content2;?></h3></div><?php
                                         } else {
-                                            echo ' Admin: ';
-                                            echo $content2;
+                                            ?><div class="adminMsg"><h3><?php  echo 'Admin: '; echo $content2;?></h3></div><?php
                                         }
                                     }
                                 }
@@ -137,6 +113,7 @@
                             echo '<p>Error8!</p>';
                         }
                         mysqli_stmt_close($stmt);
+                        echo "</div>";
                         $TableName = 'ticket';
                         $query = "SELECT Status FROM " . $TableName .
                                 " WHERE TicketID = ?";
@@ -164,15 +141,43 @@
                                                         while (mysqli_stmt_fetch($stmt)) {
                                                             if ($status !== 'Closed') {
                                                                 ?>
-                                                                <h2>Message</h2>
+                                                                <div class="form">
+                                                                  <div class="errorDiv">
+                                                                    <?php     if (isset($_POST['send'])) {
+                                                                            if (empty($_POST['message'])) {
+                                                                                echo 'Please fill in the field!';
+                                                                            } else {
+                                                                                $TableName = 'message';
+                                                                                $message = $_POST['message'];
+                                                                                if ($message !== $_SESSION['conn']) {
+                                                                                    $ticketID = $_SESSION['ticket'];
+                                                                                    $date = date("Y-m-d");
+                                                                                    $sender = $_SESSION['id'] . 'ad';
+                                                                                    $query = "INSERT INTO " . $TableName . " VALUES(NULL,?,?,?,?)";
+                                                                                    if ($stmt = mysqli_prepare($conn, $query)) {
+                                                                                        mysqli_stmt_bind_param($stmt, 'siss', $message, $ticketID, $date, $sender);
+                                                                                        if (mysqli_stmt_execute($stmt)) {
+                                                                                            echo '<p>Message Send</p>';
+                                                                                            $_SESSION['conn'] = $message;
+                                                                                        } else {
+                                                                                            echo '<p>Error7!</p>';
+                                                                                        }
+                                                                                    } else {
+                                                                                        echo '<p>Error6!</p>';
+                                                                                    }
+                                                                                    mysqli_stmt_close($stmt);
+                                                                                }
+                                                                            }
+                                                                        } ?>
+                                                                  </div>
                                                                 <form method='post'>
-                                                                    <textarea name="message"></textarea>
-                                                                    <input type='submit' name='send' value='Send'>
+                                                                  <textarea maxlength="120" placeholder="Send Message" name="message" rows="5" cols="40"></textarea>
+                                                                    <input class="inputbtn" type='submit' name='send' value='Send'>
                                                                 </form>
                                                                 <form method='post'>
-                                                                    <input type='submit' name='delete' value='Delete ticket'>
+                                                                    <input class="inputbtn" type='submit' name='delete' value='Delete ticket'>
                                                                 </form>
-
+                                                              </div>
                                                                 <?php
                                                             }
                                                         }
@@ -195,4 +200,5 @@
     }
 
     ?>
+  </div>
 </div>

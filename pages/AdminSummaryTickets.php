@@ -25,7 +25,7 @@
                             <h3 id="h3summ">Open Tickets</h3>
                             <div id="solved"><h3>Summary solved tickets: <?php echo $summary; ?></h3></div>
                         </div>
-                        <div class="TBody">
+                        <div class="TicketsBody">
                         <?php
                     }
                 }

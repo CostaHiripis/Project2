@@ -12,7 +12,7 @@
                   <h3 id="h3summ">Your Open Tickets</h3>
                   <a href="index.php?page2=EmployeeCreateTicket.php"><div class="CreateTicket" id="effectlblue"><h3 class="CreateText">+ Create a ticket</h3></div></a>
               </div>
-              <div class="TBody">
+              <div class="TicketsBody">
             <?php
             $TableName = 'ticket';
             $idd = $_SESSION['id'];
@@ -47,42 +47,6 @@
                             <?php echo "<div class='HName'><h2>".$name."</h2></div>"; ?>
                         </div></a>
                         <?php
-                        /*while (mysqli_stmt_fetch($stmt)) {
-                            echo "<a href='index.php?page22=EmployeeMessage.php-" . $id . "'><div class='Ticket' id='effectlblue'>";
-                            echo "<div class='TicketLeft'>";
-                            echo "<div class='Name'>" . $title . "&nbsp;</div>";
-                            if ($status == "Sent") {
-                                ?>
-                                <div class="Status1"></div>
-                                <?php
-                            } elseif ($status == "In process") {
-                                ?>
-                                <div class="Status2"></div>
-                                <?php
-                            } else {
-                                ?>
-                                <div class="Status3"></div>
-                                <?php
-                            }
-                            echo "</div>";
-                            echo "<div class='TicketRight'>";
-                            if ($name == NULL) {
-                                echo '<div class="Helper"><div class="Text">Nobody</div></div>';
-                            } else {
-                                ?>
-                                <img id='HelperPic' class='imgRound' src='<?php
-                                     if ($path == NULL) {
-                                         echo '../img/defuserpic.png';
-                                     } else {
-                                         echo $path;
-                                     }
-                                     ?>' alt='userPic'>
-                                     <?php
-                                     echo "<div class='Helper'><div class='Text'>" . $name . "</div>";
-                                 }
-                                 echo "</div>";
-                                 echo "</div>";
-                                 echo "</div></a>";*/
                              }
                          }
                      } else {
