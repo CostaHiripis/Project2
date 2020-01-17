@@ -1,0 +1,79 @@
+.StableBackground {
+    background-color: rgb(0, 50, 170);
+    margin-bottom: 50x;
+    padding-bottom: 20px;
+}
+
+.StableUpdate {
+    background-color: lightgreen;
+}
+
+.StableDelete {
+    background-color: lightcoral;
+}
+
+.Stable {
+    border: solid 3px white;
+    background-color: white;
+}
+
+.StableHead {
+    background-color: teal;
+}
+
+#adminCreate {
+    float: left;
+    margin: 10px;
+    font-size: 12px;
+    background-color: #59A8B4;
+    height: 120px;
+    width: 120px;
+    border: 1px solid black;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 120px;
+}
+
+#adminCreate :hover {
+    float: left;
+    height: 120px;
+    width: 120px;
+    border: 1px solid black;
+    border-radius: 100%;
+    background-color: #59A8B4;
+    transform: scale(1.01);
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+}
+
+.SregDropdown {
+    display: block;
+    margin: 0 auto;
+    height: 35px;
+    width: 300px;
+    font-size: 23px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    text-indent: 10px;
+}
+
+
+/* welp this doesn't work yet*/
+
+.Sbuttons :hover {
+    display: block;
+    margin: 0 auto;
+    height: 35px;
+    width: 300px;
+    font-size: 23px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    text-indent: 10px;
+    transform: scale(1.1);
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+}
