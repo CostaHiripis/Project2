@@ -17,8 +17,8 @@
             include 'connect.php';
             $TableName = 'ticket';
             $query = "SELECT TicketID, Title, Opening_Date, Type, employee.Company_Name FROM " . $TableName . "
-	JOIN employee ON ticket.UserID = employee.UserID
-	WHERE Status =?  AND AdminID =?";
+			JOIN employee ON ticket.UserID = employee.UserID
+			WHERE Status =?  AND AdminID =?";
             $sta = 'In process';
             $id = $_SESSION['id'];
             if ($stmt = mysqli_prepare($conn, $query)) {
@@ -62,9 +62,6 @@
             } else {
                 echo 'Error3';
             }
-        } else {
-            echo 'Error2';
-        }
         mysqli_stmt_close($stmt);
         ?>
         </div>
