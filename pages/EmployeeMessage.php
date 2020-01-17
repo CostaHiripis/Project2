@@ -33,7 +33,7 @@
     }
     $TableName = 'ticket';
     $query = "SELECT TicketID, Title, Content, Status, employee.Employee_Name, employee.Company_Name FROM " . $TableName .
-            " JOIN employee ON Ticket.UserID = employee.UserID WHERE TicketID = ?";
+            " JOIN employee ON ticket.UserID = employee.UserID WHERE TicketID = ?";
     if ($stmt = mysqli_prepare($conn, $query)) {
         mysqli_stmt_bind_param($stmt, 's', $id);
         if (mysqli_stmt_execute($stmt)) {
@@ -149,7 +149,7 @@
                                                                             } else {
                                                                                 $TableName = 'message';
                                                                                 $message = $_POST['message'];
-                                                                                if ($message !== $_SESSION['conn']) {
+                                                                                if ($message !== $_SESSION['conn']) { 
                                                                                     $ticketID = $_SESSION['ticket'];
                                                                                     $date = date("Y-m-d");
                                                                                     $sender = $_SESSION['id'] . 'ad';
@@ -157,7 +157,7 @@
                                                                                     if ($stmt = mysqli_prepare($conn, $query)) {
                                                                                         mysqli_stmt_bind_param($stmt, 'siss', $message, $ticketID, $date, $sender);
                                                                                         if (mysqli_stmt_execute($stmt)) {
-                                                                                            echo '<p>Message Send</p>';
+                                                                                            echo '<script>window.location.reload(true);</script>';
                                                                                             $_SESSION['conn'] = $message;
                                                                                         } else {
                                                                                             echo '<p>Error7!</p>';

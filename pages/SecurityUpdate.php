@@ -5,7 +5,7 @@
         <div id="user">
             <div id='userNameLogOut'><a href="index.php?page=logout"><img src='../img/logout2.png' ></a></div>
             <img id='userPic' src=<?php echo $_SESSION['path']; ?> alt="userPic">
-			<h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
+            <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
         </div>
     </div>
     <center>
@@ -30,6 +30,7 @@
                             mysqli_stmt_bind_param($stmt, 'sssi', $name, $email, $level, $id);
                             if (mysqli_stmt_execute($stmt)) {
                                 echo "Data updated successfully";
+                                echo '<script>window.location.href="index.php";</script>';
                             } else {
                                 echo "Error8";
                             }
@@ -56,6 +57,7 @@
                         mysqli_stmt_bind_param($stmt, 'si', $password_hash, $id);
                         if (mysqli_stmt_execute($stmt)) {
                             echo "Password updated successfully";
+                            echo '<script>window.location.href="index.php";</script>';
                         } else {
                             echo "Error8";
                         }
@@ -80,12 +82,13 @@
                     unlink($filename);
                     move_uploaded_file($_FILES["photo"]["tmp_name"], '../avatar/' . $fname . '-' . $lname . '/' . $_FILES["photo"]["name"]);
                     $pathNew = '../avatar/' . $fname . '-' . $lname . '/' . $_FILES["photo"]["name"];
-                    $TableName = 'Admin';
+                    $TableName = 'admin';
                     $query = "UPDATE " . $TableName . " SET ImagePath= ? WHERE AdminID LIKE ?";
                     if ($stmt = mysqli_prepare($conn, $query)) {
                         mysqli_stmt_bind_param($stmt, 'si', $pathNew, $id);
                         if (mysqli_stmt_execute($stmt)) {
                             echo "<p class='update'>Profile image is updated!</p>";
+                            echo '<script>window.location.href="index.php";</script>';
                         } else {
                             echo "<p>Error</p>";
                         }
@@ -113,7 +116,7 @@
                         $_SESSION['pathUP'] = $path;
                         ?>
                         <h1>Update data</h1>
-                    </br>
+                        </br>
                         <form method="post" action='index.php?page6=SecurityUpdate.php-<?php echo $id ?>' >
                             <h2>Full name</h2><input type="text" name="name" value="<?php echo $name; ?>"/>
                             <h2>Email</h2><input type="email" name="email" value="<?php echo $email; ?>"/>

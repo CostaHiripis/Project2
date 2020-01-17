@@ -15,7 +15,6 @@
         <div class="SolveTicketsBody">
             <div class="over"></div>
             <?php
-			echo $_SESSION['path'];
             include 'connect.php';
             $TableName = 'ticket';
             $query = "SELECT TicketID, Title, Opening_Date, Type, employee.Company_Name FROM " . $TableName . "
@@ -29,7 +28,7 @@
                     mysqli_stmt_bind_result($stmt, $id, $title, $date, $type, $company);
                     mysqli_stmt_store_result($stmt);
                     if (mysqli_stmt_num_rows($stmt) == 0) {
-                        echo '<p>There are no data!</p>';
+                        echo '<p>There is no data!</p>';
                     } else {
                         while (mysqli_stmt_fetch($stmt)) {
                             ?>
