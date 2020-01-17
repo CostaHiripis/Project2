@@ -7,45 +7,32 @@
             <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
         </div>
     </div>
-    <div class="BgTickets" id="effectblue">
+       <div class="BgTickets" id="effectblue">
         <div class="adminSummary" id="effectteal">
             <h3 id="h3summ">Open Tickets</h3>
         </div>
-        <div class="SolveTicketsBody">
-            <div class="over"></div>
-            <?php
-            include 'connect.php';
-            $TableName = 'ticket';
-            $query = "SELECT TicketID, Title, Opening_Date, Type, employee.Company_Name FROM " . $TableName . "
-			JOIN employee ON ticket.UserID = employee.UserID
-			WHERE Status =?  AND AdminID =?";
-            $sta = 'In process';
-            $id = $_SESSION['id'];
-            if ($stmt = mysqli_prepare($conn, $query)) {
-                mysqli_stmt_bind_param($stmt, 'si', $sta, $id);
-                if (mysqli_stmt_execute($stmt)) {
-                    mysqli_stmt_bind_result($stmt, $id, $title, $date, $type, $company);
-                    mysqli_stmt_store_result($stmt);
-                    if (mysqli_stmt_num_rows($stmt) == 0) {
-                        echo '<p>There is no data!</p>';
-                    } else {
-                        while (mysqli_stmt_fetch($stmt)) {
-                            ?>
-                            <?php echo "<a href='index.php?page44=ModMessage.php-" . $id . "'>" ?>
-                            <div class="Ticket" id="effectlblue">
-                                <div class="TicketLeft">
-                                    <div class='Solvetype'><?php echo $company ?>&nbsp;&nbsp;</div>
-                                    <div class='Solvetitle'><?php echo $title ?></div>
-                                </div>
-                                <div class="TicketRight">
-                                    <div class='Solvedate'>&nbsp;&nbsp;<?php echo $date ?></div>
-                                    <div class='Solvecompany'><?php echo $type ?></div>
-
-                                </div>
-                            </div><?php echo "</a>" ?>
-                            <?php
-                        }
-                    }
+        <table>
+        <tr class=tableH id="effectblue">
+          <th><h3>Type</h3></th>
+          <th><h3>Title</h3></th>
+          <th><h3>Date</h3></th>
+          <th><h3>Company</h3></th>
+          <th><h3>Details</h3></th>
+        </tr>
+        <div class="TicketsBody">
+        <?php
+        $TableName = 'ticket';
+        include 'connect.php';
+        $query = "SELECT TicketID, Title, Opening_Date, Type, employee.Company_Name FROM " . $TableName . "
+			   JOIN employee ON ticket.UserID = employee.UserID  WHERE Status = ?";
+        if ($stmt = mysqli_prepare($conn, $query)) {
+            $status = 'Sent';
+            mysqli_stmt_bind_param($stmt, 's', $status);
+            if (mysqli_stmt_execute($stmt)) {
+                mysqli_stmt_bind_result($stmt, $id, $title, $date, $type, $company);
+                mysqli_stmt_store_result($stmt);
+                if (mysqli_stmt_num_rows($stmt) == 0) {
+                    echo '<p>There are no data!</p>';
                 } else {
                     while (mysqli_stmt_fetch($stmt)) {
                         ?>
@@ -54,7 +41,7 @@
                             <td><p><?php echo $title; ?></p></td>
                             <td><p><?php echo $date; ?></p></td>
                             <td><p><?php echo $company; ?></p></td>
-                            <td><p><?php echo "<a href='index.php?page44=ModMessage.php-" . $id . "'>Details</a>" ?></p></td>
+                            <td><p><?php echo "<a href='index.php?page33=AdminMessage.php-" . $id . "'>Details</a>" ?></p></td>
                           </tr>
                         <?php
                     }
@@ -62,6 +49,9 @@
             } else {
                 echo 'Error3';
             }
+        } else {
+            echo 'Error2';
+        }
         mysqli_stmt_close($stmt);
         ?>
         </div>
