@@ -96,8 +96,6 @@
             } else {
                 while (mysqli_stmt_fetch($stmt)) {
                     if ($status !== 'Sent') {
-                        ?>
-                        <?php
                         $TableName = 'message';
                         $query = 'SELECT Content, Date, SenderID FROM ' . $TableName. ' WHERE TicketID = ?';
                         if ($stmt = mysqli_prepare($conn, $query)) {

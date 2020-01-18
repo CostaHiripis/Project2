@@ -114,14 +114,25 @@ word-wrap: break-word;
   background-color:rgb(0, 50, 150);
   color: rgb(240, 240, 240);
   width: fit-content;
-  padding: 5px;
+  padding: 10px;
   border-radius: 5px;
 }
 .userMsg{
-text-align: right;
-padding: 10px;
-margin-right: 10px;
+	width: 97%;
+	float: right;
+	padding: 10px;
+	margin-right: 10px;
+	word-wrap: break-word;
 }
+
+.userMsg h3{
+	float: right;
+	width: fit-content;
+	background-color:rgb(240, 240, 240);
+	padding: 10px;
+	border-radius: 5px;
+}
+
 .TicketLeft{
   width: 15%;
   height: 480px;
@@ -151,3 +162,18 @@ margin-right: 10px;
 .TicketsHeader{
   float:left;
 }
+
+.form2{
+	float: right;
+}
+
+.inputbtn2{
+	width: 30%;
+  transition: background 0.2s;
+  background-color:red;
+  height: 45px;
+  width: 100px;
+  color: rgb(240, 240, 240);
+  text-indent: 0px;
+}
+

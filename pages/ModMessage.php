@@ -7,7 +7,12 @@
 			<h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
         </div>
     </div>
-    <h1>Ticket</h1>
+    <div class="space"></div>
+    <a class="Back" id="effectblue" href="index.php?page3=ModSolveTickets">My Tickets</a>
+    <div class="space"></div>
+    <div class="TicketDet space">
+      <div class="TicketLeft">
+      <h1>Ticket details</h1>
     <?php
     $id = $_SESSION['ticket'];
     include 'connect.php';
@@ -91,7 +96,7 @@
                     echo '<p>Type: ' . $type . '</p>';
                     echo '<p>Name: ' . $name . '</p>';
                     echo '<p>Company: ' . $company . '</p>';
-                    echo '<p>Content: ' . $content . '</p>';
+                    echo '<p>Content: ' . $content . '</p></div>';
                     if ($status == 'Sent') {
                         ?>
                         <form method='post'>
@@ -108,6 +113,7 @@
         echo 'Error2';
     }
     mysqli_stmt_close($stmt);
+	echo "<div class='TicketR'>";
     $TableName = 'ticket';
     $query = "SELECT Status FROM " . $TableName .
             " WHERE TicketID LIKE ?";
@@ -121,9 +127,6 @@
             } else {
                 while (mysqli_stmt_fetch($stmt)) {
                     if ($status !== 'Sent') {
-                        ?>
-                        <h2>Messages</h2>
-                        <?php
                         $TableName = 'message';
                         $query = 'SELECT Content, Date, SenderID FROM ' . $TableName .' WHERE TicketID = ?';
                         If ($stmt = mysqli_prepare($conn, $query)) {
@@ -137,11 +140,11 @@
                                     while (mysqli_stmt_fetch($stmt)) {
                                         $sender3 = $_SESSION['id'] . 'ad';
                                         if ($sender2 === $sender3) {
-                                            echo ' My message: ';
-                                            echo $content2;
+                                            ?>
+										<div class="userMsg"><h3><?php echo $content2;?></h3></div>	
+											<?php
                                         } else {
-                                            echo 'Client: ';
-                                            echo $content2;
+                                            ?><div class="adminMsg"><h3><?php  echo 'Client:   '; echo $content2;?></h3></div><?php
                                         }
                                     }
                                 }
@@ -151,6 +154,8 @@
                         } else {
                             echo '<p>Error8!</p>';
                         }
+						mysqli_stmt_close($stmt);
+                        echo "</div>";
                         if (isset($_POST['close'])) {
                             $TableName = 'ticket';
                             $query = "UPDATE " . $TableName . " SET Closing_Date=?, Status=? WHERE TicketID = ?";
@@ -181,18 +186,20 @@
                                     while (mysqli_stmt_fetch($stmt)) {
                                         if ($status !== 'Closed') {
                                             ?>
-                                            <h2>Message</h2>
-                                            <form method='post'>
-                                                <textarea name="message"></textarea>
-                                                <input type='submit' name='send' value='Send'>
-                                            </form>
-                                            <form method='post'>
-                                                <input type='submit' name='close' value='Close ticket'>
-                                            </form>
-                                            <form method='post'>
-                                                <input type='submit' name='delete' value='Delete ticket'>
-                                            </form>
-
+											<div class='form2'>
+												<form method='post'>
+													<input class="inputbtn2" type='submit' name='close' value='Close'>
+												</form>
+												<form method='post'>
+													<input class="inputbtn2" type='submit' name='delete' value='Delete'>
+												</form>
+											</div>
+											<div class="form">
+												<form method='post'>
+													<textarea maxlength="120" placeholder="Send Message" name="message" rows="5" cols="40"></textarea>
+                                                    <input class="inputbtn" type='submit' name='send' value='Send'>
+												</form>
+											</div>
                                             <?php
                                         }
                                     }
@@ -211,5 +218,5 @@
     }
     mysqli_close($conn);
     ?>
-    <a href='index.php?page4=ModSolveTickets.php'>Solve tickets</a>
+</div>
 </div>

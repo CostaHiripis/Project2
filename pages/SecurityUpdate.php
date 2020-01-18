@@ -132,7 +132,7 @@
                         <h1>Update photo</h1>
                         <form method="post" action='index.php?page6=SecurityUpdate.php-<?php echo $id ?>' enctype="multipart/form-data">
                             <div id='bla'>
-                                <img id="blah" src="<?php echo $path; ?>"/>
+                                <img id="fileselect" src="<?php echo $path; ?>"/>
                             </div>
                             <input id='choose' type='file' name="photo" onchange="readURL(this);">
                             <p><input class="Sbuttons" type="submit" name='submitPhoto' value="New Photo" /></p> 

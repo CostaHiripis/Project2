@@ -6,10 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>Stenden HelpDesk</title>
-        <link rel="stylesheet" type="text/css" href="../CSS/loginstyle.css">
-		<link rel="stylesheet" type="text/css" href="../CSS/boxstyle.css">
-		<link rel="stylesheet" type="text/css" href="../CSS/Security.css">
-    <link rel="stylesheet" type="text/css" href="../CSS/Admin.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/loginstyle.css?<?php echo time(); ?>">
+		<link rel="stylesheet" type="text/css" href="../CSS/boxstyle.css?<?php echo time(); ?>">
+		<link rel="stylesheet" type="text/css" href="../CSS/Security.css?<?php echo time(); ?>">
+		<link rel="stylesheet" type="text/css" href="../CSS/Faq.css<?php echo time(); ?>">
+    <link rel="stylesheet" type="text/css" href="../CSS/Admin.css?<?php echo time(); ?>">
 		<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>

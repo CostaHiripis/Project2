@@ -10,7 +10,7 @@
           <div class="BgTickets" id="effectblue">
               <div class="TicketsHeader" id="effectteal">
                   <h3 id="h3summ">Your Open Tickets</h3>
-                  <a href="index.php?page2=EmployeeCreateTicket.php"><div class="CreateTicket" id="effectlblue"><h3 class="CreateText">+ Create a ticket</h3></div></a>
+                  <a href="index.php?page2=EmployeeCreateTicket.php"><div class="CreateTicket" id="effectlblue"><h3 class="CreateText">+ Create a ticket</h3></div></a><a href='index.php?page2=Faq.php'><div class="faq" id="effectlblue"><h3 class="faqh">FAQ</h3></div></a>
               </div>
               <div class="TicketsBody">
             <?php

@@ -526,6 +526,20 @@ textarea {
     margin-top: 4px;
 }
 
+.faq{
+	width: 100px;
+    height: 35px;
+    border-radius: 20px;
+    float: right;
+    margin-top: 4px;
+	margin-right: 100px;
+}
+
+.faqh{
+	margin-left: 20px;
+	margin-top: -4px;
+}
+
 img {
     float: left;
     height: 75px;
