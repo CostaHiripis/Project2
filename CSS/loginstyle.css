@@ -48,6 +48,18 @@ input{
   border: none;
   text-indent: 10px;
 }
+
+#bla{
+	margin: 0 auto;
+	height: 130px;
+	width: 130px;
+	margin-top: 5px;
+	margin-bottom: 15px;
+}
+
+#choose{
+	margin-bottom: 25px;
+}
 img{
   float: left;
   height: 75px;
@@ -66,7 +78,7 @@ img{
 .inputbtn:hover{
   background-color:rgb(0,50,190);
 }
-p{
+.outer p{
   color: red;
   text-align: center;
   padding: 20px;
@@ -101,6 +113,11 @@ a{
   width: 250px;
   float: left;
 }
+.ticketbtn{
+  margin:0 auto;
+  width: 250px;
+  margin-top:40px;
+}
 .regdiv{
   margin-top: 45px;
   width: 250px;
@@ -117,3 +134,4 @@ a{
 .success{
   color: green;
 }
+

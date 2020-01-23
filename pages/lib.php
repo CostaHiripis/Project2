@@ -1,74 +1,83 @@
 <?php
-function registerUser($firstName,$lastName,$inputEmail,$inputPW,$repeatPW){
-$existingUsers = file("users.csv");
-      if($inputPW != $repeatPW){
-        echo "<p>Passwords do not match!</p>";
-      }else{
-        $userType="user";//user,mod,admin,security
-        $firstName=ucfirst(strtolower($firstName));
-        $lastName=ucfirst(strtolower($lastName));
-        $inputPW=password_hash($_POST['pw'], PASSWORD_DEFAULT);
-        if(sizeof($existingUsers)>0){
-        foreach ($existingUsers as $key) { //checks if the user is already registered
-          $key = explode(",",$key);
-          if($key[0] == $inputEmail){
-            echo "<p>Email already registered!</p>";
-            break;
-          }else{
-            $userFile = fopen("users.csv","a");
-            $userData = array($inputEmail,$inputPW,$firstName,$lastName,$userType);
-            fputcsv($userFile, $userData);
-            fclose($userFile);
-            echo "<p class='success'>Email succesfully registered!</p>";
-            break;
-          }
+
+
+include 'connect.php';
+if (isset($_POST['register'])) {
+    if (empty($_POST['email']) OR empty($_POST['pw']) OR empty($_POST['pwr'])
+            OR empty($_POST['firstname']) OR empty($_POST['lastname']) OR empty($_POST['companyname'])) {
+        echo "<p>Please fill in your details!</p>";
+    } else {
+        if ($_POST['pw'] == $_POST['pwr']) {
+            $TableName = "employee";
+            $fname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
+            $lname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
+            if ((!filter_var($fname, FILTER_SANITIZE_STRING) === false) OR (!filter_var($lname, FILTER_SANITIZE_STRING) === false)) {
+                $name = $fname . ' ' . $lname;
+                $password_hash = password_hash($_POST['pw'], PASSWORD_DEFAULT);
+                $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+                $company = filter_var($_POST['companyname'], FILTER_SANITIZE_STRING);
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+                    if (!filter_var($fname, FILTER_SANITIZE_STRING) === false) {
+                        $query = "INSERT INTO " . $TableName . " VALUES(NULL,?,?,?,?)";
+                        if ($stmt = mysqli_prepare($conn, $query)) {
+                            mysqli_stmt_bind_param($stmt, 'ssss', $name, $email, $company, $password_hash);
+                            if (mysqli_stmt_execute($stmt)) {
+                                echo '<p>Thank you for registration!</p>';
+                                echo ' <script>window.location.href="index.php";</script>';
+                            } else {
+                                echo "Data has not been inserted";
+                                die();
+                            }
+                            mysqli_stmt_close($stmt);
+                        } else {
+                            echo '<p>Error!</p>';
+                        }
+                        mysqli_stmt_close($stmt);
+                    } else {
+                        echo '<p>Invalid Company Name!</p>';
+                    }
+                } else {
+                    echo '<p>Invalid Email!</p>';
+                }
+            } else {
+                echo '<p>Passwords are not the same!</p>';
+            }
+        } else {
+            echo '<p>Invalid Name!</p>';
         }
-      }
-      else{
-        $userFile = fopen("users.csv","a");
-        $userData = array($inputEmail,$inputPW,$firstName,$lastName);
-        fputcsv($userFile, $userData);
-        fclose($userFile);
-        echo "<p class='success'>Email succesfully registered!</p>";
-      }
     }
-  }
-/*$existingUsers = file("users.csv");
-  if(isset($_POST['register'])){
-    if(!empty($_POST['email']) && !empty($_POST['pw']) && !empty($_POST['pwr']) && !empty($_POST['firstname']) && !empty($_POST['lastname'])){
-      if($_POST['pw'] != $_POST['pwr']){
-        echo "<p>Passwords do not match!</p>";
-      }else{
-        $firstName=ucfirst(strtolower($_POST['firstname']));
-        $lastName=ucfirst(strtolower($_POST['lastname']));
-        $inputEmail=$_POST['email'];
-        $inputPW=password_hash($_POST['pw'], PASSWORD_DEFAULT);
-        if(sizeof($existingUsers)>0){
-        foreach ($existingUsers as $email) { //checks if the user is already registered
-          $email = explode(",",$email);
-          if($email[0] == $inputEmail){
-            echo "<p>Email already registered!</p>";
-            break;
-          }else{
-            $userData = fopen("users.csv","a");
-            $temp = array($inputEmail,$inputPW,$firstName,$lastName);
-            fputcsv($userData, $temp);
-            fclose($userData);
-            echo "<p class='success'>Email succesfully registered!</p>";
-            break;
-          }
+}
+mysqli_close($conn);
+
+include 'connect.php';
+if (isset($_POST['register'])) {
+    if (empty($_POST['email']) OR empty($_POST['pw']) OR empty($_POST['pwr'])
+            OR empty($_POST['firstname']) OR empty($_POST['lastname']) OR empty($_POST['companyname'])) {
+        echo "<p>Please fill in your details!</p>";
+    } else {
+        if ($_POST['pw'] == $_POST['pwr']) {
+            $TableName = "employee";
+            $name = $_POST['firstname'] . ' ' . $_POST['lastname'];
+            $password_hash = password_hash($_POST['pw'], PASSWORD_DEFAULT);
+            $email = $_POST['email'];
+            $company = $_POST['companyname'];
+            $query = "INSERT INTO " . $TableName . " VALUES(NULL,?,?,?,?)";
+            if ($stmt = mysqli_prepare($conn, $query)) {
+                mysqli_stmt_bind_param($stmt, 'ssss', $name, $email, $company, $password_hash);
+                if (mysqli_stmt_execute($stmt)) {
+                    echo '<p>Thank you for registration!</p>';
+                } else {
+                    echo "Data has not been inserted";
+                    die();
+                }
+                mysqli_stmt_close($stmt);
+            } else {
+                echo '<p>Error: ' . mysqli_error($conn).'</p>';
+            }
+        } else {
+            echo '<p>Passwords are not the same!</p>';
         }
-      }
-      else{
-        $userData = fopen("users.csv","a");
-        $temp = array($inputEmail,$inputPW);
-        fputcsv($userData, $temp);
-        fclose($userData);
-        echo "<p class='success'>Email succesfully registered!</p>";
-      }
     }
-  }else{
-  echo "<p>Please fill in your details!</p>";
-  }
-}*/
+}
+mysqli_close($conn);
 ?>
