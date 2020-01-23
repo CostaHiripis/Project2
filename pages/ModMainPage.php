@@ -25,7 +25,7 @@ body{
           <th><h3>Company</h3></th>
           <th><h3>Details</h3></th>
         </tr>
-        <div class="TicketsBody">
+        
         <?php
         $TableName = 'ticket';
         include 'connect.php';
@@ -75,7 +75,7 @@ body{
           <th><h3>Company</h3></th>
           <th><h3>Details</h3></th>
         </tr>
-        <div class="TicketsBody">
+        
         <?php
         $TableName = 'ticket';
         $query = "SELECT TicketID, Title, Opening_Date, Type, employee.Company_Name FROM " . $TableName . "
