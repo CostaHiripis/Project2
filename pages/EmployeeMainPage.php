@@ -40,9 +40,18 @@
                               <div class="Status3"></div>
                           <?php }?>
                           <div class='Prof'>
-                            <?php if($path != NULL || $name != NULL) {?>
+                            <?php if($path != NULL || $name != NULL) {
+								if($path == NULL){
+									?>
+									<img class="HelperPic" src='../img/defuserpic.png' alt="userPic">
+									<?php
+								} else {
+								?>
                               <img class="HelperPic" src=<?php echo $path;?> alt="userPic">
-                            <?php } else { ?>
+								<?php
+								}
+								
+							} else { ?>
 								<img class="HelperPic" src='../img/defuserpic.png' alt="userPic">
 							<?php } ?>
                           </div>
