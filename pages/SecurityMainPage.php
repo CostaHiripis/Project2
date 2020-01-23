@@ -20,7 +20,7 @@
             if ($stmt = mysqli_prepare($conn, $query)) {
                 mysqli_stmt_bind_param($stmt, 'i', $idd);
                 if (!mysqli_stmt_execute($stmt)) {
-                    echo 'Error100';
+                    echo 'The user has open tickets so it cannot be deleted at this time';
                 }
             } else {
                 echo 'Error';
