@@ -159,12 +159,10 @@ word-wrap: break-word;
 .TicketsBodyAd{
   overflow-y: auto;
     width: 100%;
-    height: fit-content;
 }
 .TicketsBody{
   overflow-y: auto;
   width: 100%;
-  height: fit-content;
 }
 .TicketsHeader{
   float:left;
