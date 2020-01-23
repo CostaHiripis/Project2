@@ -1,5 +1,6 @@
 <?php
 
+
 include 'connect.php';
 if (isset($_POST['register'])) {
     if (empty($_POST['email']) OR empty($_POST['pw']) OR empty($_POST['pwr'])
@@ -71,7 +72,7 @@ if (isset($_POST['register'])) {
                 }
                 mysqli_stmt_close($stmt);
             } else {
-                echo '<p>Error!</p>';
+                echo '<p>Error: ' . mysqli_error($conn).'</p>';
             }
         } else {
             echo '<p>Passwords are not the same!</p>';
