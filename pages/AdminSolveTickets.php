@@ -1,3 +1,9 @@
+<style media="screen">
+body{
+  background-image: none;
+  background-color: rgb(0,100,100);
+}
+</style>
 <div id="fullPage">
     <div id="header">
         <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>
@@ -19,7 +25,7 @@
           <th><h3>Company</h3></th>
           <th><h3>Details</h3></th>
         </tr>
-        <div class="TicketsBody">
+        <div class="TicketsBodyAd">
         <?php
         $TableName = 'ticket';
         include 'connect.php';
@@ -32,7 +38,7 @@
                 mysqli_stmt_bind_result($stmt, $id, $title, $date, $type, $company);
                 mysqli_stmt_store_result($stmt);
                 if (mysqli_stmt_num_rows($stmt) == 0) {
-                    echo '<p>There are no data!</p>';
+                    echo '<p>There is no data!</p>';
                 } else {
                     while (mysqli_stmt_fetch($stmt)) {
                         ?>
@@ -69,7 +75,7 @@
           <th><h3>Company</h3></th>
           <th><h3>Details</h3></th>
         </tr>
-        <div class="TicketsBody">
+        <div class="TicketsBodyAd">
         <?php
         $TableName = 'ticket';
         $query = "SELECT TicketID, Title, Opening_Date, Type, employee.Company_Name FROM " . $TableName . "
@@ -83,7 +89,7 @@
                 mysqli_stmt_bind_result($stmt, $id, $title, $date, $type, $company);
                 mysqli_stmt_store_result($stmt);
                 if (mysqli_stmt_num_rows($stmt) == 0) {
-                    echo '<p>There are no data!</p>';
+                    echo '<p>There is no data!</p>';
                 } else {
                     while (mysqli_stmt_fetch($stmt)) {
                         ?>
@@ -110,3 +116,4 @@
       </table>
     </div>
 </div>
+<div class="space"></div>

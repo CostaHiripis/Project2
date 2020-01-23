@@ -7,14 +7,12 @@
             <h1 id='userName'><?php echo $_SESSION['name']; ?></h1>
         </div>
     </div>
-    <div id="adminCreate">
-        <a href='index.php?page5=SecurityRegister.php'>
-            <p>Create new Admin</p>
-    </div>
-    </a>
+    <div class="space"></div>
+    <a class="Back" id="effectblue" href="index.php?page5=SecurityRegister.php">Create new Admin</a>
+    <div class="space"></div>
     <center>
         <?php
-        include 'connect.php';
+        include('connect.php');
         if (isset($_GET['AdminID'])) {
             $idd = $_GET['AdminID'];
             $TableName = 'admin';
@@ -51,7 +49,7 @@
                 if (mysqli_stmt_num_rows($stmt) == 0) {
                     echo '<p>There are no data!</p>';
                 } else {
-                    echo "<div class='StableBackground'> ";
+                    echo "<div class='StableBackground' id='effectblue'> ";
                     echo "<table class='Stable' width='80%' border='1'>";
                     echo "<tr class='StableHead' ><th>ID</th>
 					<th>Email</th>
@@ -91,7 +89,7 @@
                 } else {
                     echo "<div class='StableBackground'>";
                     echo "<table class='Stable' width='80%' border='1'>";
-                    echo "<tr><th>ID</th>    
+                    echo "<tr><th>ID</th>
 					<th>Email</th>
 					<th>Full Name</th>
 					<th>Company</th>

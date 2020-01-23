@@ -1,3 +1,9 @@
+<style media="screen">
+body{
+  background-image: none;
+  background-color: rgb(0,100,100);
+}
+</style>
 <div id="fullPage">
     <div id="header">
         <a href='index.php'><img id="logoPic" src="../img/nhl.png" alt="nhl"></a>

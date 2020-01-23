@@ -41,7 +41,7 @@
         If ($stmt = mysqli_prepare($conn, $query)) {
             mysqli_stmt_bind_param($stmt, 'ssi', $status, $admin, $id);
             If (mysqli_stmt_execute($stmt)) {
-                
+
             } else {
                 echo 'Error200';
             }
@@ -141,7 +141,7 @@
                                         $sender3 = $_SESSION['id'] . 'ad';
                                         if ($sender2 === $sender3) {
                                             ?>
-										<div class="userMsg"><h3><?php echo $content2;?></h3></div>	
+										<div class="userMsg"><h3><?php echo $content2;?></h3></div>
 											<?php
                                         } else {
                                             ?><div class="adminMsg"><h3><?php  echo 'Client:   '; echo $content2;?></h3></div><?php
@@ -164,7 +164,7 @@
                             If ($stmt = mysqli_prepare($conn, $query)) {
                                 mysqli_stmt_bind_param($stmt, 'ssi', $date, $status, $id);
                                 If (mysqli_stmt_execute($stmt)) {
-                                    
+
                                 } else {
                                     echo 'error454';
                                 }

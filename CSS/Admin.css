@@ -156,8 +156,14 @@ word-wrap: break-word;
   margin-left: 25%;
   color:red;
 }
+.TicketsBodyAd{
+  overflow-y: auto;
+    width: 100%;
+    height: fit-content;
+}
 .TicketsBody{
   overflow-y: auto;
+  height: fit-content;
 }
 .TicketsHeader{
   float:left;
@@ -176,4 +182,3 @@ word-wrap: break-word;
   color: rgb(240, 240, 240);
   text-indent: 0px;
 }
-
