@@ -59,10 +59,10 @@
                             echo "Password updated successfully";
                             echo '<script>window.location.href="index.php";</script>';
                         } else {
-                            echo "Error8";
+                            echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
                         }
                     } else {
-                        echo "Error6";
+                        echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
                     }
                 } else {
                     echo '<p>Passwords are not the same!</p>';

@@ -36,10 +36,10 @@ body{
                     }
                 }
             } else {
-                echo 'Error4';
+                echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
             }
         } else {
-            echo 'Error5';
+            echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
         }
         mysqli_stmt_close($stmt);
         $query = "SELECT TicketID, Title, Opening_Date, Status, admin.Admin_Name, admin.ImagePath FROM " . $TableName . "
@@ -77,10 +77,10 @@ body{
                     }
                 }
             } else {
-                echo 'Error3';
+                echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
             }
         } else {
-            echo 'Error2';
+            echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
         }
         mysqli_stmt_close($stmt);
         mysqli_close($conn);

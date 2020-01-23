@@ -26,10 +26,10 @@
                 echo 'Ticket deleted';
                 die();
             } else {
-                echo 'error454';
+                echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
             }
         } else {
-            echo 'error45444';
+            echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
         }
         mysqli_stmt_close($stmt);
     }
@@ -43,10 +43,10 @@
             If (mysqli_stmt_execute($stmt)) {
 
             } else {
-                echo 'Error200';
+                echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
             }
         } else {
-            echo 'Error200';
+            echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
         }
         mysqli_stmt_close($stmt);
     }
@@ -107,10 +107,10 @@
                 }
             }
         } else {
-            echo 'Error3';
+            echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
         }
     } else {
-        echo 'Error2';
+        echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
     }
     mysqli_stmt_close($stmt);
 	echo "<div class='TicketR'>";
@@ -149,10 +149,10 @@
                                     }
                                 }
                             } else {
-                                echo '<p>Error9!</p>';
+                                echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
                             }
                         } else {
-                            echo '<p>Error8!</p>';
+                            echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
                         }
 						mysqli_stmt_close($stmt);
                         echo "</div>";
@@ -166,10 +166,10 @@
                                 If (mysqli_stmt_execute($stmt)) {
 
                                 } else {
-                                    echo 'error454';
+                                    echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
                                 }
                             } else {
-                                echo 'error45444';
+                                echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
                             }
                         }
                         $TableName = 'ticket';

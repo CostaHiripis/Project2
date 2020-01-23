@@ -51,7 +51,7 @@
                                             }
                                             mysqli_stmt_close($stmt);
                                         } else {
-                                            echo '<p>Error2!</p>';
+                                            echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
                                         }
                                     }
                                     mysqli_close($conn);

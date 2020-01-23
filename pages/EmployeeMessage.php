@@ -59,10 +59,10 @@
                 }
             }
         } else {
-            echo 'Error3';
+            echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
         }
     } else {
-        echo 'Error2';
+        echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
     }
     mysqli_stmt_close($stmt);
     if (isset($_POST['choose'])) {
@@ -74,10 +74,10 @@
             if (mysqli_stmt_execute($stmt)) {
 
             } else {
-                echo 'Error200';
+                echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
             }
         } else {
-            echo 'Error200';
+            echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
         }
     }
     echo "<div class='TicketR'>";
@@ -116,10 +116,10 @@
                                     }
                                 }
                             } else {
-                                echo '<p>Error9!</p>';
+                                echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
                             }
                         } else {
-                            echo '<p>Error8!</p>';
+                            echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
                         }
                         mysqli_stmt_close($stmt);
                         echo "</div>";
@@ -164,10 +164,10 @@
                                                         }
                                                     }
                                                 } else {
-                                                    echo 'errorrrr';
+                                                    echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
                                                 }
                                             } else {
-                                                echo 'error445';
+                                                echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
                                             }
                                         }
                                     }

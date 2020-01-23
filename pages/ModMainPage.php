@@ -53,10 +53,10 @@ body{
                     }
                 }
             } else {
-                echo 'Error3';
+                echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
             }
         } else {
-            echo 'Error2';
+            echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
         }
         mysqli_stmt_close($stmt);
         ?>
@@ -104,10 +104,10 @@ body{
                     }
                 }
             } else {
-                echo 'Error3';
+                echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
             }
         } else {
-            echo 'Error2';
+            echo "<p>Unable to execute the query.</p>" . "<p>Error code: " . mysqli_errno($conn) . ": " . mysqli_error($conn) . "</p>";
         }
         mysqli_stmt_close($stmt);
         mysqli_close($conn);
