@@ -1,6 +1,6 @@
 <?php
 	$dbName = 'helpdesk';
-	$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error');
+	$conn = mysqli_connect("127.0.0.1", "root", "", $dbName) OR DIE ('Error: ' . mysqli_error($conn));
 	if(isset($_POST['register'])){
 		if(empty($_POST['email']) OR empty($_POST['pw']) OR empty($_POST['pwr'])
 		OR empty($_POST['firstname']) OR empty($_POST['lastname']) OR empty($_POST['companyname'])){
@@ -29,7 +29,7 @@
 							  }
 							  mysqli_stmt_close($stmt);
 							} else {
-							  echo '<p>Error!</p>';
+							  echo '<p>Error: ' . mysqli_error($conn).'</p>';
 							}
 							mysqli_stmt_close($stmt);
 						} else {
@@ -72,7 +72,7 @@ if (isset($_POST['register'])) {
                 }
                 mysqli_stmt_close($stmt);
             } else {
-                echo '<p>Error!</p>';
+                echo '<p>Error: ' . mysqli_error($conn).'</p>';
             }
         } else {
             echo '<p>Passwords are not the same!</p>';
